@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        "url": ""
+        "url": "http://www-data.fizjoexpress.pl/graphql"
       }
     },
     'gatsby-plugin-react-helmet',
