@@ -1,11 +1,12 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import TwoColumnFlex from "../components/two-column-flex"
 
 const IndexPage = ({ data: { wpPage } }) => {
   return (
     <main>
-      {wpPage.homepage.text}
-    </main>
+      <TwoColumnFlex />
+    </main >
   )
 }
 
