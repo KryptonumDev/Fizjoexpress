@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body{
-        max-width: 1366px;
+        max-width: 1920px;
         margin: 0 auto !important;
     }
 
@@ -45,9 +45,9 @@ const GlobalStyles = createGlobalStyle`
         line-height: 154%;
     }
 
-    .bix-text{
+    .big-text{
         font-size: 18px;
-        font-weight: 160%;
+        line-height: 160%;
         font-weight: 600;
     }
 
