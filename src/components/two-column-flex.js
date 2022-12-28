@@ -5,19 +5,31 @@ import { ImageWithButton } from '../organisms/image-with-button'
 import { TextBlock } from '../organisms/text-block'
 import { Container } from './../atoms/container'
 
-const TwoColumnFlexVariants = {
-  buttonUnderText: 'BUTTON_UNDER_TEXT',
-  buttonOverImage: 'BUTTON_OVER_IMAGE'
+// const TwoColumnFlexVariants = {
+//   buttonUnderText: 'BUTTON_UNDER_TEXT',
+//   buttonOverImage: 'BUTTON_OVER_IMAGE'
+// }
+
+const TwoColumnFlexDirectionVariants = {
+  ImageOnRight: 'IMAGE_ON_RIGHT',
+  ImageOnLeft: 'IMAGE_ON_LEFT'
 }
 
 export default function TwoColumnFlex({
-  variant = TwoColumnFlexVariants.buttonUnderText,
+  // Może się przyda zrobić kilka wariantów
+  //   variant = TwoColumnFlexVariants.buttonUnderText,
+  direction = TwoColumnFlexDirectionVariants.ImageOnRight,
   data: { header, title, text, image, link }
 }) {
   return (
     <Wrapper className='two-column'>
       <Container>
-        <Content className='two-column-content'>
+        <Content
+          reverseColumns={
+            direction ===
+            TwoColumnFlexDirectionVariants.ImageOnRight
+          }
+          className='two-column-content'>
           <ImageWithButton link={link} image={image} />
           <TextBlock
             header={header}
@@ -39,4 +51,6 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-right: 100px;
+  flex-direction: ${({ reverseColumns }) =>
+    reverseColumns ? 'row-reverse' : 'row'};
 `
