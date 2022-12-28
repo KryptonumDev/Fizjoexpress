@@ -1,9 +1,10 @@
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
-import styled from 'styled-components'
+import { GatsbyImage } from "gatsby-plugin-image"
+import React from "react"
+import styled from "styled-components"
+import { TwoColumnFlexVariants } from "../constants/two-column-flex-variants"
+import { Button } from "../moleculas/link"
 
-export const ImageWithButton = ({ image, link }) => (
+export const ImageWithButton = ({ image, link, variant }) => (
   <Wrapper className='image-block'>
     <GatsbyImage
       className='image'
@@ -15,13 +16,13 @@ export const ImageWithButton = ({ image, link }) => (
     <span className='gray' />
     <span className='yellow' />
     <span className='line' />
-    {link?.url && (
-      <Link
-        className='button'
+    {(link?.url && variant === TwoColumnFlexVariants.buttonOverImage) && (
+      <Button
+        className='link'
         to={link.url}
         target={link.target ? link.target : null}>
         {link.title}
-      </Link>
+      </Button>
     )}
   </Wrapper>
 )
@@ -29,6 +30,16 @@ export const ImageWithButton = ({ image, link }) => (
 const Wrapper = styled.div`
   position: relative;
   max-width: 500px;
+
+    .link{
+        margin-left: auto;
+        margin-top: -70px;
+        width: 300px;
+        height: 70px;
+        span{
+            margin: 0 auto;
+        }
+    }
 
   .image {
     margin-left: 100px;

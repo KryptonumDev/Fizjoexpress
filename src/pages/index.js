@@ -2,8 +2,11 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import Hero from '../components/hero-homepage'
 import Process from '../components/process-homepage'
+import Reserve from '../components/reserve'
 import ServicesGrid from '../components/services-grid'
 import TwoColumnFlex from '../components/two-column-flex'
+import TwoColumnWithGrayBackground from '../components/two-column-with-gray-background'
+import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 
 const IndexPage = ({
   data: {
@@ -22,6 +25,7 @@ const IndexPage = ({
         }
       />
       <TwoColumnFlex
+        variant={TwoColumnFlexVariants.buttonOverImage}
         data={{
           header:
             homepage.sekcjaOFizjoexpress.aboutSmallHeader,
@@ -35,8 +39,53 @@ const IndexPage = ({
       <ServicesGrid
         data={homepage.sekcjaCoLeczymyWFizjoexpress}
       />
+      <TwoColumnFlex
+        reverse={true}
+        variant={TwoColumnFlexVariants.buttonUnderText}
+        data={{
+          header:
+            homepage.sekcjaCzekamyWlasnieNaCiebie.malyNaglowekNadTytulem,
+          title: homepage.sekcjaCzekamyWlasnieNaCiebie.tytulSekcji,
+          text: homepage.sekcjaCzekamyWlasnieNaCiebie.trescPodTytulem,
+          image:
+            homepage.sekcjaCzekamyWlasnieNaCiebie.waitVerticalImage,
+          link: homepage.sekcjaCzekamyWlasnieNaCiebie.linkPrzycisku
+        }}
+      />
 
-      <Process data={homepage.sekcjaProcesWspolpracy} />
+      <Process variant={TwoColumnFlexVariants.buttonOverImage} data={homepage.sekcjaProcesWspolpracy} />
+
+      <TwoColumnWithGrayBackground
+        data={{
+          header: homepage.sekcjaSiedzacyTrybZyciaIBtp.malyNaglowekPrzedTytulem,
+          title: homepage.sekcjaSiedzacyTrybZyciaIBtp.tytulSekcji,
+          text: homepage.sekcjaSiedzacyTrybZyciaIBtp.trescPodTytulem,
+          link: homepage.sekcjaSiedzacyTrybZyciaIBtp.przyciskZLinkiem,
+          image: homepage.sekcjaSiedzacyTrybZyciaIBtp.poziomeZdjecieWSekcji
+        }} />
+
+      <TwoColumnFlex
+        variant={TwoColumnFlexVariants.buttonOverImage}
+        data={{
+          header:
+            homepage.sekcjaFizjoterapiaWarszawa.malyNaglowekPrzedTytulem,
+          title: homepage.sekcjaFizjoterapiaWarszawa.tytulSekcji,
+          text: homepage.sekcjaFizjoterapiaWarszawa.tekstPodTytulem,
+          cytate: homepage.sekcjaFizjoterapiaWarszawa.trescCytatu,
+          image:
+            homepage.sekcjaFizjoterapiaWarszawa.zdjeciePionowe,
+          link: homepage.sekcjaFizjoterapiaWarszawa.przyciskZLinkiem
+        }}
+      />
+      <Reserve
+        data={{
+          header: homepage.homeSekcjaZarezerwujTermin.malyNaglowekPrzedTytulem,
+          title: homepage.homeSekcjaZarezerwujTermin.tytulSekcji,
+          text: homepage.homeSekcjaZarezerwujTermin.trescPodTytulem,
+          link: homepage.homeSekcjaZarezerwujTermin.przyciskZLinkiem,
+          steps: homepage.homeSekcjaZarezerwujTermin.listaKrokowKontakt
+        }}
+      />
     </main>
   )
 }
@@ -62,6 +111,88 @@ export const query = graphql`
     wpPage(id: { eq: "cG9zdDoxNw==" }) {
       id
       homepage {
+        homeSekcjaZarezerwujTermin {
+          malyNaglowekPrzedTytulem
+          tytulSekcji
+          trescPodTytulem
+          przyciskZLinkiem {
+            url
+            title
+            target
+          }
+          listaKrokowKontakt {
+            nazwaKroku
+          }
+        }
+        sekcjaFizjoterapiaWarszawa {
+          malyNaglowekPrzedTytulem
+          tytulSekcji
+          tekstPodTytulem
+          trescCytatu
+          przyciskZLinkiem {
+            target
+            title
+            url
+          }
+          zdjeciePionowe {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+        sekcjaSiedzacyTrybZyciaIBtp {
+          malyNaglowekPrzedTytulem
+          tytulSekcji
+          trescPodTytulem
+          przyciskZLinkiem {
+            url
+            title
+            target
+          }
+          poziomeZdjecieWSekcji {
+            altText
+            localFile{
+              childImageSharp{
+                gatsbyImageData
+              }
+            }
+          }
+        }
+        homeSekcjaZOpiniami {
+          malyNaglowekNadTytulem
+          naglowekSekcji
+          tekstPodNaglowkiem
+          przyciskDoOpinii {
+            target
+            title
+            url
+          }
+          tekstPodKreska
+          
+          malyNaglowekNadOpiniami
+          tytulNadOpiniami
+        }
+        sekcjaCzekamyWlasnieNaCiebie {
+          tytulSekcji
+          trescPodTytulem
+          malyNaglowekNadTytulem
+          waitVerticalImage {
+            altText
+            localFile{
+              childImageSharp{
+                gatsbyImageData
+              }
+            }
+          }
+          linkPrzycisku {
+            url
+            title
+            target
+          }
+        }
         sekcjaProcesWspolpracy {
           tytulSekcjiTwoCol
           tytulSekcji
@@ -90,16 +221,6 @@ export const query = graphql`
           etapy {
             trescPodTytulemOpcjonalna
             nazwaEtapu
-          }
-        }
-        sekcjaCzekamyWlasnieNaCiebie {
-          tytulSekcji
-          trescPodTytulem
-          malyNaglowekNadTytulem
-          linkPrzycisku {
-            target
-            title
-            url
           }
         }
         sekcjaCoLeczymyWFizjoexpress {

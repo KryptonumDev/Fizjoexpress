@@ -49,6 +49,14 @@ const Wrapper = styled(Link)`
   width: 100%;
   text-align: center;
 
+  &.white{
+    background-color: var(--color-white);
+
+    path{
+      fill: var(--color-yellow);
+    }
+  }
+
   > span {
     color: var(--color-blue);
   }

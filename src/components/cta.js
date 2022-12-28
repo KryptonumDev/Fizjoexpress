@@ -31,7 +31,7 @@ const TextBlock = styled.div`
     background-color: var(--color-white);
     padding: 70px 90px;
     position: relative;
-    margin-right: 100px;
+    margin: 0 100px;
 
     &::after{
         content: "";
