@@ -2,7 +2,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
-import { Button } from '../moleculas/link'
 import { TextBlock } from '../organisms/text-block'
 
 const DarkFeaturedSectionWithPhoto = ({
@@ -43,6 +42,7 @@ const DarkFeaturedSectionContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
   gap: clamp(80px, 8.23vw, 113px);
+  padding: 0 0 0 170px;
   position: relative;
   z-index: 1;
 
@@ -52,11 +52,20 @@ const DarkFeaturedSectionContainer = styled(Container)`
       color: var(--color-white);
     }
   }
+  .horizontal-img {
+    margin-right: -5.28vw;
+    @media (min-width: 1366px) {
+      margin-right: -12.85vw;
+    }
+    @media (min-width: 1680px) {
+      margin-right: -18.2vw;
+    }
+  }
 `
 const SectionWrapper = styled.section`
   background-color: var(--color-blue);
   position: relative;
-
+  margin: 100px 0;
   padding: clamp(40px, 5.85vw, 80px) 0;
 
   &:after {

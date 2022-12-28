@@ -10,9 +10,7 @@ export const TextBlock = ({
   link,
   variant = 'default'
 }) => (
-  <Wrapper
-    withLine={variant === 'default'}
-    className='text-block'>
+  <Wrapper variant={variant} className='text-block'>
     <span className='text'>{header}</span>
     <h2
       className='sub-title'
@@ -38,9 +36,20 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  ${({ withLine }) =>
-    !withLine &&
+  ${({ variant }) =>
+    variant === 'darkWithButton' &&
     css`
+      position: relative;
+      :after {
+        content: '';
+        width: clamp(140px, 15.22vw, 208px);
+        height: clamp(140px, 15.22vw, 208px);
+        background-color: var(--color-dark-gray);
+        position: absolute;
+        left: calc(-0.5 * clamp(140px, 15.22vw, 208px));
+        top: calc(-0.35 * clamp(140px, 15.22vw, 208px));
+        z-index: -1;
+      }
       p,
       h2,
       div.text {
