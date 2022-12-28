@@ -4,11 +4,11 @@ import { ProcessSlider } from "../organisms/process-slider"
 import Cta from "./cta"
 import TwoColumnFlex from "./two-column-flex"
 
-export default function Process({ data: { tytulSekcjiTwoCol, tytulSekcji, trescPodTytulemTwoCol, tresc, malyNaglowekTwoColSection, malyNaglowek, linkPrzyciskuPobocznego, linkPrzyciskuGlownego, zdjecieWSekcji, etapy } }) {
+export default function Process({ variant, data: { tytulSekcjiTwoCol, tytulSekcji, trescPodTytulemTwoCol, tresc, malyNaglowekTwoColSection, malyNaglowek, linkPrzyciskuPobocznego, linkPrzyciskuGlownego, zdjecieWSekcji, etapy } }) {
     return (
         <Wrapper>
             <ProcessSlider data={{ header: malyNaglowek, title: tytulSekcji, steps: etapy }} />
-            <TwoColumnFlex data={{ header: malyNaglowekTwoColSection, title: tytulSekcjiTwoCol, text: trescPodTytulemTwoCol, link: null, image: zdjecieWSekcji }} />
+            <TwoColumnFlex variant={variant} data={{ header: malyNaglowekTwoColSection, title: tytulSekcjiTwoCol, text: trescPodTytulemTwoCol, link: null, image: zdjecieWSekcji }} />
             <Cta data={{ linkOne: linkPrzyciskuGlownego, linkTwo: linkPrzyciskuPobocznego, text: tresc }} />
         </Wrapper>
     )
@@ -17,6 +17,7 @@ export default function Process({ data: { tytulSekcjiTwoCol, tytulSekcji, trescP
 const Wrapper = styled.div`
     background-color: var(--color-blue);
     margin-top: var(--margin-intersection);
+    padding-bottom: var(--margin-intersection);
 
     .text-block{
 

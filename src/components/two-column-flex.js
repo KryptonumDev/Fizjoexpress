@@ -1,29 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '../moleculas/link'
+import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import { ImageWithButton } from '../organisms/image-with-button'
 import { TextBlock } from '../organisms/text-block'
 import { Container } from './../atoms/container'
 
-const TwoColumnFlexVariants = {
-  buttonUnderText: 'BUTTON_UNDER_TEXT',
-  buttonOverImage: 'BUTTON_OVER_IMAGE'
-}
-
 export default function TwoColumnFlex({
+  reverse = false,
   variant = TwoColumnFlexVariants.buttonUnderText,
-  data: { header, title, text, image, link }
+  data: { header, title, text, image, link, cytate }
 }) {
   return (
     <Wrapper className='two-column'>
       <Container>
-        <Content className='two-column-content'>
-          <ImageWithButton link={link} image={image} />
+        <Content className={reverse ? 'reverse two-column-content' : 'two-column-content'}>
+          <ImageWithButton link={link} image={image} variant={variant} />
           <TextBlock
             header={header}
             title={title}
             text={text}
             link={link}
+            cytate={cytate}
+            variant={variant}
           />
         </Content>
       </Container>
@@ -39,4 +37,10 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-right: 100px;
+
+  &.reverse{
+    flex-direction: row-reverse;
+    margin-right: 0;
+    margin-left: 100px;
+  }
 `
