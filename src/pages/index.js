@@ -1,6 +1,8 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import Faq from '../components/faq'
 import Hero from '../components/hero-homepage'
+import LastPosts from '../components/last-posts'
 import Process from '../components/process-homepage'
 import Reserve from '../components/reserve'
 import ServicesGrid from '../components/services-grid'
@@ -86,6 +88,24 @@ const IndexPage = ({
           steps: homepage.homeSekcjaZarezerwujTermin.listaKrokowKontakt
         }}
       />
+      <Faq
+        data={{
+          header: homepage.homeSekcjaFaq.krotkiNaglowekNadTytulem,
+          title: homepage.homeSekcjaFaq.faqTitle
+        }}
+      />
+      <LastPosts
+        reverse={true}
+        variant={TwoColumnFlexVariants.buttonUnderText}
+        data={{
+          header: homepage.homeSekcjaBloga.malyNaglowekNadTytulemSekcji,
+          title: homepage.homeSekcjaBloga.tytulSekcji,
+          text: homepage.homeSekcjaBloga.trescPodTytulem,
+          link: homepage.homeSekcjaBloga.przyciskZLinkiem,
+          image: homepage.homeSekcjaBloga.homeBlogVerticalImage,
+          blogSlider: homepage.homeSekcjaBloga.wyswietlacSekcjeZNajnowszymiArtykulami
+        }}
+      />
     </main>
   )
 }
@@ -111,6 +131,29 @@ export const query = graphql`
     wpPage(id: { eq: "cG9zdDoxNw==" }) {
       id
       homepage {
+        homeSekcjaBloga {
+          malyNaglowekNadTytulemSekcji
+          tytulSekcji
+          trescPodTytulem
+          przyciskZLinkiem {
+            url
+            title
+            target
+          }
+          homeBlogVerticalImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          wyswietlacSekcjeZNajnowszymiArtykulami
+        }
+        homeSekcjaFaq {
+          faqTitle
+          krotkiNaglowekNadTytulem
+        }
         homeSekcjaZarezerwujTermin {
           malyNaglowekPrzedTytulem
           tytulSekcji
