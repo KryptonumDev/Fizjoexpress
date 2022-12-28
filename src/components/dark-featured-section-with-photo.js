@@ -53,20 +53,26 @@ const DarkFeaturedSectionContainer = styled(Container)`
     }
   }
   .horizontal-img {
-    margin-right: -5.28vw;
     @media (min-width: 1366px) {
-      margin-right: -12.85vw;
+      margin-right: calc((100vw - 1366px) * -0.5);
     }
-    @media (min-width: 1680px) {
-      margin-right: -18.2vw;
+
+    :after {
+      content: '';
+      background-color: var(--color-yellow);
+      width: clamp(40px, 3.66vw, 70px);
+      height: clamp(40px, 3.66vw, 70px);
+      top: 0;
+      right: 0;
+      position: absolute;
     }
   }
 `
 const SectionWrapper = styled.section`
   background-color: var(--color-blue);
   position: relative;
-  margin: 100px 0;
-  padding: clamp(40px, 5.85vw, 80px) 0;
+  margin: 100px 0 0;
+  padding: clamp(60px, 5.85vw, 80px) 0;
 
   &:after {
     content: '';
