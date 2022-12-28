@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         color: var(--color-blue);
         font-family: Poppins;
+        box-sizing: border-box;
     }
 
     section{
