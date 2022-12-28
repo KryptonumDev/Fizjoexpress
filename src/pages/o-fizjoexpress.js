@@ -1,21 +1,23 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import DarkFeaturedSectionWithPhoto from '../components/dark-featured-section-with-photo'
 import Hero from '../components/hero-homepage'
-import Process from '../components/process-homepage'
-import ServicesGrid from '../components/services-grid'
 import TwoColumnFlex from '../components/two-column-flex'
+import { textParser } from '../helpers/text-parser'
 
 const AboutPage = ({
   data: {
     wpPage: {
       oFizjoexpress: {
         aboutSekcjaPowitalna,
-        sekcjaMisjaFizjoexpress
+        sekcjaMisjaFizjoexpress,
+        sekcjaLokalizacjaFizjoexpress
       }
     },
     global: { globalneDaneIUstawienia }
   }
 }) => {
+  console.log(sekcjaLokalizacjaFizjoexpress)
   return (
     <main>
       <Hero
@@ -43,6 +45,23 @@ const AboutPage = ({
           image: sekcjaMisjaFizjoexpress.aboutVerticalImage,
           link: sekcjaMisjaFizjoexpress.buttonWithCtaLink
         }}
+      />
+      <DarkFeaturedSectionWithPhoto
+        smallHeader={textParser(
+          sekcjaLokalizacjaFizjoexpress?.aboutSmallHeader
+        )}
+        sectionTitle={textParser(
+          sekcjaLokalizacjaFizjoexpress?.aboutTitle
+        )}
+        textUnderTitle={textParser(
+          sekcjaLokalizacjaFizjoexpress?.aboutText
+        )}
+        button={
+          sekcjaLokalizacjaFizjoexpress?.buttonWithCtaLink
+        }
+        horizontalImage={
+          sekcjaLokalizacjaFizjoexpress?.aboutLocalizationHorizontalImage
+        }
       />
     </main>
   )
@@ -99,6 +118,24 @@ export const query = graphql`
               }
             }
           }
+          buttonWithCtaLink {
+            target
+            title
+            url
+          }
+        }
+        sekcjaLokalizacjaFizjoexpress {
+          aboutLocalizationHorizontalImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          aboutSmallHeader
+          aboutTitle
+          aboutText
           buttonWithCtaLink {
             target
             title
