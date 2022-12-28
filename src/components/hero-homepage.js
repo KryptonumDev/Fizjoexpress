@@ -15,12 +15,12 @@ export default function Hero({
     buttonLink,
     zdjecieWTle,
     featuredTextOverBg
-  }
+  },
+  socialMedia
 }) {
-  console.log(featuredTextOverBg)
   return (
     <Wrapper color={colorVariant}>
-      <Container>
+      <Container heroWithImageContainer>
         <TextBlock color={colorVariant}>
           <span className='text'>{text}</span>
           <h1
@@ -49,6 +49,12 @@ export default function Hero({
               {buttonLink.title}
             </Link>
           )}
+          {socialMedia && (
+            <SocialMediaIcons
+              sectionVariant={colorVariant}
+              data={socialMedia}
+            />
+          )}
         </TextBlock>
         <GatsbyImage
           className='image'
@@ -71,6 +77,54 @@ export default function Hero({
   )
 }
 
+const SocialMediaWrapper = styled.div`
+  display: flex;
+  gap: clamp(16px, 1.61vw, 22px);
+  margin-top: 60px;
+  align-items: center;
+  position: absolute;
+  bottom: clamp(24px, 2.34vw, 32px);
+
+  > span {
+    color: ${({ color }) =>
+      color === 'dark'
+        ? 'var(--color-white)'
+        : 'var(--color-blue)'};
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  > ul {
+    display: flex;
+    gap: clamp(16px, 1.757vw, 24px);
+  }
+`
+
+const SocialMediaIcons = ({
+  sectionVariant = 'dark',
+  data: { socialMedia }
+}) => {
+  return (
+    <SocialMediaWrapper color={sectionVariant}>
+      <span>Social Media</span>
+      <ul>
+        {socialMedia.map(
+          ({ linkDoSocialMedia, ikonaSocialMedia }) => (
+            <li key={linkDoSocialMedia}>
+              <a href={linkDoSocialMedia}>
+                <img
+                  src={ikonaSocialMedia.localFile.publicURL}
+                  alt={linkDoSocialMedia}
+                />
+              </a>
+            </li>
+          )
+        )}
+      </ul>
+    </SocialMediaWrapper>
+  )
+}
+
 const Wrapper = styled.section`
   background-color: ${({ color }) =>
     color === 'dark'
@@ -79,7 +133,9 @@ const Wrapper = styled.section`
   min-height: 768px;
   position: relative;
   padding-top: 240px;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
 
   .image {
     position: absolute;
@@ -98,23 +154,22 @@ const Wrapper = styled.section`
 `
 
 const TextBlock = styled.div`
+  max-width: 515px;
   position: relative;
   z-index: 1;
-  max-width: 515px;
+
   * {
     color: ${({ color }) =>
       color === 'dark'
         ? 'var(--color-white)'
         : 'var(--color-blue)'};
   }
-  span {
-    color: var(--color-yellow);
-  }
+
   h1 {
     margin-top: 10px;
     margin-bottom: 20px;
   }
-  a {
+  > a {
     margin-top: 30px;
     display: inline-block;
   }

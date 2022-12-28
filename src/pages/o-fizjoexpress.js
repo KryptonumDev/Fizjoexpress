@@ -12,7 +12,8 @@ const AboutPage = ({
         aboutSekcjaPowitalna,
         sekcjaMisjaFizjoexpress
       }
-    }
+    },
+    global: { globalneDaneIUstawienia }
   }
 }) => {
   return (
@@ -30,6 +31,9 @@ const AboutPage = ({
           featuredTextOverBg:
             aboutSekcjaPowitalna.tekstWSzarymProstokacie
         }}
+        socialMedia={
+          globalneDaneIUstawienia.globalneGrafiki
+        }
       />
       <TwoColumnFlex
         data={{
@@ -48,6 +52,20 @@ export default AboutPage
 
 export const query = graphql`
   query aboutQuery {
+    global: wpPage(id: { eq: "cG9zdDo1Mg==" }) {
+      globalneDaneIUstawienia {
+        globalneGrafiki {
+          socialMedia {
+            linkDoSocialMedia
+            ikonaSocialMedia {
+              localFile {
+                publicURL
+              }
+            }
+          }
+        }
+      }
+    }
     wpPage(id: { eq: "cG9zdDoyOQ==" }) {
       oFizjoexpress {
         aboutSekcjaPowitalna {
