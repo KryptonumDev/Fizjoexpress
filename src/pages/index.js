@@ -7,7 +7,8 @@ import TwoColumnFlex from '../components/two-column-flex'
 
 const IndexPage = ({
   data: {
-    wpPage: { homepage }
+    wpPage: { homepage },
+    global: { globalneDaneIUstawienia }
   }
 }) => {
   return (
@@ -16,6 +17,9 @@ const IndexPage = ({
         colorVariant='dark'
         headerVariant='bigger'
         data={homepage.sekcjaPowitalnaHomepage}
+        socialMedia={
+          globalneDaneIUstawienia.globalneGrafiki
+        }
       />
       <TwoColumnFlex
         data={{
@@ -41,6 +45,20 @@ export default IndexPage
 
 export const query = graphql`
   query homepage {
+    global: wpPage(id: { eq: "cG9zdDo1Mg==" }) {
+      globalneDaneIUstawienia {
+        globalneGrafiki {
+          socialMedia {
+            linkDoSocialMedia
+            ikonaSocialMedia {
+              localFile {
+                publicURL
+              }
+            }
+          }
+        }
+      }
+    }
     wpPage(id: { eq: "cG9zdDoxNw==" }) {
       id
       homepage {
