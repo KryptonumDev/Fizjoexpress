@@ -47,6 +47,13 @@ const GlobalStyles = createGlobalStyle`
         line-height: 154%;
     }
 
+    .small-header {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--color-yellow);
+    }
+
     .big-text{
         font-size: 18px;
         line-height: 160%;

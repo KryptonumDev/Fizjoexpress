@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import Hero from '../components/hero-homepage'
 import TwoColumnFlex from '../components/two-column-flex'
+import TwoColumnTextSection from '../components/two-column-text-section'
 import TwoColumnWithDarkBackground from '../components/two-column-with-dark-background'
 
 const AboutPage = ({
@@ -10,13 +11,13 @@ const AboutPage = ({
       oFizjoexpress: {
         aboutSekcjaPowitalna,
         sekcjaMisjaFizjoexpress,
-        sekcjaLokalizacjaFizjoexpress
+        sekcjaLokalizacjaFizjoexpress,
+        sekcjaPoczatkiFizjoexpress
       }
     },
     global: { globalneDaneIUstawienia }
   }
 }) => {
-  console.log(sekcjaLokalizacjaFizjoexpress)
   return (
     <main>
       <Hero
@@ -53,6 +54,19 @@ const AboutPage = ({
           link: sekcjaLokalizacjaFizjoexpress?.buttonWithCtaLink,
           image: sekcjaLokalizacjaFizjoexpress?.aboutLocalizationHorizontalImage
         }} />
+      <TwoColumnTextSection
+        smallHeader={
+          sekcjaPoczatkiFizjoexpress.aboutSmallHeader
+        }
+        title={sekcjaPoczatkiFizjoexpress.aboutTitle}
+        firstColumnContent={
+          sekcjaPoczatkiFizjoexpress.pierwszaKolumnaTresci
+        }
+        secondColumnContent={
+          sekcjaPoczatkiFizjoexpress.drugaKolumnaTresci
+        }
+        link={sekcjaPoczatkiFizjoexpress.buttonWithCtaLink}
+      />
     </main>
   )
 }
@@ -131,6 +145,17 @@ export const query = graphql`
             title
             url
           }
+        }
+        sekcjaPoczatkiFizjoexpress {
+          aboutSmallHeader
+          aboutTitle
+          buttonWithCtaLink {
+            target
+            title
+            url
+          }
+          pierwszaKolumnaTresci
+          drugaKolumnaTresci
         }
       }
     }
