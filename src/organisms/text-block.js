@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import { textParser } from '../helpers/text-parser'
 import { Button } from '../moleculas/link'
 
@@ -10,9 +9,10 @@ export const TextBlock = ({
   text,
   link,
   variant,
-  cytate
+  cytate,
+  variant = 'default'
 }) => (
-  <Wrapper id={cytate ? 'cytate' : ''} className={variant === TwoColumnFlexVariants.buttonUnderText ? 'no-line text-block' : 'text-block'}>
+  <Wrapper id={cytate ? 'cytate' : ''} variant={variant} className={variant === TwoColumnFlexVariants.buttonUnderText ? 'no-line text-block' : 'text-block'}>
     <span className='text header'>{header}</span>
     <h2 className='sub-title' dangerouslySetInnerHTML={{ __html: textParser(title) }} />
     <div className='text' dangerouslySetInnerHTML={{ __html: text }} />
@@ -40,7 +40,7 @@ export const TextBlock = ({
 )
 
 const Wrapper = styled.div`
-  max-width: 525px;
+  max-width: clamp(392px, 38.4vw, 525px);
   position: relative;
 
 
@@ -78,6 +78,33 @@ const Wrapper = styled.div`
       z-index: 1;
     }
   }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ${({ variant }) =>
+    variant === 'darkWithButton' &&
+    css`
+      position: relative;
+      :after {
+        content: '';
+        width: clamp(140px, 15.22vw, 208px);
+        height: clamp(140px, 15.22vw, 208px);
+        background-color: var(--color-dark-gray);
+        position: absolute;
+        left: calc(-0.5 * clamp(140px, 15.22vw, 208px));
+        top: calc(-0.35 * clamp(140px, 15.22vw, 208px));
+        z-index: -1;
+      }
+      p,
+      h2,
+      div.text {
+        color: var(--color-white);
+      }
+      span.text {
+        color: var(--color-yellow);
+      }
+    `}
 
   h2 {
     margin-top: 10px;
@@ -91,20 +118,23 @@ const Wrapper = styled.div`
     position: relative;
   }
 
-&::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  max-width: 310px;
-  bottom: 0;
-  height: 1px;
-  background-color: var(--color-yellow);
-}
+    ${({ withLine }) =>
+      withLine &&
+      css`
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      max-width: 310px;
+      bottom: 0;
+      height: 1px;
+      background-color: var(--color-yellow);
+    }
 
   &.no-line{
       &::after{
         display: none;
       }
-  }
+      `}
 `

@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
 
         --color-light-gray: #F6F6F6;
         --color-medium-gray: #E9E9E9;
+        --color-dark-gray: #212939;
 
         --margin-intersection: 100px;
 
