@@ -13,8 +13,17 @@ export default function TwoColumnFlex({
   return (
     <Wrapper className='two-column'>
       <Container>
-        <Content className={reverse ? 'reverse two-column-content' : 'two-column-content'}>
-          <ImageWithButton link={link} image={image} variant={variant} />
+        <Content
+          className={
+            reverse
+              ? 'reverse two-column-content'
+              : 'two-column-content'
+          }>
+          <ImageWithButton
+            link={link}
+            image={image}
+            variant={variant}
+          />
           <TextBlock
             header={header}
             title={title}
@@ -38,7 +47,7 @@ const Content = styled.div`
   align-items: center;
   margin-right: 100px;
 
-  &.reverse{
+  &.reverse {
     flex-direction: row-reverse;
     margin-right: 0;
     margin-left: 100px;
