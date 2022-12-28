@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import { textParser } from '../helpers/text-parser'
 import { Button } from '../moleculas/link'
 
@@ -8,11 +9,10 @@ export const TextBlock = ({
   title,
   text,
   link,
-  variant,
   cytate,
   variant = 'default'
 }) => (
-  <Wrapper id={cytate ? 'cytate' : ''} variant={variant} className={variant === TwoColumnFlexVariants.buttonUnderText ? 'no-line text-block' : 'text-block'}>
+  <Wrapper id={cytate ? 'cytate' : ''} variant={variant} className={variant === TwoColumnFlexVariants.buttonUnderText ? 'text-block' : 'text-block with-line'}>
     <span className='text header'>{header}</span>
     <h2 className='sub-title' dangerouslySetInnerHTML={{ __html: textParser(title) }} />
     <div className='text' dangerouslySetInnerHTML={{ __html: text }} />
@@ -118,9 +118,7 @@ const Wrapper = styled.div`
     position: relative;
   }
 
-    ${({ withLine }) =>
-      withLine &&
-      css`
+  &.with-line{
     &::after {
       content: '';
       position: absolute;
@@ -131,10 +129,5 @@ const Wrapper = styled.div`
       height: 1px;
       background-color: var(--color-yellow);
     }
-
-  &.no-line{
-      &::after{
-        display: none;
-      }
-      `}
+  }
 `

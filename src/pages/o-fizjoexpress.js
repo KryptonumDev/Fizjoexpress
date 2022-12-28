@@ -1,9 +1,8 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import DarkFeaturedSectionWithPhoto from '../components/dark-featured-section-with-photo'
 import Hero from '../components/hero-homepage'
 import TwoColumnFlex from '../components/two-column-flex'
-import { textParser } from '../helpers/text-parser'
+import TwoColumnWithDarkBackground from '../components/two-column-with-dark-background'
 
 const AboutPage = ({
   data: {
@@ -46,23 +45,14 @@ const AboutPage = ({
           link: sekcjaMisjaFizjoexpress.buttonWithCtaLink
         }}
       />
-      <DarkFeaturedSectionWithPhoto
-        smallHeader={textParser(
-          sekcjaLokalizacjaFizjoexpress?.aboutSmallHeader
-        )}
-        sectionTitle={textParser(
-          sekcjaLokalizacjaFizjoexpress?.aboutTitle
-        )}
-        textUnderTitle={textParser(
-          sekcjaLokalizacjaFizjoexpress?.aboutText
-        )}
-        button={
-          sekcjaLokalizacjaFizjoexpress?.buttonWithCtaLink
-        }
-        horizontalImage={
-          sekcjaLokalizacjaFizjoexpress?.aboutLocalizationHorizontalImage
-        }
-      />
+      <TwoColumnWithDarkBackground
+        data={{
+          header: sekcjaLokalizacjaFizjoexpress.aboutSmallHeader,
+          title: sekcjaLokalizacjaFizjoexpress?.aboutTitle,
+          text: sekcjaLokalizacjaFizjoexpress?.aboutText,
+          link: sekcjaLokalizacjaFizjoexpress?.buttonWithCtaLink,
+          image: sekcjaLokalizacjaFizjoexpress?.aboutLocalizationHorizontalImage
+        }} />
     </main>
   )
 }
