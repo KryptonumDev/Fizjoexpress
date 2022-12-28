@@ -10,7 +10,7 @@ export const TextBlock = ({
   text,
   link,
   cytate,
-  variant = 'default'
+  variant = 'default',
 }) => (
   <Wrapper id={cytate ? 'cytate' : ''} variant={variant} className={variant === TwoColumnFlexVariants.buttonUnderText ? 'text-block' : 'text-block with-line'}>
     <span className='text header'>{header}</span>

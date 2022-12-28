@@ -55,7 +55,6 @@ const TwoColumnTextSection = ({
 const TwoColSectionWrapper = styled.section``
 
 const TwoColSectionContainer = styled(Container)`
-  margin: 0 70px 0 140px;
   padding: 0 100px;
   position: relative;
   :after,

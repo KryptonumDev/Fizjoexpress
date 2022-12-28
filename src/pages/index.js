@@ -5,6 +5,7 @@ import Hero from '../components/hero-homepage'
 import LastPosts from '../components/last-posts'
 import Process from '../components/process-homepage'
 import Reserve from '../components/reserve'
+import Reviews from '../components/reviews'
 import ServicesGrid from '../components/services-grid'
 import TwoColumnFlex from '../components/two-column-flex'
 import TwoColumnWithGrayBackground from '../components/two-column-with-gray-background'
@@ -54,9 +55,19 @@ const IndexPage = ({
           link: homepage.sekcjaCzekamyWlasnieNaCiebie.linkPrzycisku
         }}
       />
-
       <Process variant={TwoColumnFlexVariants.buttonOverImage} data={homepage.sekcjaProcesWspolpracy} />
+        <Reviews data={{
+          header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
+          title: homepage.homeSekcjaZOpiniami.naglowekSekcji,
+          text: homepage.homeSekcjaZOpiniami.tekstPodNaglowkiem,
+          link: homepage.homeSekcjaZOpiniami.przyciskDoOpinii,
+          image: homepage.homeSekcjaZOpiniami.testimonialsVerticalImage,
+          underlineText: homepage.homeSekcjaZOpiniami.tekstPodKreska,
 
+          reviewsTitle: homepage.homeSekcjaZOpiniami.tytulNadOpiniami,
+          reviewsHeader: homepage.homeSekcjaZOpiniami.malyNaglowekNadOpiniami
+        }}
+        />
       <TwoColumnWithGrayBackground
         data={{
           header: homepage.sekcjaSiedzacyTrybZyciaIBtp.malyNaglowekPrzedTytulem,
@@ -65,7 +76,6 @@ const IndexPage = ({
           link: homepage.sekcjaSiedzacyTrybZyciaIBtp.przyciskZLinkiem,
           image: homepage.sekcjaSiedzacyTrybZyciaIBtp.poziomeZdjecieWSekcji
         }} />
-
       <TwoColumnFlex
         variant={TwoColumnFlexVariants.buttonOverImage}
         data={{
@@ -131,6 +141,27 @@ export const query = graphql`
     wpPage(id: { eq: "cG9zdDoxNw==" }) {
       id
       homepage {
+        homeSekcjaZOpiniami {
+          malyNaglowekNadTytulem
+          naglowekSekcji
+          tekstPodNaglowkiem
+          przyciskDoOpinii {
+            target
+            title
+            url
+          }
+          tekstPodKreska
+          malyNaglowekNadOpiniami
+          tytulNadOpiniami
+          testimonialsVerticalImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
         homeSekcjaBloga {
           malyNaglowekNadTytulemSekcji
           tytulSekcji
@@ -203,20 +234,6 @@ export const query = graphql`
               }
             }
           }
-        }
-        homeSekcjaZOpiniami {
-          malyNaglowekNadTytulem
-          naglowekSekcji
-          tekstPodNaglowkiem
-          przyciskDoOpinii {
-            target
-            title
-            url
-          }
-          tekstPodKreska
-          
-          malyNaglowekNadOpiniami
-          tytulNadOpiniami
         }
         sekcjaCzekamyWlasnieNaCiebie {
           tytulSekcji

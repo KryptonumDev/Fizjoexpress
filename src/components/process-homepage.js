@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { ProcessSlider } from "../organisms/process-slider"
+import { ProcessSlider } from "./process-slider"
 import Cta from "./cta"
 import TwoColumnFlex from "./two-column-flex"
 

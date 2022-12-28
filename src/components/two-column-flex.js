@@ -8,7 +8,7 @@ import { Container } from './../atoms/container'
 export default function TwoColumnFlex({
   reverse = false,
   variant = TwoColumnFlexVariants.buttonUnderText,
-  data: { header, title, text, image, link, cytate }
+  data: { header, title, text, image, link, cytate, underlineText }
 }) {
   return (
     <Wrapper className='two-column'>
@@ -24,14 +24,17 @@ export default function TwoColumnFlex({
             image={image}
             variant={variant}
           />
-          <TextBlock
-            header={header}
-            title={title}
-            text={text}
-            link={link}
-            cytate={cytate}
-            variant={variant}
-          />
+          <div>
+            <TextBlock
+              header={header}
+              title={title}
+              text={text}
+              link={link}
+              cytate={cytate}
+              variant={variant}
+            />
+            {underlineText && <div className='text underline' dangerouslySetInnerHTML={{ __html: underlineText }} />}
+          </div>
         </Content>
       </Container>
     </Wrapper>
@@ -51,5 +54,20 @@ const Content = styled.div`
     flex-direction: row-reverse;
     margin-right: 0;
     margin-left: 100px;
+  }
+
+  .underline{
+    position: relative;
+    margin-top: 40px;
+    padding-top: 40px;
+    &::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100px;
+      height: 1px;
+      top: 0;
+      background-color: var(--color-blue);
+    }
   }
 `
