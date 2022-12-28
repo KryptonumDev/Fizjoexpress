@@ -32,11 +32,6 @@ export const TextBlock = ({
 const Wrapper = styled.div`
   max-width: 525px;
 
-  span {
-    color: var(--color-yellow);
-    font-weight: 700;
-  }
-
   h2 {
     margin-top: 10px;
     margin-bottom: 20px;

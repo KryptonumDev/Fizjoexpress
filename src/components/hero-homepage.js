@@ -21,7 +21,7 @@ export default function Hero({
   return (
     <Wrapper color={colorVariant}>
       <Container>
-        <TextBlock>
+        <TextBlock color={colorVariant}>
           <span className='text'>{text}</span>
           <h1
             className={
@@ -59,11 +59,13 @@ export default function Hero({
           }
           alt={zdjecieWTle.altText}
         />
-        <FeaturedTextOverBg
-          dangerouslySetInnerHTML={{
-            __html: textParser(featuredTextOverBg)
-          }}
-        />
+        {featuredTextOverBg && (
+          <FeaturedTextOverBg
+            dangerouslySetInnerHTML={{
+              __html: textParser(featuredTextOverBg)
+            }}
+          />
+        )}
       </Container>
     </Wrapper>
   )
