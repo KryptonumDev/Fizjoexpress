@@ -13,6 +13,7 @@ export default function Hero({
     heroText,
     text,
     buttonLink,
+    buttonLinkSecond,
     zdjecieWTle,
     featuredTextOverBg
   },
@@ -47,6 +48,16 @@ export default function Hero({
                 buttonLink.target ? buttonLink.target : null
               }>
               {buttonLink.title}
+            </Link>
+          )}
+          {buttonLinkSecond?.url && (
+            <Link
+              className='button'
+              to={buttonLinkSecond.url}
+              target={
+                buttonLinkSecond.target ? buttonLinkSecond.target : null
+              }>
+              {buttonLinkSecond.title}
             </Link>
           )}
           {socialMedia && (
