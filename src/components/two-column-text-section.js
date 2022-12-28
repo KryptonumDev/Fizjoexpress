@@ -13,46 +13,55 @@ const TwoColumnTextSection = ({
 }) => {
   return (
     <TwoColSectionWrapper>
-      <TwoColSectionContainer>
+      <Container>
         <div className='headers-wrapper'>
-          <h2
+          <span
             className='small-header'
             dangerouslySetInnerHTML={{
-              __html: textParser(smallHeader)
+              __html: smallHeader
             }}
           />
-          <span
+          <h2
             className='sub-title'
             dangerouslySetInnerHTML={{
-              __html: textParser(title)
+              __html: title
             }}
           />
         </div>
-        <ColumnsWrapper>
-          <FirstColumnText
-            dangerouslySetInnerHTML={{
-              __html: textParser(firstColumnContent)
-            }}
-          />
-          <SecondColumnWrapper>
-            <p
+        <TwoColSectionContainer>
+          <ColumnsWrapper>
+            <FirstColumnText
               dangerouslySetInnerHTML={{
-                __html: textParser(secondColumnContent)
+                __html: firstColumnContent
               }}
             />
-            {link && link.title && (
-              <Button to={link.url} target={link.target}>
-                {link.title}
-              </Button>
-            )}
-          </SecondColumnWrapper>
-        </ColumnsWrapper>
-      </TwoColSectionContainer>
+            <SecondColumnWrapper>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: secondColumnContent
+                }}
+              />
+              {link && link.title && (
+                <Button to={link.url} target={link.target}>
+                  {link.title}
+                </Button>
+              )}
+            </SecondColumnWrapper>
+          </ColumnsWrapper>
+        </TwoColSectionContainer>
+      </Container>
     </TwoColSectionWrapper>
   )
 }
 
-const TwoColSectionWrapper = styled.section``
+const TwoColSectionWrapper = styled.section`
+  .headers-wrapper{
+    margin: 0 100px 30px 100px;
+  }
+  .sub-title{
+    margin-top: 10px;
+  }
+`
 
 const TwoColSectionContainer = styled(Container)`
   padding: 0 100px;

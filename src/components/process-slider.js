@@ -3,8 +3,6 @@ import styled from "styled-components"
 import { Container } from "../atoms/container"
 import { textParser } from "../helpers/text-parser"
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Control } from "../organisms/slider-control";
 

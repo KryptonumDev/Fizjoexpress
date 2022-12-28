@@ -1,9 +1,15 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import Cta from '../components/cta'
+import Faq from '../components/faq'
 import Hero from '../components/hero-homepage'
+import LastPosts from '../components/last-posts'
+import Reserve from '../components/reserve'
+import Team from '../components/team'
 import TwoColumnFlex from '../components/two-column-flex'
 import TwoColumnTextSection from '../components/two-column-text-section'
 import TwoColumnWithDarkBackground from '../components/two-column-with-dark-background'
+import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 
 const AboutPage = ({
   data: {
@@ -12,7 +18,13 @@ const AboutPage = ({
         aboutSekcjaPowitalna,
         sekcjaMisjaFizjoexpress,
         sekcjaLokalizacjaFizjoexpress,
-        sekcjaPoczatkiFizjoexpress
+        sekcjaPoczatkiFizjoexpress,
+        sekcjaPodnoszenieKwalifikacji,
+        sekcjaPodnoszenieKwalifikacjiKopia,
+        aboutFastComebackToFitness,
+        aboutSekcjaZarezerwujTermin,
+        aboutSekcjaFaq,
+        aboutSekcjaBloga
       }
     },
     global: { globalneDaneIUstawienia }
@@ -67,6 +79,65 @@ const AboutPage = ({
         }
         link={sekcjaPoczatkiFizjoexpress.buttonWithCtaLink}
       />
+      <Team
+        reverse={true}
+        data={{
+          header: sekcjaPodnoszenieKwalifikacji.aboutSmallHeader,
+          title: sekcjaPodnoszenieKwalifikacji?.aboutTitle,
+          text: sekcjaPodnoszenieKwalifikacji?.aboutText,
+          link: sekcjaPodnoszenieKwalifikacji?.buttonWithCtaLink,
+          image: sekcjaPodnoszenieKwalifikacji?.aboutVerticalImage
+        }}
+        slider={{
+          header: sekcjaPodnoszenieKwalifikacjiKopia.aboutSmallHeader,
+          title: sekcjaPodnoszenieKwalifikacjiKopia.aboutTitle,
+          team: sekcjaPodnoszenieKwalifikacjiKopia.czlonkowieZespolu
+        }}
+      />
+      <TwoColumnFlex
+        variant={TwoColumnFlexVariants.buttonOverImage}
+        data={{
+          header: aboutFastComebackToFitness.malyNaglowekPrzedTytulem,
+          title: aboutFastComebackToFitness.tytulSekcji,
+          text: aboutFastComebackToFitness.trescPodTytulem,
+          image: aboutFastComebackToFitness.kwadratoweZdjecie,
+        }}
+      />
+      <Cta
+        gray={true}
+        data={{
+          linkOne: aboutFastComebackToFitness.ctaButtonPrimary,
+          linkTwo: aboutFastComebackToFitness.ctaButtonSecondary,
+          text: aboutFastComebackToFitness.featuredTextOnGrayBg
+        }}
+      />
+      <Reserve
+        data={{
+          header: aboutSekcjaZarezerwujTermin.malyNaglowekPrzedTytulem,
+          title: aboutSekcjaZarezerwujTermin.tytulSekcji,
+          text: aboutSekcjaZarezerwujTermin.trescPodTytulem,
+          link: aboutSekcjaZarezerwujTermin.przyciskZLinkiem,
+          steps: aboutSekcjaZarezerwujTermin.listaKrokowKontakt
+        }}
+      />
+      <Faq
+        data={{
+          header: aboutSekcjaFaq.krotkiNaglowekNadTytulem,
+          title: aboutSekcjaFaq.faqTitle
+        }}
+      />
+      <LastPosts
+        reverse={true}
+        variant={TwoColumnFlexVariants.buttonUnderText}
+        data={{
+          header: aboutSekcjaBloga.malyNaglowekNadTytulemSekcji,
+          title: aboutSekcjaBloga.tytulSekcji,
+          text: aboutSekcjaBloga.trescPodTytulem,
+          link: aboutSekcjaBloga.przyciskZLinkiem,
+          image: aboutSekcjaBloga.aboutBlogVerticalImage,
+          blogSlider: aboutSekcjaBloga.wyswietlacSekcjeZNajnowszymiArtykulami
+        }}
+      />
     </main>
   )
 }
@@ -91,6 +162,101 @@ export const query = graphql`
     }
     wpPage(id: { eq: "cG9zdDoyOQ==" }) {
       oFizjoexpress {
+        aboutSekcjaFaq {
+          faqTitle
+          krotkiNaglowekNadTytulem
+        }
+        aboutSekcjaBloga {
+          wyswietlacSekcjeZNajnowszymiArtykulami
+          tytulSekcji
+          trescPodTytulem
+          przyciskZLinkiem {
+            target
+            title
+            url
+          }
+          malyNaglowekNadTytulemSekcji
+          aboutBlogVerticalImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+        aboutSekcjaZarezerwujTermin {
+          tytulSekcji
+          trescPodTytulem
+          malyNaglowekPrzedTytulem
+          listaKrokowKontakt {
+            nazwaKroku
+          }
+          przyciskZLinkiem {
+            target
+            title
+            url
+          }
+        }
+        aboutFastComebackToFitness {
+          malyNaglowekPrzedTytulem
+          tytulSekcji
+          trescPodTytulem
+          kwadratoweZdjecie {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          featuredTextOnGrayBg
+          ctaButtonSecondary {
+            url
+            title
+            target
+          }
+          ctaButtonPrimary {
+            url
+            title
+            target
+          }
+        }
+        sekcjaPodnoszenieKwalifikacjiKopia {
+          aboutSmallHeader
+          aboutTitle
+          czlonkowieZespolu {
+            name
+            dodatkowePolaAutora {
+              zdjecieAutora {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+        }
+        sekcjaPodnoszenieKwalifikacji {
+          aboutSmallHeader
+          aboutTitle
+          aboutText
+          buttonWithCtaLink {
+            target
+            title
+            url
+          }
+          aboutVerticalImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
         aboutSekcjaPowitalna {
           malyNaglowekNadTytulemSekcji
           tytulSekcji

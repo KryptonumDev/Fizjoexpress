@@ -56,18 +56,18 @@ const IndexPage = ({
         }}
       />
       <Process variant={TwoColumnFlexVariants.buttonOverImage} data={homepage.sekcjaProcesWspolpracy} />
-        <Reviews data={{
-          header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
-          title: homepage.homeSekcjaZOpiniami.naglowekSekcji,
-          text: homepage.homeSekcjaZOpiniami.tekstPodNaglowkiem,
-          link: homepage.homeSekcjaZOpiniami.przyciskDoOpinii,
-          image: homepage.homeSekcjaZOpiniami.testimonialsVerticalImage,
-          underlineText: homepage.homeSekcjaZOpiniami.tekstPodKreska,
+      <Reviews data={{
+        header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
+        title: homepage.homeSekcjaZOpiniami.naglowekSekcji,
+        text: homepage.homeSekcjaZOpiniami.tekstPodNaglowkiem,
+        link: homepage.homeSekcjaZOpiniami.przyciskDoOpinii,
+        image: homepage.homeSekcjaZOpiniami.testimonialsVerticalImage,
+        underlineText: homepage.homeSekcjaZOpiniami.tekstPodKreska,
 
-          reviewsTitle: homepage.homeSekcjaZOpiniami.tytulNadOpiniami,
-          reviewsHeader: homepage.homeSekcjaZOpiniami.malyNaglowekNadOpiniami
-        }}
-        />
+        reviewsTitle: homepage.homeSekcjaZOpiniami.tytulNadOpiniami,
+        reviewsHeader: homepage.homeSekcjaZOpiniami.malyNaglowekNadOpiniami
+      }}
+      />
       <TwoColumnWithGrayBackground
         data={{
           header: homepage.sekcjaSiedzacyTrybZyciaIBtp.malyNaglowekPrzedTytulem,

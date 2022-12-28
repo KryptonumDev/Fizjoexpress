@@ -22,7 +22,7 @@ export default function Hero({
     <Wrapper color={colorVariant}>
       <Container heroWithImageContainer>
         <TextBlock color={colorVariant}>
-          <span className='text'>{text}</span>
+          <span className='small-header'>{text}</span>
           <h1
             className={
               headerVariant === 'bigger'
@@ -87,9 +87,9 @@ const SocialMediaWrapper = styled.div`
 
   > span {
     color: ${({ color }) =>
-      color === 'dark'
-        ? 'var(--color-white)'
-        : 'var(--color-blue)'};
+    color === 'dark'
+      ? 'var(--color-white)'
+      : 'var(--color-blue)'};
     font-weight: 300;
     font-size: 12px;
   }
@@ -160,9 +160,9 @@ const TextBlock = styled.div`
 
   * {
     color: ${({ color }) =>
-      color === 'dark'
-        ? 'var(--color-white)'
-        : 'var(--color-blue)'};
+    color === 'dark'
+      ? 'var(--color-white)'
+      : 'var(--color-blue)'};
   }
 
   h1 {

@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import Slider from "react-slick";
 import styled from "styled-components"
 import { Container } from "../atoms/container"

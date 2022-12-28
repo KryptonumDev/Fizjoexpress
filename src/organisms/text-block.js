@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
 
       .header{
-        color: var(--color-yellow);
+        color: var(--color-yellow) !important;
       }
 
   &#cytate{
