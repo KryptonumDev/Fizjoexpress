@@ -32,7 +32,7 @@ const AboutPage = ({
 }) => {
   return (
     <main>
-      {/* <Hero
+      <Hero
         colorVariant='light'
         headerVariant='smaller'
         data={{
@@ -48,7 +48,7 @@ const AboutPage = ({
         socialMedia={
           globalneDaneIUstawienia.globalneGrafiki
         }
-      /> */}
+      />
       <TwoColumnFlex
         data={{
           header: sekcjaMisjaFizjoexpress.aboutSmallHeader,
@@ -94,7 +94,7 @@ const AboutPage = ({
           team: sekcjaPodnoszenieKwalifikacjiKopia.czlonkowieZespolu
         }}
       />
-      {/*  <TwoColumnFlex
+      <TwoColumnFlex
         variant={TwoColumnFlexVariants.buttonOverImage}
         data={{
           header: aboutFastComebackToFitness.malyNaglowekPrzedTytulem,
@@ -111,7 +111,7 @@ const AboutPage = ({
           text: aboutFastComebackToFitness.featuredTextOnGrayBg
         }}
       />
-      <Reserve
+     <Reserve
         data={{
           header: aboutSekcjaZarezerwujTermin.malyNaglowekPrzedTytulem,
           title: aboutSekcjaZarezerwujTermin.tytulSekcji,
@@ -137,7 +137,7 @@ const AboutPage = ({
           image: aboutSekcjaBloga.aboutBlogVerticalImage,
           blogSlider: aboutSekcjaBloga.wyswietlacSekcjeZNajnowszymiArtykulami
         }}
-      /> */}
+      />
     </main>
   )
 }
@@ -227,6 +227,7 @@ export const query = graphql`
           aboutTitle
           czlonkowieZespolu {
             name
+            description
             dodatkowePolaAutora {
               zdjecieAutora {
                 altText

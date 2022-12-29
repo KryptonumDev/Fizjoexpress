@@ -92,10 +92,14 @@ export default function Hero({
 const SocialMediaWrapper = styled.div`
   display: flex;
   gap: clamp(16px, 1.61vw, 22px);
-  margin-top: 60px;
+  margin-top: clamp(30px, ${60 / 1366 * 100}vw,  60px);
   align-items: center;
-  position: absolute;
-  bottom: clamp(24px, 2.34vw, 32px);
+
+  @media (max-width: 480px) {
+    span{
+      display: none;
+    }
+  }
 
   > span {
     color: ${({ color }) =>
@@ -118,7 +122,7 @@ const SocialMediaIcons = ({
 }) => {
   return (
     <SocialMediaWrapper color={sectionVariant}>
-      <span>Social Media</span>
+      <span className='text'>Social Media</span>
       <ul>
         {socialMedia.map(
           ({ linkDoSocialMedia, ikonaSocialMedia }) => (
@@ -148,6 +152,28 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+
+  @media (max-width: 1240px) {
+    ${({ color }) =>
+    color === 'light'
+      ? `
+          .image{
+            max-width: 60vw;
+          }
+        ` : null}
+      }
+
+      @media (max-width: 480px) {
+    ${({ color }) =>
+    color === 'light'
+      ? `
+          padding-top: clamp(0px, 66.66vw, 320px) !important;
+          .image{
+            max-width: 80vw;
+          }
+        ` : null}
+        
+      }
 
   @media (max-width: 640px) {
     min-height: 640px;
@@ -207,4 +233,25 @@ const FeaturedTextOverBg = styled.p`
   right: 20.1vw;
   max-width: ${402 / 18}em;
   text-align: center;
+
+  @media (max-width: 1240px) {
+    left:  clamp(15px,5.124450951683748vw,70px);
+    top: 80px;
+    right: unset;
+    bottom: unset;
+  }
+
+  @media (max-width: 480px){
+    padding: 22px 6px;
+    top: 160px;
+  }
+
+  @media (max-width: 390px){
+    top: 120px;
+    width: 80vw;
+  }
+
+  @media (max-width: 320px){
+    top: 100px;
+  }
 `
