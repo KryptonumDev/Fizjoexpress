@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { Button } from '../moleculas/link'
 import { textParser } from './../helpers/text-parser'
+import SocialMediaIcons from './social-media-icons'
 
 export default function Hero({
   colorVariant = 'dark',
@@ -56,7 +57,9 @@ export default function Hero({
               className='button'
               to={buttonLinkSecond.url}
               target={
-                buttonLinkSecond.target ? buttonLinkSecond.target : null
+                buttonLinkSecond.target
+                  ? buttonLinkSecond.target
+                  : null
               }>
               {buttonLinkSecond.title}
             </Link>
@@ -89,58 +92,6 @@ export default function Hero({
   )
 }
 
-const SocialMediaWrapper = styled.div`
-  display: flex;
-  gap: clamp(16px, 1.61vw, 22px);
-  margin-top: clamp(30px, ${60 / 1366 * 100}vw,  60px);
-  align-items: center;
-
-  @media (max-width: 480px) {
-    span{
-      display: none;
-    }
-  }
-
-  > span {
-    color: ${({ color }) =>
-    color === 'dark'
-      ? 'var(--color-white)'
-      : 'var(--color-blue)'};
-    font-weight: 300;
-    font-size: 12px;
-  }
-
-  > ul {
-    display: flex;
-    gap: clamp(16px, 1.757vw, 24px);
-  }
-`
-
-const SocialMediaIcons = ({
-  sectionVariant = 'dark',
-  data: { socialMedia }
-}) => {
-  return (
-    <SocialMediaWrapper color={sectionVariant}>
-      <span className='text'>Social Media</span>
-      <ul>
-        {socialMedia.map(
-          ({ linkDoSocialMedia, ikonaSocialMedia }) => (
-            <li key={linkDoSocialMedia}>
-              <a href={linkDoSocialMedia}>
-                <img
-                  src={ikonaSocialMedia.localFile.publicURL}
-                  alt={linkDoSocialMedia}
-                />
-              </a>
-            </li>
-          )
-        )}
-      </ul>
-    </SocialMediaWrapper>
-  )
-}
-
 const Wrapper = styled.section`
   background-color: ${({ color }) =>
     color === 'dark'
@@ -155,25 +106,26 @@ const Wrapper = styled.section`
 
   @media (max-width: 1240px) {
     ${({ color }) =>
-    color === 'light'
-      ? `
+      color === 'light'
+        ? `
           .image{
             max-width: 60vw;
           }
-        ` : null}
-      }
+        `
+        : null}
+  }
 
-      @media (max-width: 480px) {
+  @media (max-width: 480px) {
     ${({ color }) =>
-    color === 'light'
-      ? `
+      color === 'light'
+        ? `
           padding-top: clamp(0px, 66.66vw, 320px) !important;
           .image{
             max-width: 80vw;
           }
-        ` : null}
-        
-      }
+        `
+        : null}
+  }
 
   @media (max-width: 640px) {
     min-height: 640px;
@@ -203,9 +155,9 @@ const TextBlock = styled.div`
 
   * {
     color: ${({ color }) =>
-    color === 'dark'
-      ? 'var(--color-white)'
-      : 'var(--color-blue)'};
+      color === 'dark'
+        ? 'var(--color-white)'
+        : 'var(--color-blue)'};
   }
 
   h1 {
@@ -235,23 +187,23 @@ const FeaturedTextOverBg = styled.p`
   text-align: center;
 
   @media (max-width: 1240px) {
-    left:  clamp(15px,5.124450951683748vw,70px);
+    left: clamp(15px, 5.124450951683748vw, 70px);
     top: 80px;
     right: unset;
     bottom: unset;
   }
 
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
     padding: 22px 6px;
     top: 160px;
   }
 
-  @media (max-width: 390px){
+  @media (max-width: 390px) {
     top: 120px;
     width: 80vw;
   }
 
-  @media (max-width: 320px){
+  @media (max-width: 320px) {
     top: 100px;
   }
 `

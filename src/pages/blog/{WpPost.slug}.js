@@ -2,10 +2,11 @@ import { graphql, Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../atoms/container'
+import SocialMediaIcons from '../../components/social-media-icons'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
 import { textParser } from '../../helpers/text-parser'
 
-const BlogPost = ({ data: { wpPost, otherPosts } }) => {
+const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
   const {
     title,
     terms: { nodes: taxonomies },
@@ -15,6 +16,11 @@ const BlogPost = ({ data: { wpPost, otherPosts } }) => {
     seo,
     singlePostData: articleImages
   } = wpPost
+
+  const {
+    globalneDaneIUstawienia: { globalneGrafiki }
+  } = global
+
   const {
     obrazekWyrozniajacyNaStroneArtykulu: featuredImage,
     singlePostObrazekWyrozniajacyOgImage: ogImage
@@ -61,21 +67,12 @@ const BlogPost = ({ data: { wpPost, otherPosts } }) => {
               terms: { nodes: categories }
             } = post
 
-            const category = categories.filter(
-              (category) => category.name
-            )[0]
+            const category = categories.filter((category) => category.name)[0]
             return (
-              <Link
-                className='other-post'
-                key={post.slug}
-                to={`/blog/${slug}`}>
+              <Link className='other-post' key={post.slug} to={`/blog/${slug}`}>
                 <article>
-                  <span className='post-category'>
-                    {category.name}
-                  </span>
-                  <h3 className='post-header big-text'>
-                    {title}
-                  </h3>
+                  <span className='post-category'>{category.name}</span>
+                  <h3 className='post-header big-text'>{title}</h3>
                   <div
                     className='post-excerpt'
                     dangerouslySetInnerHTML={{
@@ -90,6 +87,9 @@ const BlogPost = ({ data: { wpPost, otherPosts } }) => {
             )
           })}
         </AsideWrapper>
+        <SocialWrapper>
+          <SocialMediaIcons sectionVariant='light' data={globalneGrafiki} />
+        </SocialWrapper>
       </MainWrapper>
     </>
   )
@@ -97,17 +97,127 @@ const BlogPost = ({ data: { wpPost, otherPosts } }) => {
 
 export default BlogPost
 
+const SocialWrapper = styled.div`
+  margin-left: 100px;
+`
+
 const MainWrapper = styled(Container)`
   max-width: 1366px;
   margin-top: 100px;
+  padding-bottom: 100px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-gap: clamp(80px, 8.2vw, 112px);
+  grid-column-gap: clamp(80px, 8.2vw, 112px);
   position: relative;
 `
 
 const ContentWrapper = styled.div`
   margin-left: 100px;
+  border-bottom: 1px solid var(--color-darker-light-gray);
+  padding-bottom: 60px;
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  blockquote {
+    color: var(--color-blue);
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: ${35 / 18};
+    + p,
+    + ul,
+    + ol {
+      margin-top: 20px;
+    }
+  }
+
+  p,
+  ul,
+  ol {
+    font-size: 12px;
+    line-height: ${22 / 12};
+  }
+
+  ul > li,
+  ol > li {
+    list-style-type: auto;
+    list-style-position: inside;
+  }
+
+  ul > li {
+    list-style-type: disc;
+  }
+
+  p + .wp-block-buttons,
+  .wp-block-buttons + p,
+  h2 + .wp-block-buttons,
+  .wp-block-buttons + h2,
+  h3 + .wp-block-buttons,
+  .wp-block-buttons + h3,
+  iframe + .wp-block-buttons,
+  .wp-block-buttons + iframe,
+  figure + .wp-block-buttons,
+  .wp-block-buttons + figure,
+  ol + h2,
+  ol + h3,
+  ol + iframe,
+  ol + figure,
+  ol + p,
+  ol + h2,
+  ol + h3,
+  ol + figure,
+  ol + iframe,
+  ul + h2,
+  h2 + h2,
+  h3 + h2,
+  p + h2,
+  ul + h3,
+  h2 + h3,
+  h3 + h3,
+  p + h3,
+  ul + iframe,
+  h2 + iframe,
+  h3 + iframe,
+  p + iframe,
+  ul + figure,
+  h2 + figure,
+  h3 + figure,
+  p + figure,
+  h2 + iframe,
+  h3 + iframe,
+  h2 + ol,
+  h3 + ol,
+  iframe + ol,
+  figure + ol {
+    margin-top: 30px;
+  }
+
+  h2 + iframe,
+  iframe + h2,
+  h3 + iframe,
+  iframe + h3,
+  p + iframe,
+  iframe + p,
+  p + figure,
+  figure + p,
+  h2 + figure,
+  figure + h2,
+  h3 + figure,
+  figure + h3,
+  h4 + figure,
+  figure + h4 {
+    margin-top: 40px;
+  }
+
+  p + p,
+  p + ul,
+  p + ol {
+    margin-top: 10px;
+  }
 `
 const AsideWrapper = styled.aside`
   position: sticky;
@@ -238,10 +348,7 @@ export const blogPostQuery = graphql`
       }
       content
     }
-    otherPosts: allWpPost(
-      filter: { id: { ne: $id } }
-      limit: 2
-    ) {
+    otherPosts: allWpPost(filter: { id: { ne: $id } }, limit: 2) {
       nodes {
         terms {
           nodes {
@@ -254,6 +361,20 @@ export const blogPostQuery = graphql`
         title
         slug
         excerpt
+      }
+    }
+    global: wpPage(id: { eq: "cG9zdDo1Mg==" }) {
+      globalneDaneIUstawienia {
+        globalneGrafiki {
+          socialMedia {
+            linkDoSocialMedia
+            ikonaSocialMedia {
+              localFile {
+                publicURL
+              }
+            }
+          }
+        }
       }
     }
   }
