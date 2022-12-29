@@ -46,6 +46,13 @@ const Wrapper = styled(Link)`
       : 'var(--color-transparent)'};
   color: var(--color-blue);
   max-width: 300px;
+
+      @media (max-width: 520px) {
+        width: fit-content;
+        min-width: 200px;
+        padding: 22px 8px;
+      }
+  
   width: 100%;
   text-align: center;
 

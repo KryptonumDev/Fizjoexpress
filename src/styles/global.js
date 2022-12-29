@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
         --color-medium-gray: #E9E9E9;
         --color-dark-gray: #212939;
 
-        --margin-intersection: 100px;
+        --margin-intersection: clamp(40px,  ${100 / 1366 * 100}vw, 100px);
 
         --box-shadow: 0px 3px 30px #00000016;
     }
@@ -38,26 +38,26 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .main-title{
-        font-size: 45px;
+        font-size: clamp(28px, ${45 / 1366 * 100}vw, 45px);
         font-weight: 600;
         line-height: 133%;
     }
 
     .sub-title{
-        font-size: 25px;
+        font-size: clamp(22px, ${25 / 1366 * 100}vw, 25px);
         font-weight: 600;
         line-height: 154%;
     }
 
     .small-header {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
         line-height: 1.5;
         color: var(--color-yellow) !important;
     }
 
     .big-text{
-        font-size: 18px;
+        font-size: clamp(16px,  ${18 / 1366 * 100}vw, 18px);
         line-height: 160%;
         font-weight: 600;
     }

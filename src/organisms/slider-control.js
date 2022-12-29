@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { textParser } from "../helpers/text-parser"
 
 export const Control = ({ white = false, header, title, slickRef }) => (
-    <Wrapper>
+    <Wrapper className="control">
         <div>
             <span className="text header">{header}</span>
             <h2 className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
@@ -27,7 +27,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 0 107px 0 100px;
+    max-width: 1019px;
+    margin: 0 auto;
     margin-bottom: 30px;
 `
 

@@ -32,6 +32,14 @@ const Wrapper = styled.section`
         font-weight: 700;
         padding-left: 100px;
         padding-right: 100px;
+
+        @media (max-width: 1366px) {
+            padding: 0 30px;
+        }
+
+        @media (max-width: 840px) {
+            padding: 0;
+        }
     }
 
     h2{
@@ -39,6 +47,14 @@ const Wrapper = styled.section`
         margin-bottom: 30px;
         padding-left: 100px;
         padding-right: 100px;
+
+        @media (max-width: 1366px) {
+            padding: 0 30px;
+        }
+
+        @media (max-width: 840px) {
+            padding: 0;
+        }
     }
 `
 
@@ -50,6 +66,21 @@ const Grid = styled.div`
     padding-left: 100px;
     padding-right: 100px;
 
+    @media (max-width: 1366px) {
+        padding: 0 30px;
+    }
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 840px) {
+        grid-template-columns: 1fr 1fr;
+        padding: 0;
+    }
+
     &::after{
         position: absolute;
         content: "";
@@ -59,6 +90,10 @@ const Grid = styled.div`
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+
+        @media (max-width: 840px) {
+            display: none;
+        }
     }
 
     &::before{
@@ -70,6 +105,10 @@ const Grid = styled.div`
         left: 0;
         top: 50%;
         transform: translateY(-50%);
+
+        @media (max-width: 840px) {
+            display: none;
+        }
     }
 `
 
@@ -80,6 +119,14 @@ const Item = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    @media (max-width: 1150px) {
+        padding: 40px 12px;
+    }
+
+    @media (max-width: 540px) {
+        padding: 22px 4px;
+    }
 
     img{
         margin-bottom: 24px;

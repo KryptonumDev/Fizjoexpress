@@ -19,7 +19,6 @@ export default function Reserve({ data: { header, title, text, link, steps } }) 
                             cytate={false}
                             variant={TwoColumnFlexVariants.buttonUnderText}
                         />
-                        <Button className={'white'}>{link.title}</Button>
                     </div>
                     <Steps>
                         {steps.map((el, index) => (
@@ -30,6 +29,9 @@ export default function Reserve({ data: { header, title, text, link, steps } }) 
                         ))}
                     </Steps>
                 </Content>
+                <div className="button-wrap">
+                    <Button className={'white'}>{link.title}</Button>
+                </div>
             </Container>
         </Wrapper>
     )
@@ -40,8 +42,20 @@ const Steps = styled.div`
     grid-gap: 20px;
     position: relative;
 
-    margin: var(--margin-intersection) 0;
-    margin-right: 100px;
+    margin: var(--margin-intersection) 0 15px 0;
+    margin-right: clamp(0px, ${100 / 1366 * 100}vw ,100px);
+
+    @media (max-width: 1140px) {
+        margin-right: 50px;
+    }
+    @media (max-width: 1024px) {
+        margin-right: 0;
+    }
+
+    @media (max-width: 840px) {
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
 
     &::after{
         content: '';
@@ -87,12 +101,30 @@ const Wrapper = styled.section`
     *{
         color: var(--color-white);
     }
+
+    .white{
+        margin-left: 100px;
+
+        @media (max-width: 1080px) {
+            margin-left: 40px;
+        }
+        @media (max-width: 840px){
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 840px) {
+        .button-wrap{
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
 `
 
 const Content = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 100px;
+    gap: clamp(30px, ${100 / 1366 * 100}vw ,100px);
 
     .text-wrap{
         position: relative;
@@ -101,6 +133,10 @@ const Content = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @media (max-width: 1080px) {
+            padding-left: 40px;
+        }
 
         .text-block{
             position: relative;
@@ -116,6 +152,20 @@ const Content = styled.div`
             top: 0;
             left: 0;
             z-index: 0;
+        }
+    }
+
+    @media (max-width: 840px) {
+        flex-direction: column;
+        max-width: 500px;
+        margin: 0 auto;
+
+        .text-wrap{
+            margin-top: var(--margin-intersection);
+            margin-left: -40px;
+            .text{
+                padding-bottom: 0;
+            }
         }
     }
 `
