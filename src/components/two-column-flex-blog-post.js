@@ -31,14 +31,22 @@ export default function TwoColumnFlexBlogPost({
               text={text}
             />
             <div className='blog-post-data'>
-              <p className='data'>
-                {authors?.length > 1 ? 'Autorzy:' : 'Autor'}
-                {authors?.map((author) => (
-                  <span className='data data--post-data'>
-                    {author.name}
-                  </span>
-                ))}
-              </p>
+              <div className='authors-wrapper'>
+                <p className='data'>
+                  {authors?.length > 1
+                    ? 'Autorzy:'
+                    : 'Autor'}
+                </p>
+                <div className='authors'>
+                  {authors?.map((author) => (
+                    <span
+                      key={author.name}
+                      className='data data--post-data'>
+                      {author.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
               <p className='data'>
                 Dodano
                 <span className='data data--post-data'>
@@ -87,12 +95,29 @@ const Content = styled.div`
       color: var(--color-text-light-gray);
       font-size: 12px;
       font-weight: 400;
+      line-height: 1.3;
       &--post-data {
-        margin-left: 10px;
         color: var(--color-blue);
         font-weight: bold;
+        line-height: 1.3;
+      }
+
+      > span {
+        margin-left: 10px;
       }
     }
+  }
+
+  .authors-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .authors {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
   }
 
   .underline {

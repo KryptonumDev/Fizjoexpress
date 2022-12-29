@@ -13,7 +13,9 @@ const BlogPage = ({ data }) => {
           flexDirection: 'column'
         }}>
         {categories?.map((category) => (
-          <Link to={`/blog/${category.slug}/`}>
+          <Link
+            key={category.slug}
+            to={`/blog/${category.slug}/`}>
             {category.name}
           </Link>
         ))}
@@ -24,7 +26,7 @@ const BlogPage = ({ data }) => {
           flexDirection: 'column'
         }}>
         {posts?.map((post) => (
-          <Link to={`/blog/${post.slug}/`}>
+          <Link key={post.slug} to={`/blog/${post.slug}/`}>
             {post.title}
           </Link>
         ))}
