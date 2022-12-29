@@ -1,17 +1,21 @@
-import { GatsbyImage } from "gatsby-plugin-image"
-import React from "react"
-import styled from "styled-components"
-import { TwoColumnFlexVariants } from "../constants/two-column-flex-variants"
-import { Button } from "../moleculas/link"
+import { GatsbyImage } from 'gatsby-plugin-image'
+import React from 'react'
+import styled from 'styled-components'
+import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
+import { Button } from '../moleculas/link'
 
-export const ImageWithButton = ({ image, link, variant }) => (
-  <Wrapper className='image-block'>
+export const ImageWithButton = ({
+  image,
+  link,
+  variant
+}) => (
+  <Wrapper className='image-block' variant={variant}>
     <GatsbyImage
       className='image'
       image={
-        image.localFile.childImageSharp.gatsbyImageData
+        image?.localFile?.childImageSharp?.gatsbyImageData
       }
-      alt={image.altText}
+      alt={image?.altText}
     />
     <span className='gray' />
     <span className='yellow' />
@@ -85,7 +89,10 @@ const Wrapper = styled.div`
   .gray {
     width: 200px;
     height: 200px;
-    background-color: var(--color-light-gray);
+    background-color: ${({ variant }) =>
+      variant === `${TwoColumnFlexVariants.blogPost}`
+        ? 'var(--color-yellow)'
+        : 'var(--color-light-gray)'};
     position: absolute;
     left: 0;
     bottom: 0;
@@ -109,7 +116,10 @@ const Wrapper = styled.div`
   .yellow {
     width: 50px;
     height: 50px;
-    background-color: var(--color-yellow);
+    background-color: ${({ variant }) =>
+      variant === `${TwoColumnFlexVariants.blogPost}`
+        ? 'transparent'
+        : 'var(--color-yellow)'};
     position: absolute;
     right: 0;
     top: 0;
