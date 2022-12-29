@@ -33,15 +33,11 @@ export default function TwoColumnFlexBlogPost({
             <div className='blog-post-data'>
               <div className='authors-wrapper'>
                 <p className='data'>
-                  {authors?.length > 1
-                    ? 'Autorzy:'
-                    : 'Autor'}
+                  {authors?.length > 1 ? 'Autorzy:' : 'Autor'}
                 </p>
                 <div className='authors'>
                   {authors?.map((author) => (
-                    <span
-                      key={author.name}
-                      className='data data--post-data'>
+                    <span key={author.name} className='data data--post-data'>
                       {author.name}
                     </span>
                   ))}
@@ -49,9 +45,7 @@ export default function TwoColumnFlexBlogPost({
               </div>
               <p className='data'>
                 Dodano
-                <span className='data data--post-data'>
-                  {date}
-                </span>
+                <span className='data data--post-data'>{date}</span>
               </p>
             </div>
           </div>
@@ -65,7 +59,7 @@ const Wrapper = styled.section``
 
 const Content = styled.div`
   display: flex;
-  gap: 100px;
+  gap: clamp(60px, 7.32vw, 100px);
   justify-content: space-between;
   align-items: center;
   margin-right: 100px;
@@ -74,6 +68,10 @@ const Content = styled.div`
     flex-direction: row-reverse;
     margin-right: 0;
     margin-left: 100px;
+
+    @media (max-width: 1200px) {
+      margin-left: 0;
+    }
   }
 
   &.align-bottom {
