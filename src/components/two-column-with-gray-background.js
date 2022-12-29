@@ -13,7 +13,7 @@ export default function TwoColumnWithGrayBackground({ variant = TwoColumnFlexVar
                 <Content>
                     <ImageBlock>
                         <GatsbyImage className="image" image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText} />
-                        <span className="yellow"/>
+                        <span className="yellow" />
                     </ImageBlock>
                     <TextBlock
                         header={header}
@@ -29,17 +29,31 @@ export default function TwoColumnWithGrayBackground({ variant = TwoColumnFlexVar
 }
 
 const Wrapper = styled.section`
-
-`
+    overflow: hidden;
+    
+    .text-block{
+        max-width: 640px;
+    }
+    `
 
 const Content = styled.div`
     padding: 70px 0;
-    padding-right: 100px;
+    padding-right: clamp(30px, ${100 / 1366 * 100}vw, 100px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 100px;
+    gap: clamp(30px, ${100 / 1366 * 100}vw, 100px);
     position: relative;
+
+    @media (max-width: 1140px) {
+        gap: 50px;
+        padding-right: 0;
+    }
+
+    @media (max-width: 968px) {
+        flex-direction: column;
+        padding: var(--margin-intersection) 0;
+    }
 
     &::after{
         content: '';
@@ -50,12 +64,22 @@ const Content = styled.div`
         left: 100px;
         right: -70px;
         z-index: -1;
+
+        @media (max-width: 968px){
+            left: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+            right: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+        }
     }
 `
 
 const ImageBlock = styled.div`
     margin-left: -70px;
     position: relative;
+
+    @media (max-width: 968px){
+        margin-left: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+        margin-right: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+    }
 
     .yellow{
         width: 50px;

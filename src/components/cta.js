@@ -29,9 +29,18 @@ const Wrapper = styled.section`
 
 const TextBlock = styled.div`
     background-color: var(--color-light-gray);
-    padding: 70px 90px;
+    padding: clamp(40px, ${70 / 1366 * 100}vw, 70px) clamp(20px, ${90 / 1366 * 100}vw, 90px);
     position: relative;
-    margin: 0 100px;
+    margin: 0 100px 0 auto;
+    max-width: 1026px;
+
+    @media (max-width: 1080px) {
+        margin-right: 40px;
+    }
+
+    @media (max-width: 768px) {
+        margin: 0;
+    }
 
     &::after{
         content: "";
@@ -42,6 +51,14 @@ const TextBlock = styled.div`
         height: 100px;
         width: 1px;
         background-color: var(--color-white);
+
+        @media (max-width: 1080px) {
+            right: -40px;
+        }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
 
     &.gray{
@@ -65,6 +82,12 @@ const Buttons = styled.div`
     display: flex;
     gap: 40px;
     align-items: center;
+
+    
+    @media (max-width: 640px) {
+        display: grid;
+        grid-gap: 30px;
+    }
 
     .link{
         position: relative;

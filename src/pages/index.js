@@ -46,12 +46,10 @@ const IndexPage = ({
         reverse={true}
         variant={TwoColumnFlexVariants.buttonUnderText}
         data={{
-          header:
-            homepage.sekcjaCzekamyWlasnieNaCiebie.malyNaglowekNadTytulem,
+          header: homepage.sekcjaCzekamyWlasnieNaCiebie.malyNaglowekNadTytulem,
           title: homepage.sekcjaCzekamyWlasnieNaCiebie.tytulSekcji,
           text: homepage.sekcjaCzekamyWlasnieNaCiebie.trescPodTytulem,
-          image:
-            homepage.sekcjaCzekamyWlasnieNaCiebie.waitVerticalImage,
+          image: homepage.sekcjaCzekamyWlasnieNaCiebie.waitVerticalImage,
           link: homepage.sekcjaCzekamyWlasnieNaCiebie.linkPrzycisku
         }}
       />

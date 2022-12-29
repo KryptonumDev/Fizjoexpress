@@ -22,7 +22,7 @@ export const ImageWithButton = ({ image, link, variant }) => (
         to={link.url}
         target={link.target ? link.target : null}>
         {link.title}
-      </Button>
+      </Button> 
     )}
   </Wrapper>
 )
@@ -30,6 +30,12 @@ export const ImageWithButton = ({ image, link, variant }) => (
 const Wrapper = styled.div`
   position: relative;
   max-width: 500px;
+  /* width: 100%; */
+  min-width: 330px;
+
+@media (max-width: 520px) {
+  min-width: 280px;
+}
 
     .link{
         margin-left: auto;
@@ -39,11 +45,41 @@ const Wrapper = styled.div`
         span{
             margin: 0 auto;
         }
+
+        @media (max-width: 1080px) {
+          width: calc(100% - 120px);
+          max-width: unset;
+        }
+
+        @media (max-width: 840px) {
+          width: calc(100% - 200px);        
+        }
+
+        @media (max-width: 520px) {
+          display : none;
+        }
     }
 
   .image {
     margin-left: 100px;
-    width: 400px;
+    /* margin-left: 100px; */
+    /* width: 100%; */
+    max-width: 400px;
+
+    @media (max-width: 1080px) {
+      margin-left: 40px;
+      max-width: 380px;
+    }
+
+    @media (max-width: 840px) {
+      max-width: 400px;
+      margin-left: 100px;
+    }
+
+    @media (max-width: 520px) {
+      margin-left: 40px;
+      aspect-ratio: 1/1;
+    }
   }
 
   .gray {
@@ -53,6 +89,21 @@ const Wrapper = styled.div`
     position: absolute;
     left: 0;
     bottom: 0;
+
+    @media (max-width: 1080px) {
+      width: 120px;
+      height: 120px;
+    }
+
+    @media (max-width: 840px) {
+      width: 200px;
+      height: 200px;
+    }
+
+    @media (max-width: 520px) {
+      width: 120px;
+      height: 120px;
+    }
   }
 
   .yellow {

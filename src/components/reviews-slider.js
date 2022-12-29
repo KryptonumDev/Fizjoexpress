@@ -13,7 +13,13 @@ export default function ReviewsSlider({ data: { header, title } }) {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 640,
+            settings: {
+                slidesToShow: 1,
+            }
+        }]
     };
 
     const { wpPage: { globalneDaneIUstawienia: { opinie: { opinieKlientow } } } } = useStaticQuery(graphql`
@@ -66,7 +72,7 @@ export default function ReviewsSlider({ data: { header, title } }) {
 
 const Item = styled.div`
     background-color: var(--color-light-gray);
-    padding: 85px 40px 50px 40px;
+    padding: 85px clamp(20px, ${40 / 1366 * 100}vw, 40px) clamp(30px, ${50 / 1366 * 100}vw, 50px) clamp(20px, ${40 / 1366 * 100}vw, 40px);
     position: relative;
     max-width: calc(100% - 10px);
     transform: translateX(5px);
@@ -77,7 +83,7 @@ const Item = styled.div`
 
     .quote{
         position: absolute;
-        left: 40px;
+        left: clamp(20px, ${40 / 1366 * 100}vw, 40px);
         top: 0;
     }
 
@@ -119,9 +125,17 @@ const Wrapper = styled.section`
     h2{
         margin-top: 10px;
     }
+
+    .slick-slider{
+        max-width: 1026px;
+        margin: 0 auto;
+
+        /* @media (max-width: 768px) {
+            max-width: 600px;
+        } */
+    }
 `
 
 const Content = styled.div`
-    padding: 0 100px;
 
 `

@@ -11,10 +11,26 @@ export const ProcessSlider = ({ data: { header, title, steps } }) => {
     var settings = {
         dots: false,
         arrows: false,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 940,
+            settings: {
+                slidesToShow: 3,
+            }
+        }, {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+            }
+        }, {
+            breakpoint: 355,
+            settings: {
+                slidesToShow: 1,
+            }
+        }]
     };
     return (
         <Wrapper>
@@ -52,7 +68,25 @@ const Wrapper = styled.section`
     }
 
     .slick-slider{
-        margin: 0 100px;
+       max-width: 1026px;
+       margin: 0 auto;
+
+       @media (max-width: 768px) {
+        max-width: 600px;
+       }
+    }
+
+    @media (max-width: 768px) {
+        .control{
+            max-width: 590px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        overflow: hidden !important;
+        .slick-list{
+            overflow: unset !important;
+        }
     }
 
 `
@@ -63,21 +97,53 @@ const Item = styled.div`
     position: relative;
     max-width: 248px;
     min-height: 200px;
+    width: calc(100% - 10px) !important;
+    transform: translateX(5px);
+
+    @media (max-width: 940px) {
+        max-width: unset;
+    }
+
+    @media (max-width: 820px) {
+        aspect-ratio: 1/1.1;
+    }
+
+    @media (max-width: 600px){
+        aspect-ratio: unset;
+        height: 200px;
+    }
 
     .semi{
         font-weight: 600;
-        margin-top: 80px;
+        margin-top: clamp(55px, ${80 / 1366 * 100}vw, 80px);
+
+        @media (max-width: 940px) {
+            margin-top: clamp(55px, ${80 / 940 * 100}vw, 80px);
+        }
     }
 
     .regular{
-        margin-top: 20px;
+        margin-top: clamp(0px, ${20 / 1366 * 100}vw, 20px);
+
+        @media (max-width: 940px) {
+            margin-top: clamp(0px, ${20 / 940 * 100}vw, 20px);
+        }
+
+        @media (max-width: 600px){
+            margin-top: 0;
+        }
     }
 
     .text{
         color: var(--color-blue);
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: clamp(20px, ${30 / 1366 * 100}vw, 30px);
+        margin-right: clamp(12px, ${30 / 1366 * 100}vw, 30px);
         line-height: 170%;
+
+        @media (max-width: 940px) {
+            margin-left: clamp(12px, ${30 / 940 * 100}vw, 30px);
+            margin-right: clamp(12px, ${30 / 940 * 100}vw, 30px);
+        }
 
         *{
             color: var(--color-blue);
@@ -95,8 +161,13 @@ const Item = styled.div`
 
     .number{
         position: absolute;
-        width: 50px;
-        height: 50px;
+        width: clamp(35px, ${50 / 1366 * 100}vw, 50px);
+        height: clamp(35px, ${50 / 1366 * 100}vw, 50px);
+
+        @media (max-width: 940px) {
+            width: clamp(35px, ${50 / 940 * 100}vw, 50px);
+            height: clamp(35px, ${50 / 940 * 100}vw, 50px);
+        }
         background-color: var(--color-yellow);
         left: 0;
         top: 0;

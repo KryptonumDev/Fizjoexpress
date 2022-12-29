@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
+import { Button } from '../moleculas/link'
 import { textParser } from './../helpers/text-parser'
 
 export default function Hero({
@@ -41,14 +42,14 @@ export default function Hero({
             }}
           />
           {buttonLink?.url && (
-            <Link
+            <Button
               className='button'
               to={buttonLink.url}
               target={
                 buttonLink.target ? buttonLink.target : null
               }>
               {buttonLink.title}
-            </Link>
+            </Button>
           )}
           {buttonLinkSecond?.url && (
             <Link
@@ -147,6 +148,11 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+
+  @media (max-width: 640px) {
+    min-height: 640px;
+    padding-top: 220px;
+  }
 
   .image {
     position: absolute;
