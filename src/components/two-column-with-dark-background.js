@@ -29,17 +29,34 @@ export default function TwoColumnWithDarkBackground({ variant = TwoColumnFlexVar
 }
 
 const Wrapper = styled.section`
+    overflow: hidden;
 
+    
+    @media (max-width: 968px) {
+        .text-block{
+            max-width: 640px;
+        }
+    }
 `
 
 const Content = styled.div`
     padding: 70px 0;
-    padding-left: 100px;
+    padding-left: clamp(30px, ${100 / 1366 * 100}vw, 100px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 100px;
+    gap: clamp(30px, ${100 / 1366 * 100}vw, 100px);
     position: relative;
+
+    @media (max-width: 1140px) {
+        gap: 50px;
+        padding-left: 0;
+    }
+
+    @media (max-width: 968px) {
+        flex-direction: column-reverse;
+        padding: var(--margin-intersection) 0;
+    }
 
     &::after{
         content: '';
@@ -50,6 +67,11 @@ const Content = styled.div`
         right: 100px;
         left: -70px;
         z-index: -1;
+
+        @media (max-width: 968px){
+            left: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+            right: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+        }
     }
 
     .text-block{
@@ -63,8 +85,13 @@ const Content = styled.div`
 `
 
 const ImageBlock = styled.div`
-    margin-right: -70px;
+    margin-right: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
     position: relative;
+
+    @media (max-width: 968px){
+        margin-left: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+        margin-right: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
+    }
 
     .yellow{
         width: 50px;

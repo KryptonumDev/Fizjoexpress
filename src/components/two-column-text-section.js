@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
-import { textParser } from '../helpers/text-parser'
 import { Button } from '../moleculas/link'
 
 const TwoColumnTextSection = ({
@@ -55,8 +54,17 @@ const TwoColumnTextSection = ({
 }
 
 const TwoColSectionWrapper = styled.section`
+  
   .headers-wrapper{
     margin: 0 100px 30px 100px;
+
+    @media (max-width: 1366px) {
+      margin: 0 30px 30px 30px;
+    }
+
+    @media (max-width: 840px) {
+      margin: 0 0 30px 0;
+    }
   }
   .sub-title{
     margin-top: 10px;
@@ -64,7 +72,17 @@ const TwoColSectionWrapper = styled.section`
 `
 
 const TwoColSectionContainer = styled(Container)`
+  margin: 0 auto;
   padding: 0 100px;
+
+  @media (max-width: 1366px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 840px) {
+    padding: 0 0 0 0;
+  }
+
   position: relative;
   :after,
   :before {
@@ -75,6 +93,10 @@ const TwoColSectionContainer = styled(Container)`
     background-color: var(--color-blue);
     width: 1px;
     height: clamp(85px, 7.68vw, 105px);
+
+    @media (max-width: 840px) {
+        display: none;
+    }
   }
 
   :after {
@@ -94,6 +116,11 @@ const TwoColSectionContainer = styled(Container)`
 const ColumnsWrapper = styled.div`
   display: flex;
   gap: ${10 / 16}rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
 
   p {
     font-size: ${12 / 16}rem;

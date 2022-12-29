@@ -31,10 +31,12 @@ export default function TwoColumnWithGrayBackground({ variant = TwoColumnFlexVar
 const Wrapper = styled.section`
     overflow: hidden;
     
-    .text-block{
-        max-width: 640px;
+    @media (max-width: 968px) {
+        .text-block{
+            max-width: 640px;
+        }
     }
-    `
+`
 
 const Content = styled.div`
     padding: 70px 0;
@@ -73,7 +75,7 @@ const Content = styled.div`
 `
 
 const ImageBlock = styled.div`
-    margin-left: -70px;
+    margin-left: calc(-1 * clamp(15px, ${70 / 1366 * 100}vw, 70px));
     position: relative;
 
     @media (max-width: 968px){
