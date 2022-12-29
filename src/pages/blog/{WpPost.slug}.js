@@ -112,6 +112,13 @@ const MainWrapper = styled(Container)`
   grid-template-columns: 2fr 400px;
   grid-column-gap: clamp(80px, 8.2vw, 112px);
   position: relative;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 2fr 300px;
+  }
+  @media (max-width: 900px) {
+    grid-column-gap: clamp(40px, 6.2vw, 72px);
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -119,6 +126,10 @@ const ContentWrapper = styled.div`
   max-width: 608px;
   border-bottom: 1px solid var(--color-darker-light-gray);
   padding-bottom: 60px;
+
+  @media (max-width: 1200px) {
+    margin-left: 0;
+  }
 
   > * {
     max-width: 100%;
@@ -290,6 +301,10 @@ const AsideWrapper = styled.aside`
   flex-direction: column;
   gap: 10px;
   padding-right: 100px;
+  
+  @media (max-width: 1200px) {
+    padding-right: 0;
+  }
 
   .aside-header {
     margin-bottom: 10px;
