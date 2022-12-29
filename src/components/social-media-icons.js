@@ -11,18 +11,16 @@ const SocialMediaIcons = ({
     <SocialMediaWrapper color={sectionVariant}>
       <span className='text'>Social Media</span>
       <ul>
-        {socialMedia?.map(
-          ({ linkDoSocialMedia, ikonaSocialMedia }) => (
-            <li key={linkDoSocialMedia}>
-              <a href={linkDoSocialMedia}>
-                <img
-                  src={ikonaSocialMedia.localFile.publicURL}
-                  alt={linkDoSocialMedia}
-                />
-              </a>
-            </li>
-          )
-        )}
+        {socialMedia?.map(({ linkDoSocialMedia, ikonaSocialMedia }) => (
+          <li key={linkDoSocialMedia}>
+            <a href={linkDoSocialMedia} target='_blank'>
+              <img
+                src={ikonaSocialMedia.localFile.publicURL}
+                alt={linkDoSocialMedia}
+              />
+            </a>
+          </li>
+        ))}
       </ul>
     </SocialMediaWrapper>
   )
@@ -44,9 +42,7 @@ const SocialMediaWrapper = styled.div`
 
   > span {
     color: ${({ color }) =>
-      color === 'dark'
-        ? 'var(--color-white)'
-        : 'var(--color-blue)'};
+      color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
     font-weight: 300;
     font-size: 12px;
   }

@@ -5,6 +5,8 @@ import { Container } from '../../atoms/container'
 import SocialMediaIcons from '../../components/social-media-icons'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
 import { textParser } from '../../helpers/text-parser'
+import quoteBefore from '../../static/quote-befre.svg'
+import quoteAfter from '../../static/quote.svg'
 
 const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
   const {
@@ -103,18 +105,29 @@ const SocialWrapper = styled.div`
 
 const MainWrapper = styled(Container)`
   max-width: 1366px;
-  margin-top: 100px;
+  margin-top: 40px;
+  padding-top: 60px;
   padding-bottom: 100px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 400px;
   grid-column-gap: clamp(80px, 8.2vw, 112px);
   position: relative;
 `
 
 const ContentWrapper = styled.div`
   margin-left: 100px;
+  max-width: 608px;
   border-bottom: 1px solid var(--color-darker-light-gray);
   padding-bottom: 60px;
+
+  > * {
+    max-width: 100%;
+  }
+
+  figure img {
+    max-width: 100%;
+  }
+
   h2,
   h3,
   h4,
@@ -218,6 +231,56 @@ const ContentWrapper = styled.div`
   p + ol {
     margin-top: 10px;
   }
+
+  blockquote {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-light-gray);
+    padding: 70px 60px 36px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+
+    > p {
+      font-size: 18px;
+      line-height: ${30 / 18};
+      font-weight: 600;
+      color: var(--color-blue);
+      font-style: italic;
+      z-index: 0;
+      --width: 59px;
+      --height: 50px;
+      &:after,
+      &:before {
+        position: absolute;
+        width: var(--width);
+        height: var(--height);
+        z-index: -1;
+      }
+      &:after {
+        content: url(${quoteAfter});
+        right: var(--width);
+        bottom: var(--height);
+      }
+      &:before {
+        content: url(${quoteBefore});
+        left: var(--width);
+        top: var(--height);
+      }
+    }
+
+    > cite {
+      font-size: 12px;
+      line-height: ${30 / 12};
+      font-style: normal;
+    }
+  }
+
+  blockquote + *,
+  * + blockquote {
+    margin-top: 40px;
+  }
 `
 const AsideWrapper = styled.aside`
   position: sticky;
@@ -226,6 +289,7 @@ const AsideWrapper = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-right: 100px;
 
   .aside-header {
     margin-bottom: 10px;
