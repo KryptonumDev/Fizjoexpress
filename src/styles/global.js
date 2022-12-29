@@ -13,9 +13,7 @@ const GlobalStyles = createGlobalStyle`
         --color-medium-gray: #E9E9E9;
         --color-dark-gray: #212939;
 
-        --margin-intersection: clamp(40px,  ${
-          (100 / 1366) * 100
-        }vw, 100px);
+        --margin-intersection: clamp(40px,  ${(100 / 1366) * 100}vw, 100px);
 
         --box-shadow: 0px 3px 30px #00000016;
     }
@@ -40,17 +38,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .main-title{
-        font-size: clamp(28px, ${
-          (45 / 1366) * 100
-        }vw, 45px);
+        font-size: clamp(28px, ${(45 / 1366) * 100}vw, 45px);
         font-weight: 600;
         line-height: 133%;
     }
 
     .sub-title{
-        font-size: clamp(22px, ${
-          (25 / 1366) * 100
-        }vw, 25px);
+        font-size: clamp(22px, ${(25 / 1366) * 100}vw, 25px);
         font-weight: 600;
         line-height: 154%;
     }
@@ -63,9 +57,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .big-text{
-        font-size: clamp(16px,  ${
-          (18 / 1366) * 100
-        }vw, 18px);
+        font-size: clamp(16px,  ${(18 / 1366) * 100}vw, 18px);
         line-height: 160%;
         font-weight: 600;
     }
@@ -82,13 +74,15 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 700;
     }
 
-    .read-more {
+    .read-more, .wp-block-button__link {
+        display: inline-block;
         font-size: 12px;
         font-weight: bold;
         color: var(--color-blue);
         background-color: var(--color-yellow);
-        padding: 26px 113px;
+        padding: 26px 16px;
         max-width: clamp(200px, 21.96vw, 300px);
+        width: 100%;
         text-align: center;
         outline-offset: 1px;
     }
