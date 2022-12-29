@@ -50,6 +50,9 @@ const BlogPost = ({ data: { wpPost, otherPosts } }) => {
           }}
         />
         <AsideWrapper>
+          <span className='aside-header big-text'>
+            Dowiedz się jeszcze więcej
+          </span>
           {postsToLink.map((post) => {
             const {
               title,
@@ -108,10 +111,15 @@ const ContentWrapper = styled.div`
 `
 const AsideWrapper = styled.aside`
   position: sticky;
-  top: 60px;
+  top: 40px;
+  max-height: min(80vh, 655px);
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  .aside-header {
+    margin-bottom: 10px;
+  }
   .other-post {
     padding: 20px 30px 16px;
     background-color: var(--color-light-gray);
@@ -145,6 +153,8 @@ const AsideWrapper = styled.aside`
 
   .post-excerpt {
     margin: 10px 0 6px;
+    font-size: 12px;
+    line-height: 1.7;
   }
 
   .button {
