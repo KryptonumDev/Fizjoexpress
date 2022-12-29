@@ -1,37 +1,19 @@
 import { graphql, Link } from 'gatsby'
 import React from 'react'
+import Archive from '../../components/blog-archive'
+import Hero from '../../components/blog-hero'
 
-const BlogPage = ({ data }) => {
-  const categories = data.categories.nodes
-  const posts = data.posts.nodes
-
+const BlogPage = ({ data: { wpPage, categories, posts } }) => {
   return (
-    <>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-        {categories?.map((category) => (
-          <Link
-            key={category.slug}
-            to={`/blog/${category.slug}/`}>
-            {category.name}
-          </Link>
-        ))}
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-        {posts?.map((post) => (
-          <Link key={post.slug} to={`/blog/${post.slug}/`}>
-            {post.title}
-          </Link>
-        ))}
-      </div>
-    </>
+    <main>
+      <Hero data={{
+        header: wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
+        title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
+        noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
+        text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
+      }} />
+      <Archive categories={categories.nodes} posts={posts.nodes} />
+    </main>
   )
 }
 
@@ -53,6 +35,16 @@ export const blogQuery = graphql`
         title
         slug
         id
+      }
+    }
+    wpPage(id: { eq: "cG9zdDozOA==" }){
+      blog {
+        informacjeNaStronieBloga {
+          tytulSekcji
+          tekstDoWyswietleniaGdyBrakWynikow
+          malyNaglowekNadTytulemSekcji
+          akapitTekstuWSekcjiPowitalnej
+        }
       }
     }
   }
