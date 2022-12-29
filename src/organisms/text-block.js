@@ -27,7 +27,7 @@ export const TextBlock = ({
         <ul className='category-wrapper'>
           {header.map((category) => (
             <li className='text header'>
-              <Link to={`/blog/category/${category.slug}`}>
+              <Link to={`/blog/${category.slug}`}>
                 {category.name}
               </Link>
             </li>
