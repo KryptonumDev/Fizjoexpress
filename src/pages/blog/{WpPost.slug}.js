@@ -1,8 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import TwoColumnFlex from '../../components/two-column-flex'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
-import { TwoColumnFlexVariants } from '../../constants/two-column-flex-variants'
 
 const BlogPost = ({ data: { wpPost } }) => {
   const {
