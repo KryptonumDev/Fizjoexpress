@@ -1,26 +1,43 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import TwoColumnFlex from '../../components/two-column-flex'
+import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
+import { TwoColumnFlexVariants } from '../../constants/two-column-flex-variants'
 
 const BlogPost = ({ data: { wpPost } }) => {
   const {
     title,
     terms: { nodes: taxonomies },
-    date
+    date,
+    excerpt,
+    seo,
+    singlePostData: articleImages
   } = wpPost
-  const author = taxonomies.find(
+  const {
+    obrazekWyrozniajacyNaStroneArtykulu: featuredImage,
+    singlePostObrazekWyrozniajacyOgImage: ogImage
+  } = articleImages.szablonArtykuluDodatkoweDane
+
+  const authors = taxonomies.filter(
     (el) => el.taxonomyName === 'autor'
   )
-  const category = taxonomies.find(
+  const categories = taxonomies.filter(
     (el) => el.taxonomyName === 'category'
   )
 
   return (
-    <div>
-      {' '}
-      {title}
-      {date}
-      {author.name} | {category.name}
-    </div>
+    <main>
+      <TwoColumnFlexBlogPost
+        data={{
+          categories,
+          title,
+          authors,
+          date,
+          text: excerpt,
+          image: featuredImage
+        }}
+      />
+    </main>
   )
 }
 
@@ -38,6 +55,44 @@ export const blogPostQuery = graphql`
         }
       }
       date(formatString: "D.MM.YYYY")
+      excerpt
+      seo {
+        breadcrumbs {
+          text
+          url
+        }
+        canonical
+        fullHead
+      }
+      singlePostData {
+        szablonArtykuluDodatkoweDane {
+          obrazekWyrozniajacyNaStroneArtykulu {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          singlePostObrazekWyrozniajacyNaListinguBloga {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          singlePostObrazekWyrozniajacyOgImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+      }
+      content
     }
   }
 `

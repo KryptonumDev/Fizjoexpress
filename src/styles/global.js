@@ -71,5 +71,25 @@ const GlobalStyles = createGlobalStyle`
         line-height: 150%;
         font-weight: 700;
     }
+
+    .category-wrapper {
+        display: flex;
+        gap: 4px;
+        > li {
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+            > a {
+                display: inline-block;
+                color: var(--color-yellow);
+                font-weight: 600;
+                padding: 4px 8px;
+
+            }
+                &:first-of-type > a {
+                    margin-left: -8px;
+                }
+        }
+    }
 `
 export default GlobalStyles
