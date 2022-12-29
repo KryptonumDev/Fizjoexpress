@@ -8,7 +8,7 @@ export default function Process({ variant, data: { tytulSekcjiTwoCol, tytulSekcj
     return (
         <Wrapper>
             <ProcessSlider data={{ header: malyNaglowek, title: tytulSekcji, steps: etapy }} />
-            <TwoColumnFlex variant={variant} data={{ header: malyNaglowekTwoColSection, title: tytulSekcjiTwoCol, text: trescPodTytulemTwoCol, link: null, image: zdjecieWSekcji }} />
+            <TwoColumnFlex underline={true} variant={variant} data={{ header: malyNaglowekTwoColSection, title: tytulSekcjiTwoCol, text: trescPodTytulemTwoCol, link: null, image: zdjecieWSekcji }} />
             <Cta data={{ linkOne: linkPrzyciskuGlownego, linkTwo: linkPrzyciskuPobocznego, text: tresc }} />
         </Wrapper>
     )
