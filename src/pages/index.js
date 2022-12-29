@@ -53,7 +53,7 @@ const IndexPage = ({
           link: homepage.sekcjaCzekamyWlasnieNaCiebie.linkPrzycisku
         }}
       />
-      <Process variant={TwoColumnFlexVariants.buttonOverImage} data={homepage.sekcjaProcesWspolpracy} />
+      <Process variant={TwoColumnFlexVariants.buttonUnderText} data={homepage.sekcjaProcesWspolpracy} />
       <Reviews data={{
         header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
         title: homepage.homeSekcjaZOpiniami.naglowekSekcji,

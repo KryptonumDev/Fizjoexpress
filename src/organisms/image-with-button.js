@@ -17,8 +17,8 @@ export const ImageWithButton = ({
       }
       alt={image?.altText}
     />
-    <span className='gray' />
-    <span className='yellow' />
+    <span className={variant === TwoColumnFlexVariants.buttonOverImage ? 'gray' : 'gray alt'} />
+    <span className={variant === TwoColumnFlexVariants.buttonOverImage ? 'yellow' : 'yellow alt'} />
     <span className='line' />
     {(link?.url && variant === TwoColumnFlexVariants.buttonOverImage) && (
       <Button
@@ -26,7 +26,7 @@ export const ImageWithButton = ({
         to={link.url}
         target={link.target ? link.target : null}>
         {link.title}
-      </Button> 
+      </Button>
     )}
   </Wrapper>
 )
@@ -90,12 +90,15 @@ const Wrapper = styled.div`
     width: 200px;
     height: 200px;
     background-color: ${({ variant }) =>
-      variant === `${TwoColumnFlexVariants.blogPost}`
-        ? 'var(--color-yellow)'
-        : 'var(--color-light-gray)'};
+    variant === `${TwoColumnFlexVariants.blogPost}`
+      ? 'var(--color-yellow)'
+      : 'var(--color-light-gray)'};
     position: absolute;
     left: 0;
     bottom: 0;
+    &.alt{
+      background-color: var(--color-yellow);
+    }
 
     @media (max-width: 1080px) {
       width: 120px;
@@ -117,12 +120,15 @@ const Wrapper = styled.div`
     width: 50px;
     height: 50px;
     background-color: ${({ variant }) =>
-      variant === `${TwoColumnFlexVariants.blogPost}`
-        ? 'transparent'
-        : 'var(--color-yellow)'};
+    variant === `${TwoColumnFlexVariants.blogPost}`
+      ? 'transparent'
+      : 'var(--color-yellow)'};
     position: absolute;
     right: 0;
     top: 0;
+    &.alt{
+      background-color: var(--color-light-gray);
+    }
   }
 
   .line {

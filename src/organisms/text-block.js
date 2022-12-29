@@ -6,6 +6,7 @@ import { textParser } from '../helpers/text-parser'
 import { Button } from '../moleculas/link'
 
 export const TextBlock = ({
+  underline,
   header,
   title,
   text,
@@ -18,9 +19,11 @@ export const TextBlock = ({
       id={cytate ? 'cytate' : ''}
       variant={variant}
       className={
-        variant === TwoColumnFlexVariants.buttonUnderText ||
-        variant === TwoColumnFlexVariants.blogPost
-          ? 'text-block'
+        (variant === TwoColumnFlexVariants.buttonUnderText ||
+          variant === TwoColumnFlexVariants.blogPost)
+          ? underline
+            ? 'text-block with-line'
+            : 'text-block'
           : 'text-block with-line'
       }>
       {variant === TwoColumnFlexVariants.blogPost ? (
@@ -102,7 +105,7 @@ export const TextBlock = ({
       )}
       {link?.url &&
         variant ===
-          TwoColumnFlexVariants.buttonUnderText && (
+        TwoColumnFlexVariants.buttonUnderText && (
           <Button to={link.url} target={link.target}>
             {link.title}
           </Button>

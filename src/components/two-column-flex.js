@@ -7,6 +7,7 @@ import { TextBlock } from '../organisms/text-block'
 import { Container } from './../atoms/container'
 
 export default function TwoColumnFlex({
+  underline = false,
   reverse = false,
   variant = TwoColumnFlexVariants.buttonUnderText,
   data: { header, title, text, image, link, cytate, underlineText }
@@ -33,6 +34,7 @@ export default function TwoColumnFlex({
               link={link}
               cytate={cytate}
               variant={variant}
+              underline={underline}
             />
             {underlineText && <div className='text underline' dangerouslySetInnerHTML={{ __html: underlineText }} />}
 
