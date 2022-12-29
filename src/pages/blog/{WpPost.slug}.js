@@ -26,18 +26,25 @@ const BlogPost = ({ data: { wpPost } }) => {
   )
 
   return (
-    <main>
-      <TwoColumnFlexBlogPost
-        data={{
-          categories,
-          title,
-          authors,
-          date,
-          text: excerpt,
-          image: featuredImage
-        }}
-      />
-    </main>
+    <>
+      <header>
+        <TwoColumnFlexBlogPost
+          data={{
+            categories,
+            title,
+            authors,
+            date,
+            text: excerpt,
+            image: featuredImage
+          }}
+        />
+      </header>
+      <main
+        id='blog-content'
+        style={{ marginTop: '300px', height: '200vh' }}>
+        Content here
+      </main>
+    </>
   )
 }
 

@@ -13,17 +13,17 @@ export const TextBlock = ({
   cytate,
   variant = 'default'
 }) => {
-  console.log(header)
   return (
     <Wrapper
       id={cytate ? 'cytate' : ''}
       variant={variant}
       className={
-        variant === TwoColumnFlexVariants.buttonUnderText
+        variant === TwoColumnFlexVariants.buttonUnderText ||
+        variant === TwoColumnFlexVariants.blogPost
           ? 'text-block'
           : 'text-block with-line'
       }>
-      {variant === 'blogPost' ? (
+      {variant === TwoColumnFlexVariants.blogPost ? (
         <ul className='category-wrapper'>
           {header.map((category) => (
             <li className='text header'>
@@ -105,6 +105,13 @@ export const TextBlock = ({
             {link.title}
           </Button>
         )}
+      {variant === TwoColumnFlexVariants.blogPost && (
+        <a
+          href='#blog-content'
+          className='read-more btn--triangle'>
+          Czytaj dalej
+        </a>
+      )}
     </Wrapper>
   )
 }

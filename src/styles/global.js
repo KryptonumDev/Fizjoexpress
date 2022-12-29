@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
         --color-yellow: #F8D200;
 
         --color-light-gray: #F6F6F6;
+        --color-text-light-gray: #B2B2B2;
+        --color-darker-light-gray: #70707040;
         --color-medium-gray: #E9E9E9;
         --color-dark-gray: #212939;
 
@@ -70,6 +72,36 @@ const GlobalStyles = createGlobalStyle`
         font-size: 12px;
         line-height: 150%;
         font-weight: 700;
+    }
+
+    .read-more {
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--color-blue);
+        background-color: var(--color-yellow);
+        padding: 26px 113px;
+        max-width: clamp(200px, 21.96vw, 300px);
+        text-align: center;
+    }
+
+    .btn--triangle {
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-right: 0;
+            border-bottom: 0;
+            border-right: 8px solid var(--color-blue);
+            transition: transform .15s ease-out;
+        }
+        &:hover:after {
+            transform: translate(2px, 2px);
+        }
     }
 
     .category-wrapper {

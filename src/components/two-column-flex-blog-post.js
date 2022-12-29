@@ -16,21 +16,36 @@ export default function TwoColumnFlexBlogPost({
         <Content
           className={
             reverse
-              ? 'reverse two-column-content'
-              : 'two-column-content'
+              ? 'reverse two-column-content align-bottom'
+              : 'two-column-content align-bottom'
           }>
           <ImageWithButton
             image={image}
             variant={TwoColumnFlexVariants.blogPost}
           />
-          <div>
+          <div className='text-content'>
             <TextBlock
-              variant='blogPost'
+              variant={TwoColumnFlexVariants.blogPost}
               header={categories}
               title={title}
               text={text}
             />
-            <p>test</p>
+            <div className='blog-post-data'>
+              <p className='data'>
+                {authors?.length > 1 ? 'Autorzy:' : 'Autor'}
+                {authors?.map((author) => (
+                  <span className='data data--post-data'>
+                    {author.name}
+                  </span>
+                ))}
+              </p>
+              <p className='data'>
+                Dodano
+                <span className='data data--post-data'>
+                  {date}
+                </span>
+              </p>
+            </div>
           </div>
         </Content>
       </Container>
@@ -53,6 +68,33 @@ const Content = styled.div`
     margin-left: 100px;
   }
 
+  &.align-bottom {
+    align-items: flex-end;
+  }
+
+  .text-content {
+    max-width: clamp(320px, 29.4vw, 404px);
+  }
+
+  .blog-post-data {
+    display: flex;
+    gap: clamp(24px, 2.7vw, 37px);
+    padding-top: clamp(30px, 3vw, 40px);
+    margin-top: clamp(50px, 4.97vw, 68px);
+    border-top: 1px solid var(--color-darker-light-gray);
+
+    .data {
+      color: var(--color-text-light-gray);
+      font-size: 12px;
+      font-weight: 400;
+      &--post-data {
+        margin-left: 10px;
+        color: var(--color-blue);
+        font-weight: bold;
+      }
+    }
+  }
+
   .underline {
     position: relative;
     margin-top: 40px;
@@ -66,5 +108,9 @@ const Content = styled.div`
       top: 0;
       background-color: var(--color-blue);
     }
+  }
+
+  .blog-post-data {
+    width: 100%;
   }
 `
