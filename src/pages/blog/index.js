@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Archive from '../../components/blog-archive'
 import Hero from '../../components/blog-hero'
@@ -35,6 +35,20 @@ export const blogQuery = graphql`
         title
         slug
         id
+        singlePostData {
+          szablonArtykuluDodatkoweDane {
+            singlePostObrazekWyrozniajacyNaListinguBloga {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+        }
+        date(formatString: "DD.MM.YYYY")
+        excerpt
       }
     }
     wpPage(id: { eq: "cG9zdDozOA==" }){

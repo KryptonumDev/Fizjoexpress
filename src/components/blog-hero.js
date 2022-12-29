@@ -24,7 +24,7 @@ const Wrapper = styled.section`
 `
 
 const Content = styled.div`
-    max-width: 1026px;
+    max-width: 1020px;
     margin: 0 auto;
     padding: clamp(40px, ${60 / 1366 * 100}vw, 60px) 0 0 0;
     position: relative;
