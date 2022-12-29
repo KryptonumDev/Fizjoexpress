@@ -26,7 +26,7 @@ export const TextBlock = ({
       {variant === TwoColumnFlexVariants.blogPost ? (
         <ul className='category-wrapper'>
           {header.map((category) => (
-            <li className='text header'>
+            <li key={category.name} className='text header'>
               <Link to={`/blog/${category.slug}`}>
                 {category.name}
               </Link>
@@ -34,7 +34,9 @@ export const TextBlock = ({
           ))}
         </ul>
       ) : (
-        <span className='small-header header'>{header}</span>
+        <span className='small-header header'>
+          {header}
+        </span>
       )}
       <h2
         className='sub-title'
@@ -120,23 +122,26 @@ const Wrapper = styled.div`
   max-width: clamp(392px, 38.4vw, 525px);
   position: relative;
 
-  
   @media (max-width: 840px) {
     max-width: 500px;
     margin: 0 auto;
   }
 
-
-  .header{
+  .header {
     color: var(--color-yellow) !important;
   }
 
-  &#cytate{
-    padding-bottom: clamp(30px, ${70 / 1366 * 100}vw, 70px);
+  &#cytate {
+    padding-bottom: clamp(
+      30px,
+      ${(70 / 1366) * 100}vw,
+      70px
+    );
   }
 
-  .cytate{
-    padding: clamp(38px, ${65 / 1366 * 100}vw, 65px) clamp(36px, ${61 / 1366 * 100}vw, 61px);
+  .cytate {
+    padding: clamp(38px, ${(65 / 1366) * 100}vw, 65px)
+      clamp(36px, ${(61 / 1366) * 100}vw, 61px);
     background-color: var(--color-light-gray);
     position: relative;
 

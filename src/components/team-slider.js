@@ -1,19 +1,21 @@
-import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useRef } from "react"
-import Slider from "react-slick"
-import styled from "styled-components"
-import { Container } from "../atoms/container"
-import { Control } from "../organisms/slider-control"
+import { GatsbyImage } from 'gatsby-plugin-image'
+import React, { useRef } from 'react'
+import Slider from 'react-slick'
+import styled from 'styled-components'
+import { Container } from '../atoms/container'
+import { Control } from '../organisms/slider-control'
 
-export default function TeamSlider({ data: { header, title, team } }) {
-    const slickRef = useRef(null);
-    var settings = {
-        dots: false,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
+export default function TeamSlider({
+  data: { header, title, team }
+}) {
+  const slickRef = useRef(null)
+  var settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
         responsive: [{
             breakpoint: 1080,
             settings: {
@@ -25,26 +27,41 @@ export default function TeamSlider({ data: { header, title, team } }) {
                 slidesToShow: 1,
             }
         }]
-    };
-    return (
-        <Wrapper>
-            <Container>
-                <Control white={true} header={header} title={title} slickRef={slickRef} />
-                <Slider ref={slickRef} {...settings}>
-                    {team.map(el => (
-                        <Item>
-                            <GatsbyImage className="image" image={el.dodatkowePolaAutora.zdjecieAutora.localFile.childImageSharp.gatsbyImageData} alt={el.dodatkowePolaAutora.zdjecieAutora.altText} />
-                            <div className="overlay text">Dowiedz się więcej</div>
+  }
+  return (
+    <Wrapper>
+      <Container>
+        <Control
+          white={true}
+          header={header}
+          title={title}
+          slickRef={slickRef}
+        />
+        <Slider ref={slickRef} {...settings}>
+          {team.map((el) => (
+            <Item key={el.name}>
+              <GatsbyImage
+                image={
+             className="image"      el.dodatkowePolaAutora.zdjecieAutora
+                    .localFile.childImageSharp
+                    .gatsbyImageData
+                }
+                alt={
+                  el.dodatkowePolaAutora.zdjecieAutora
+                    .altText
+                }
+              />
+              <div className="overlay text">Dowiedz się więcej</div>
                             <div className="hover">
                                 <p className="big-text">{el.name}</p>
                                 <div className="text" dangerouslySetInnerHTML={{ __html: el.description }} />
                             </div>
-                        </Item>
-                    ))}
-                </Slider>
-            </Container>
-        </Wrapper>
-    )
+            </Item>
+          ))}
+        </Slider>
+      </Container>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -72,8 +89,8 @@ const Wrapper = styled.section`
 `
 
 const Item = styled.div`
-    max-width: calc(100% - 10px);
-    transform: translateX(5px);
+  max-width: calc(100% - 10px);
+  transform: translateX(5px);
     position: relative;
 
     .overlay{
