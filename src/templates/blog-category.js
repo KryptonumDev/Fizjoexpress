@@ -4,7 +4,6 @@ import Archive from './../components/blog-archive'
 import Hero from './../components/blog-hero'
 
 const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categories, posts } }) => {
-  const url = pageContext.url ? pageContext.url : '/blog/'
   return (
     <main>
       <Hero data={{
@@ -13,7 +12,7 @@ const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categ
         noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
         text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
       }} />
-      <Archive url={url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
+      <Archive url={pageContext.url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
     </main>
   )
 }

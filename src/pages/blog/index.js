@@ -4,7 +4,6 @@ import Archive from '../../components/blog-archive'
 import Hero from '../../components/blog-hero'
 
 const BlogPage = ({ pageContext, location, data: { wpPage, categories, posts } }) => {
-    debugger
   return (
     <main>
       <Hero data={{
@@ -13,7 +12,7 @@ const BlogPage = ({ pageContext, location, data: { wpPage, categories, posts } }
         noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
         text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
       }} />
-      <Archive location={location} categories={categories.nodes} posts={posts.nodes} />
+      <Archive url='/blog/' location={location} categories={categories.nodes} posts={posts.nodes} />
     </main>
   )
 }

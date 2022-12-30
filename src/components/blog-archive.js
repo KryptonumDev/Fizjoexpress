@@ -7,7 +7,6 @@ import { textParser } from "../helpers/text-parser"
 import { Pagination } from "../organisms/pagination"
 
 export default function Archive({ url, location, category, categories, posts }) {
-
     const [page, setPage] = useState(() => {
         if (!location.search) {
             return 1
@@ -28,23 +27,25 @@ export default function Archive({ url, location, category, categories, posts }) 
                 <Content>
                     <Categories>
                         <span className="big-text">Kategorie</span>
-                        {categories.map(el => (
-                            <Link activeClassName="active" to={'/blog/' + el.slug + '/'}>
-                                {el.name}
-                            </Link>
-                        ))}
+                        <div className="flex">
+                            {categories.map(el => (
+                                <Link activeClassName="active" to={'/blog/' + el.slug + '/'}>
+                                    {el.name}
+                                </Link>
+                            ))}
+                        </div>
                     </Categories>
                     <div className="title sub-title">
                         Najnowsze wpisy{category && ':'} <span>{category}</span>
                     </div>
                     <Grid>
                         {posts.map((el, index) => {
-                            if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1))) {
+                            if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1)) && el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga) {
                                 return (
                                     <Item>
                                         <Link to={'/blog/' + el.slug + '/'}>
-                                            {/* <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
-                                        alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} /> */}
+                                            <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
+                                                alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
                                             <div className="content">
                                                 <span className="small-header">{el.date}</span>
                                                 <p className="big-text">{el.title}</p>
@@ -84,8 +85,16 @@ const Content = styled.div`
 const Categories = styled.div`
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     align-items: center;
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 30px;
+    }
 
     .big-text{
         color: var(--color-text-light-gray);
@@ -116,6 +125,15 @@ const Grid = styled.div`
     position: relative;
     padding-bottom: 30px;
 
+    @media (max-width: 940px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
     &::after{
         content: '';
         position: absolute;
@@ -137,7 +155,7 @@ const Item = styled.div`
 
     .content{
         height: calc(100% - 200px);
-        padding: 30px 30px 24px 30px;
+        padding: clamp(20px, ${30 / 1366 * 100}vw, 30px) clamp(20px, ${30 / 1366 * 100}vw, 30px) 24px clamp(20px, ${30 / 1366 * 100}vw, 30px);
 
         .big-text{
             padding-top: 15px;
