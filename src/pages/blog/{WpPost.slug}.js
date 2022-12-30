@@ -105,6 +105,9 @@ export default BlogPost
 
 const SocialWrapper = styled.div`
   margin-left: 100px;
+  @media (max-width: 1200px) {
+    margin-left: 0;
+  }
 `
 
 const MainWrapper = styled(Container)`

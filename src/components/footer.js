@@ -112,7 +112,7 @@ const Footer = () => {
           </LinksColumn>
         </LogoAndSitemapRow>
         <SocialMediaRow>
-          <SocialMediaIcons sectionVariant='dark' data={globalneGrafiki} />
+          <SocialMediaIcons sectionVariant='footer' data={globalneGrafiki} />
           <p>
             {tekstPrzyPrzyciskuWStopce}
             <a
@@ -128,7 +128,7 @@ const Footer = () => {
             Copyrights by Fizjoexpress {new Date().getFullYear()}. Wszelkie
             prawa zastrzeżone.
           </p>
-          <p>
+          <p className='text-copyrights'>
             Projekt i realizacja: <KryptonumLogo />
           </p>
         </CopyrightsRow>
@@ -142,17 +142,38 @@ export default Footer
 const FooterWrapper = styled.footer`
   background-color: var(--color-blue);
   color: var(--color-white);
-  padding: 60px 0 32px 0;
+  padding: 60px 0 0 0;
 `
 
 const FooterContainer = styled(Container)``
 
 const FooterRow = styled.div`
   --number-of-gaps: 2;
+  --base-gap: 100px;
   display: grid;
-  grid-template-columns: 299fr 290fr 273fr;
-  grid-column-gap: calc(40px / var(--number-of-gaps));
+  grid-template-columns: 369fr 290fr 273fr;
+  @media (max-width: 1138px) {
+    grid-template-columns: 260fr 290fr 225fr;
+    --base-gap: 80px;
+  }
+  @media (max-width: 833px) {
+    grid-template-columns: 240fr 330fr 205fr;
+    --base-gap: 60px;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 4fr 3fr;
+    grid-gap: 16px;
+    grid-template-areas:
+      'a a'
+      'b c'
+      'b c'
+      'b c';
+  }
+
+  grid-column-gap: calc(var(--base-gap) / var(--number-of-gaps));
   width: 100%;
+  align-items: center;
   h3,
   p,
   span,
@@ -163,26 +184,80 @@ const FooterRow = styled.div`
     font-weight: 300;
   }
 
-  a {
+  && a {
     outline-color: var(--color-white);
+    max-width: 281px;
   }
 
   .header {
     font-size: 18px;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
     line-height: ${35 / 18};
     font-weight: 600;
   }
 `
 
-const LogoAndSitemapRow = styled(FooterRow)``
+const LogoAndSitemapRow = styled(FooterRow)`
+  align-items: start;
+`
 
 const SocialMediaRow = styled(FooterRow)`
   --number-of-gaps: 1;
-  grid-template-columns: 589fr 273fr;
+  grid-template-columns: 659fr 273fr;
+  @media (max-width: 1138px) {
+    grid-template-columns: 550fr 225fr;
+  }
+  @media (max-width: 833px) {
+    grid-template-columns: 570fr 205fr;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 4fr 3fr;
+    grid-gap: 30px;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
   margin: 40px 0 50px;
+
+  .button--secondary {
+    margin-left: 6px;
+  }
 `
 
-const CopyrightsRow = styled(SocialMediaRow)``
+const CopyrightsRow = styled(SocialMediaRow)`
+  margin: 0;
+  position: relative;
+  padding: 34px 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(0.5 * (100% - 100vw));
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-medium-blue);
+  }
+
+  .text-copyrights {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    @media (max-width: 1050px) {
+      margin-right: -40px;
+    }
+    @media (max-width: 850px) {
+      margin-right: -20px;
+    }
+  }
+`
 
 const Column = styled.div``
 const LogoColumn = styled(Column)`
@@ -190,14 +265,27 @@ const LogoColumn = styled(Column)`
     margin-bottom: clamp(32px, ${(49 / 1366) * 100}vw, 49px);
   }
   > p {
-    max-width: clamp(220px, ${(300 / 1366) * 100}vw, 300px);
+    max-width: 300px;
+  }
+  @media (max-width: 767px) {
+    grid-area: a;
+    grid-columns: 1/-1;
   }
 `
 const ArticlesColumn = styled(Column)`
-  padding-top: 18px;
+  padding-top: 12px;
+
+  @media (max-width: 1246px) {
+    padding-top: 2px;
+  }
+  @media (max-width: 767px) {
+    grid-area: b;
+  }
+
   ul {
     margin-top: 12px;
   }
+
   a {
     position: relative;
     padding: 8px 18px;
@@ -223,6 +311,13 @@ const ArticlesColumn = styled(Column)`
   }
 `
 const LinksColumn = styled(ArticlesColumn)`
+  @media (max-width: 767px) {
+    grid-area: c;
+
+    ul {
+      margin-top: 23px;
+    }
+  }
   a {
     padding: 1px 4px;
     margin: 0 0 0 -4px;

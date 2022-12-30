@@ -33,13 +33,13 @@ const SocialMediaWrapper = styled.div`
   display: flex;
   gap: clamp(16px, 1.61vw, 22px);
   margin-top: ${({ variant }) =>
-    variant === 'footer' ? '0px' : 'clamp(30px, ${(60 / 1366) * 100}vw, 60px)'};
+    variant === 'footer' ? '0px' : 'clamp(30px, 4.392vw, 60px)'};
   align-items: center;
 
   @media (max-width: 480px) {
-    span {
-      display: none;
-    }
+    /* span {
+      display: ${({ variant }) => (variant === 'footer' ? 'inline' : 'none')};
+    } */
   }
 
   > span {
