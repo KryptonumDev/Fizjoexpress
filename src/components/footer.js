@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { textParser } from '../helpers/text-parser'
-import { Logo } from './icons'
+import { KryptonumLogo, Logo } from './icons'
 import SocialMediaIcons from './social-media-icons'
 
 const Footer = () => {
@@ -79,7 +79,7 @@ const Footer = () => {
       <FooterContainer>
         <LogoAndSitemapRow>
           <LogoColumn>
-            <Logo />
+            <Logo className='logo-footer' />
             <p
               dangerouslySetInnerHTML={{
                 __html: textParser(akapitTekstuPodLogo)
@@ -87,7 +87,7 @@ const Footer = () => {
             />
           </LogoColumn>
           <ArticlesColumn>
-            <p>{tytulNadListaLinkowDoArtykulow}</p>
+            <p className='header'>{tytulNadListaLinkowDoArtykulow}</p>
             <ul>
               {listaLinkow.map(({ linkDoPodstrony: link }) => (
                 <li key={link.url}>
@@ -99,7 +99,7 @@ const Footer = () => {
             </ul>
           </ArticlesColumn>
           <LinksColumn>
-            <p>{tytulNadListaLinkowPodstrony}</p>
+            <p className='header'>{tytulNadListaLinkowPodstrony}</p>
             <ul>
               {podstrony.map(({ linkDoPodstrony: link }) => (
                 <li key={link.url}>
@@ -112,15 +112,26 @@ const Footer = () => {
           </LinksColumn>
         </LogoAndSitemapRow>
         <SocialMediaRow>
-          <SocialMediaIcons sectionVariant='dark' data={globalneGrafiki} />
+          <SocialMediaIcons sectionVariant='footer' data={globalneGrafiki} />
           <p>
             {tekstPrzyPrzyciskuWStopce}
-            <a href={przyciskWStopce.url} target={przyciskWStopce.target}>
+            <a
+              class='button--secondary yellow'
+              href={przyciskWStopce.url}
+              target={przyciskWStopce.target}>
               {przyciskWStopce.title}
             </a>
           </p>
         </SocialMediaRow>
-        <CopyrightsRow></CopyrightsRow>
+        <CopyrightsRow>
+          <p>
+            Copyrights by Fizjoexpress {new Date().getFullYear()}. Wszelkie
+            prawa zastrzeżone.
+          </p>
+          <p className='text-copyrights'>
+            Projekt i realizacja: <KryptonumLogo />
+          </p>
+        </CopyrightsRow>
       </FooterContainer>
     </FooterWrapper>
   )
@@ -131,34 +142,187 @@ export default Footer
 const FooterWrapper = styled.footer`
   background-color: var(--color-blue);
   color: var(--color-white);
-  min-height: 400px;
+  padding: 60px 0 0 0;
 `
 
 const FooterContainer = styled(Container)``
 
 const FooterRow = styled.div`
   --number-of-gaps: 2;
+  --base-gap: 100px;
   display: grid;
-  grid-template-columns: 299fr 290fr 273fr;
-  grid-column-gap: calc(40px / var(--number-of-gaps));
+  grid-template-columns: 369fr 290fr 273fr;
+  @media (max-width: 1138px) {
+    grid-template-columns: 260fr 290fr 225fr;
+    --base-gap: 80px;
+  }
+  @media (max-width: 833px) {
+    grid-template-columns: 240fr 330fr 205fr;
+    --base-gap: 60px;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 4fr 3fr;
+    grid-gap: 16px;
+    grid-template-areas:
+      'a a'
+      'b c'
+      'b c'
+      'b c';
+  }
+
+  grid-column-gap: calc(var(--base-gap) / var(--number-of-gaps));
   width: 100%;
-  min-height: 80px;
+  align-items: center;
   h3,
   p,
   span,
   a {
     color: var(--color-white);
+    font-size: 12px;
+    line-height: ${22 / 12};
+    font-weight: 300;
+  }
+
+  && a {
+    outline-color: var(--color-white);
+    max-width: 281px;
+  }
+
+  .header {
+    font-size: 18px;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
+    line-height: ${35 / 18};
+    font-weight: 600;
   }
 `
 
-const LogoAndSitemapRow = styled(FooterRow)``
+const LogoAndSitemapRow = styled(FooterRow)`
+  align-items: start;
+`
+
 const SocialMediaRow = styled(FooterRow)`
   --number-of-gaps: 1;
-  grid-template-columns: 589fr 273fr;
+  grid-template-columns: 659fr 273fr;
+  @media (max-width: 1138px) {
+    grid-template-columns: 550fr 225fr;
+  }
+  @media (max-width: 833px) {
+    grid-template-columns: 570fr 205fr;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 4fr 3fr;
+    grid-gap: 30px;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  margin: 40px 0 50px;
+
+  .button--secondary {
+    margin-left: 6px;
+  }
 `
-const CopyrightsRow = styled(FooterRow)``
+
+const CopyrightsRow = styled(SocialMediaRow)`
+  margin: 0;
+  position: relative;
+  padding: 34px 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(0.5 * (100% - 100vw));
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-medium-blue);
+  }
+
+  .text-copyrights {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    @media (max-width: 1050px) {
+      margin-right: -40px;
+    }
+    @media (max-width: 850px) {
+      margin-right: -20px;
+    }
+  }
+`
 
 const Column = styled.div``
-const LogoColumn = styled(Column)``
-const ArticlesColumn = styled(Column)``
-const LinksColumn = styled(Column)``
+const LogoColumn = styled(Column)`
+  .logo-footer {
+    margin-bottom: clamp(32px, ${(49 / 1366) * 100}vw, 49px);
+  }
+  > p {
+    max-width: 300px;
+  }
+  @media (max-width: 767px) {
+    grid-area: a;
+    grid-columns: 1/-1;
+  }
+`
+const ArticlesColumn = styled(Column)`
+  padding-top: 12px;
+
+  @media (max-width: 1246px) {
+    padding-top: 2px;
+  }
+  @media (max-width: 767px) {
+    grid-area: b;
+  }
+
+  ul {
+    margin-top: 12px;
+  }
+
+  a {
+    position: relative;
+    padding: 8px 18px;
+    margin: 4px 0;
+    display: inline-block;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-left: 0;
+      border-bottom: 0;
+      border-right: 6px solid var(--color-white);
+      transition: transform 0.15s ease-out;
+    }
+    &:focus-visible:before,
+    &:hover:before {
+      transform: translate(2px, 2px);
+    }
+  }
+`
+const LinksColumn = styled(ArticlesColumn)`
+  @media (max-width: 767px) {
+    grid-area: c;
+
+    ul {
+      margin-top: 23px;
+    }
+  }
+  a {
+    padding: 1px 4px;
+    margin: 0 0 0 -4px;
+    &:before {
+      content: none;
+    }
+  }
+`

@@ -4,14 +4,17 @@ const GlobalStyles = createGlobalStyle`
 
     :root{
         --color-white: #FFFFFF;
-        --color-blue: #141C2B;
         --color-yellow: #F8D200;
+
+        --color-medium-blue: #324975;
+        --color-blue: #141C2B;
 
         --color-light-gray: #F6F6F6;
         --color-text-light-gray: #B2B2B2;
         --color-darker-light-gray: #70707040;
         --color-medium-gray: #E9E9E9;
         --color-dark-gray: #212939;
+
 
         --margin-intersection: clamp(40px,  ${(100 / 1366) * 100}vw, 100px);
 
@@ -97,6 +100,52 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
+    .kryptonum-logo {
+        display: inline-flex;
+        align-items: center;
+        outline-offset: 2px;
+        &:focus {
+            outline: none;
+        }
+        
+        &:focus-visible {
+            outline: 2px solid var(--color-white);
+        }
+    }
+
+    .button--secondary {
+        position: relative;
+        font-size: 12px;
+        font-weight: bold !important;
+        padding: 4px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 4px;
+            width: calc(100% - 8px);
+            height: 2px;
+            background-color: var(--color-blue);
+            transition: transform .15s ease-out;
+            transform-origin: left center;
+            transform: scaleX(0.5);
+        }
+        &:focus-visible:after, &:hover:after {
+            transform: scaleX(1);
+        }
+        &.yellow {
+            color: var(--color-yellow);
+            &:focus-visible {
+                outline: 2px solid var(--color-yellow);
+            }
+            &:after {
+                background-color: var(--color-yellow);
+            }
+        }
+    }
+    
+
     .btn--triangle {
         position: relative;
         &:after {
@@ -115,7 +164,6 @@ const GlobalStyles = createGlobalStyle`
         &:focus-visible:after, &:hover:after {
             transform: translate(2px, 2px);
         }
-         
     }
 
     .category-wrapper {
