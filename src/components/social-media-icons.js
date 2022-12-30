@@ -7,9 +7,9 @@ const SocialMediaIcons = ({
   data: { socialMedia }
 }) => {
   if (socialMedia?.length < 1) return null
-  console.log(socialMedia)
+
   return (
-    <SocialMediaWrapper color={sectionVariant}>
+    <SocialMediaWrapper variant={sectionVariant}>
       <span className='text'>{text ? text : 'Social Media'}</span>
       <ul>
         {socialMedia?.map(({ linkDoSocialMedia, ikonaSocialMedia }) => (
@@ -32,7 +32,8 @@ export default SocialMediaIcons
 const SocialMediaWrapper = styled.div`
   display: flex;
   gap: clamp(16px, 1.61vw, 22px);
-  margin-top: clamp(30px, ${(60 / 1366) * 100}vw, 60px);
+  margin-top: ${({ variant }) =>
+    variant === 'footer' ? '0px' : 'clamp(30px, ${(60 / 1366) * 100}vw, 60px)'};
   align-items: center;
 
   @media (max-width: 480px) {
@@ -42,14 +43,22 @@ const SocialMediaWrapper = styled.div`
   }
 
   > span {
-    color: ${({ color }) =>
-      color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
+    variant: ${({ variant }) =>
+      variant === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
     font-weight: 300;
     font-size: 12px;
+
+    line-height: 1;
   }
 
   > ul {
     display: flex;
     gap: clamp(16px, 1.757vw, 24px);
+    a {
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+    }
   }
 `

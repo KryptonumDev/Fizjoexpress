@@ -97,6 +97,39 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
+    .button--secondary {
+        position: relative;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 4px;
+            width: calc(100% - 8px);
+            height: 2px;
+            background-color: var(--color-blue);
+            transition: transform .15s ease-out;
+            transform-origin: left center;
+            transform: scaleX(0.5);
+        }
+        &:focus-visible:after, &:hover:after {
+            transform: scaleX(1);
+        }
+        &.yellow {
+            color: var(--color-yellow);
+            &:focus-visible {
+                outline: 2px solid var(--color-yellow);
+            }
+            &:after {
+                background-color: var(--color-yellow);
+            }
+        }
+    }
+    
+
     .btn--triangle {
         position: relative;
         &:after {
@@ -115,7 +148,6 @@ const GlobalStyles = createGlobalStyle`
         &:focus-visible:after, &:hover:after {
             transform: translate(2px, 2px);
         }
-         
     }
 
     .category-wrapper {
