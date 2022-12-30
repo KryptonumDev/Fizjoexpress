@@ -38,8 +38,8 @@ export default function TeamSlider({
                     slickRef={slickRef}
                 />
                 <Slider ref={slickRef} {...settings}>
-                    {team.map((el) => (
-                        <Item key={el.name}>
+                    {team.map((el, index) => (
+                        <Item key={el.name + index}>
                             <GatsbyImage
                                 className="image"
                                  image={el.dodatkowePolaAutora.zdjecieAutora

@@ -1,12 +1,23 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '../../atoms/container'
 import { Aside } from '../../components/aside'
 import SocialMediaIcons from '../../components/social-media-icons'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
+import Seo from '../../layout/seo'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
+
+export function Head({ data: { wpPost: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
   const {
@@ -292,6 +303,17 @@ export const ContentWrapper = styled.div`
 export const blogPostQuery = graphql`
   query ($id: String) {
     wpPost(id: { eq: $id }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       title
       terms {
         nodes {

@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import Faq from '../components/faq'
 import Hero from '../components/hero-homepage'
 import LastPosts from '../components/last-posts'
@@ -10,6 +11,16 @@ import ServicesGrid from '../components/services-grid'
 import TwoColumnFlex from '../components/two-column-flex'
 import TwoColumnWithGrayBackground from '../components/two-column-with-gray-background'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
+import Seo from '../layout/seo'
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const IndexPage = ({
   data: {
@@ -137,6 +148,17 @@ export const query = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDoxNw==" }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       id
       homepage {
         homeSekcjaZOpiniami {

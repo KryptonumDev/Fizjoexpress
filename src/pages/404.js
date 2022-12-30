@@ -1,6 +1,15 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import Hero from '../components/hero-homepage'
+
+export function Head({ data}) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+    </>
+  )
+}
 
 const ErrorPage = ({ data: { wpPage: {error: {heroErrorpage}} } }) => {
   return (

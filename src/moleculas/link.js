@@ -6,7 +6,7 @@ export const Button = ({
   children,
   className,
   variant = 'primary',
-  to,
+  to = '/',
   target
 }) => (
   <Wrapper

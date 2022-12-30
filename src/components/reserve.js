@@ -26,7 +26,7 @@ export default function Reserve({
           </div>
           <Steps>
             {steps.map((el, index) => (
-              <Step key={el.nazwaKroku}>
+              <Step key={el.nazwaKroku + index}>
                 <span className='bix-text'>
                   {index + 1}
                 </span>

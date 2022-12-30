@@ -31,8 +31,8 @@ export const TextBlock = ({
             }>
             {variant === TwoColumnFlexVariants.blogPost ? (
                 <ul className='category-wrapper'>
-                    {header.map((category) => (
-                        <li key={category.name} className='text header'>
+                    {header.map((category, index) => (
+                        <li key={category.name + index} className='text header'>
                             <Link to={`/blog/${category.slug}`}>
                                 {category.name}
                             </Link>

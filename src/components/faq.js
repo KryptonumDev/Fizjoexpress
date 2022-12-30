@@ -72,7 +72,7 @@ export default function Faq({ data: { header, title } }) {
                         data-name='Rectangle 105'
                         fill='#fff'
                         stroke='#d2d2d2'
-                        stroke-width='1'>
+                        strokeWidth='1'>
                         <rect
                           width='8'
                           height='2'

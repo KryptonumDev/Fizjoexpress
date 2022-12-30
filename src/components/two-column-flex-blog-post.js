@@ -38,8 +38,8 @@ export default function TwoColumnFlexBlogPost({
                   {authors?.length > 1 ? 'Autorzy:' : 'Autor'}
                 </p>
                 <div className='authors'>
-                  {authors?.map((author) => (
-                    <span key={author.name} className='data data--post-data'>
+                  {authors?.map((author, index) => (
+                    <span key={author.name + index} className='data data--post-data'>
                       {author.name}
                     </span>
                   ))}

@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
+import { Helmet } from "react-helmet"
 import CtaBackground from "../components/cta-with-background"
 import Faq from "../components/faq"
 import Hero from "../components/hero-homepage"
@@ -10,6 +11,16 @@ import ThreeCards from "../components/three-cards"
 import TwoColumnFlex from "../components/two-column-flex"
 import WayOfWork from "../components/way-of-work"
 import { TwoColumnFlexVariants } from "../constants/two-column-flex-variants"
+import Seo from "../layout/seo"
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 
 const HowWorksPage = ({ data: { global: { globalneDaneIUstawienia }, wpPage: { jakDzialamy: {
@@ -132,6 +143,17 @@ export const query = graphql`
           }
         }
         wpPage(id: { eq: "cG9zdDozMw==" }) {
+          seo {
+            canonical
+            metaDesc
+            opengraphSiteName
+            title
+            opengraphImage {
+              localFile {
+                publicURL
+              }
+            }
+          }
             jakDzialamy {
                 sekcjaBoleDysfukcjeOgraniczenia {
                   karta {

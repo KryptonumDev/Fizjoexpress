@@ -8,8 +8,8 @@ export default function TextGrid({ data: { gridTopText, gridBotText, grid } }) {
             <Container>
                 <div className="big-text" dangerouslySetInnerHTML={{ __html: gridTopText }} />
                 <Grid>
-                    {grid.map(el => (
-                        <Item className="big-text">
+                    {grid.map((el, index) => (
+                        <Item key={el.cecha + index} className="big-text">
                             {el.cecha}
                             <svg xmlns="http://www.w3.org/2000/svg" width="6.746" height="6.745" viewBox="0 0 6.746 6.745">
                                 <path id="Path_208" data-name="Path 208" d="M4345.127,95.471l-6.746,6.745h6.746Z" transform="translate(-4338.381 -95.471)" fill="#141c2b" />

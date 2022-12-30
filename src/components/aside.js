@@ -9,7 +9,7 @@ export const Aside = ({ posts }) => (
       Dowiedz się jeszcze więcej
     </span>
     <Posts>
-      {posts.map((post) => {
+      {posts.map((post, index) => {
         const {
           title,
           slug,
@@ -18,7 +18,7 @@ export const Aside = ({ posts }) => (
         } = post
         const category = categories.filter((category) => category.name)[0]
         return (
-          <Link className='other-post' key={post.slug} to={`/blog/${slug}`}>
+          <Link className='other-post' key={post.slug + index} to={`/blog/${slug}`}>
             <article>
               <span className='post-category'>{category.name}</span>
               <h3 className='post-header big-text'>{title}</h3>

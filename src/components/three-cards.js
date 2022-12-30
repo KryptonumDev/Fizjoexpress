@@ -8,7 +8,7 @@ export default function ThreeCards({ data }) {
             <Container>
                 <Grid>
                     {data.map((el, index) => (
-                        <Item>
+                        <Item key={el.tytulKarty + index}>
                             <span className="big-text number">{index + 1}</span>
                             <div>
                                 <p className="big-text">{el.tytulKarty}</p>

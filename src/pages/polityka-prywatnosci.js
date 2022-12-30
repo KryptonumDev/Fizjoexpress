@@ -1,10 +1,21 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { Aside } from '../components/aside'
 import SocialMediaIcons from '../components/social-media-icons'
+import Seo from '../layout/seo'
 import { ContentWrapper, SocialWrapper } from './blog/{WpPost.slug}'
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const PolitykaPage = ({ data: { global, otherPosts, wpPage: { politykaPrywatnosci: { tresciPolitykiPrywatnosci } } } }) => {
     return (
@@ -92,6 +103,17 @@ export const politykasQuery = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDo0NA==" }){
+        seo {
+          canonical
+          metaDesc
+          opengraphSiteName
+          title
+          opengraphImage {
+            localFile {
+              publicURL
+            }
+          }
+        }
         politykaPrywatnosci {
           tresciPolitykiPrywatnosci {
             malyNaglowekNadTytulem

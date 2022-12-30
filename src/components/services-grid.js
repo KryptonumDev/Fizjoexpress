@@ -23,8 +23,8 @@ export default function ServicesGrid({
           }}
         />
         <Grid>
-          {listaCoLeczymy.map((el) => (
-            <Item key={`grafika-${el.grafika.altText}`}>
+          {listaCoLeczymy.map((el, index) => (
+            <Item key={`grafika-${el.grafika.altText + index}`}>
               <img
                 src={el.grafika.localFile.publicURL}
                 alt={el.grafika.altText}
