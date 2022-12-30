@@ -19,8 +19,8 @@ export default function Seo({ seo }) {
                     </>
                 )
                 : null}
-
-            {seo?.title
+ 
+            {seo?.title 
                 ? (
                     <>
                         <title>{seo.title}</title>
