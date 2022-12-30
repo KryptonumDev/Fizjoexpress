@@ -54,7 +54,7 @@ export default function Seo({ seo }) {
                     {
                         "@context": "http://schema.org",
                         "@type": "Organization",
-                        "name": "Sits",
+                        "name": "Fizjoexpress",
                         "mainEntityOfPage": siteUrl,
                         "url": siteUrl,
                         // "sameAs": [
@@ -65,23 +65,23 @@ export default function Seo({ seo }) {
                         //     "https://www.dribbble.com/{name}",
                         //     "https://www.behance.net/{name}"
                         // ],
-                        "email": "sits@sits.eu",
-                        "contactPoint": {
-                            "@type": "ContactPoint",
-                            "telephone": "+48 564 930 700",
-                            "contactType": "customer support",
-                            "contactOption": "TollFree",
-                            "areaServed": "PL"
-                        },
+                        // "email": "sits@sits.eu",
+                        // "contactPoint": {
+                        //     "@type": "ContactPoint",
+                        //     "telephone": "+48 564 930 700",
+                        //     "contactType": "customer support",
+                        //     "contactOption": "TollFree",
+                        //     "areaServed": "PL"
+                        // },
 
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Brodnica, Poland",
-                            "postalCode": "87-300",
-                            "streetAddress": "Gen. Sikorskiego 60"
-                        },
-                        "logo": "https://www.sits.eu/sites/default/files/logo.png",
-                        "vatId": "8741704017",
+                        // "address": {
+                        //     "@type": "PostalAddress",
+                        //     "addressLocality": "Brodnica, Poland",
+                        //     "postalCode": "87-300",
+                        //     "streetAddress": "Gen. Sikorskiego 60"
+                        // },
+                        // "logo": "https://www.sits.eu/sites/default/files/logo.png",
+                        // "vatId": "8741704017",
 
                     }
                 )}

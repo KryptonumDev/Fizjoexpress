@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { textParser } from "../helpers/text-parser"
 
 export const Card = ({data: el }) => (
-    <Item >
+    <Item className="item">
         <Link to={'/blog/' + el.slug + '/'}>
             <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
                 alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
@@ -28,7 +28,7 @@ const Item = styled.div`
     .content{
         height: calc(100% - 200px);
         padding: clamp(20px, ${30 / 1366 * 100}vw, 30px) clamp(20px, ${30 / 1366 * 100}vw, 30px) 24px clamp(20px, ${30 / 1366 * 100}vw, 30px);
-
+        background-color: var(--color-white);
         .big-text{
             padding-top: 15px;
             padding-bottom: 20px;

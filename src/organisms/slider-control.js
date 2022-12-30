@@ -5,7 +5,7 @@ import { textParser } from "../helpers/text-parser"
 export const Control = ({ white = false, header, title, slickRef }) => (
     <Wrapper className="control">
         <div>
-            <span className="text header">{header}</span>
+            <span className="small-header header">{header}</span>
             <h2 className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
         </div>
         <Buttons className={white ? 'white' : ''}>
@@ -44,11 +44,16 @@ const Buttons = styled.div`
         justify-content: center;
         align-items: center;
         background-color: var(--color-light-gray);
+        transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
         border: none;
         cursor: pointer;
 
         &:first-child{
             transform: rotateZ(180deg);
+        }
+
+        &:hover{
+            background-color: #ccc;
         }
     }
 
