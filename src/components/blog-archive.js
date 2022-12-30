@@ -1,12 +1,27 @@
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Container } from "../atoms/container"
 import { textParser } from "../helpers/text-parser"
 import { Pagination } from "../organisms/pagination"
 
-export default function Archive({ categories, posts }) {
+export default function Archive({ url, location, category, categories, posts }) {
+
+    const [page, setPage] = useState(() => {
+        if (!location.search) {
+            return 1
+        }
+
+        if (location.search === '') {
+            return 1
+        }
+
+        const urlParams = new URLSearchParams(location.search)
+
+        return parseInt(urlParams.get('page'))
+    })
+
     return (
         <Wrapper>
             <Container>
@@ -20,24 +35,28 @@ export default function Archive({ categories, posts }) {
                         ))}
                     </Categories>
                     <div className="title sub-title">
-                        Najnowsze wpisy:
+                        Najnowsze wpisy{category && ':'} <span>{category}</span>
                     </div>
                     <Grid>
-                        {posts.map(el => (
-                            <Item>
-                                <Link to={'/blog/' + el.slug + '/'}>
-                                    <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
-                                        alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
-                                    <div className="content">
-                                        <span className="small-header">{el.date}</span>
-                                        <p className="big-text">{el.title}</p>
-                                        <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
-                                    </div>
-                                </Link>
-                            </Item>
-                        ))}
+                        {posts.map((el, index) => {
+                            if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1))) {
+                                return (
+                                    <Item>
+                                        <Link to={'/blog/' + el.slug + '/'}>
+                                            {/* <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
+                                        alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} /> */}
+                                            <div className="content">
+                                                <span className="small-header">{el.date}</span>
+                                                <p className="big-text">{el.title}</p>
+                                                <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
+                                            </div>
+                                        </Link>
+                                    </Item>
+                                )
+                            }
+                        })}
                     </Grid>
-                    <Pagination />
+                    <Pagination pageUrl={url} posts={posts} setCurrentPage={setPage} page={page} />
                 </Content>
             </Container>
         </Wrapper>
@@ -45,6 +64,8 @@ export default function Archive({ categories, posts }) {
 }
 
 const Wrapper = styled.section`
+overflow: hidden;
+    padding-top: 0;
     .title{
         margin-top: 50px;
         margin-bottom: 30px;
@@ -115,7 +136,7 @@ const Item = styled.div`
     }
 
     .content{
-    height: calc(100% - 200px);
+        height: calc(100% - 200px);
         padding: 30px 30px 24px 30px;
 
         .big-text{

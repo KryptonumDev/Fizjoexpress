@@ -1,9 +1,10 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import Archive from '../../components/blog-archive'
-import Hero from '../../components/blog-hero'
+import Archive from './../components/blog-archive'
+import Hero from './../components/blog-hero'
 
-const CategoryPage = ({ data: { wpPage, categories, posts } }) => {
+const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categories, posts } }) => {
+  const url = pageContext.url ? pageContext.url : '/blog/'
   return (
     <main>
       <Hero data={{
@@ -12,7 +13,7 @@ const CategoryPage = ({ data: { wpPage, categories, posts } }) => {
         noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
         text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
       }} />
-      <Archive categories={categories.nodes} posts={posts.nodes} />
+      <Archive url={url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
     </main>
   )
 }
@@ -20,7 +21,10 @@ const CategoryPage = ({ data: { wpPage, categories, posts } }) => {
 export default CategoryPage
 
 export const CategoryPageQuery = graphql`
-  query {
+  query($id: String!, $slug: String!) {
+    wpCategory(id: { eq: $id }) {
+      name
+    }
     categories: allWpCategory(
       filter: { id: { ne: "dGVybTox" } }
     ) {
@@ -30,7 +34,7 @@ export const CategoryPageQuery = graphql`
         id
       }
     }
-    posts: allWpPost {
+    posts: allWpPost(filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}) {
       nodes {
         title
         slug
