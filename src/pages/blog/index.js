@@ -3,16 +3,15 @@ import React from 'react'
 import Archive from '../../components/blog-archive'
 import Hero from '../../components/blog-hero'
 
-const BlogPage = ({ pageContext, location, data: { wpPage, categories, posts } }) => {
+const BlogPage = ({ location, data: { wpPage, categories, posts } }) => {
   return (
     <main>
       <Hero data={{
         header: wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
         title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
-        noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
         text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
       }} />
-      <Archive url='/blog/' location={location} categories={categories.nodes} posts={posts.nodes} />
+      <Archive noResults={wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow} url='/blog/' location={location} categories={categories.nodes} posts={posts.nodes} />
     </main>
   )
 }

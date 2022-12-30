@@ -6,7 +6,7 @@ import { Container } from "../atoms/container"
 import { textParser } from "../helpers/text-parser"
 import { Pagination } from "../organisms/pagination"
 
-export default function Archive({ url, location, category, categories, posts }) {
+export default function Archive({ noResults, url, location, category, categories, posts }) {
     const [page, setPage] = useState(() => {
         if (!location.search) {
             return 1
@@ -20,7 +20,6 @@ export default function Archive({ url, location, category, categories, posts }) 
 
         return parseInt(urlParams.get('page'))
     })
-
     return (
         <Wrapper>
             <Container>
@@ -40,7 +39,7 @@ export default function Archive({ url, location, category, categories, posts }) 
                     </div>
                     <Grid>
                         {posts.map((el, index) => {
-                            if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1)) && el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga) {
+                            if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1))) {
                                 return (
                                     <Item>
                                         <Link to={'/blog/' + el.slug + '/'}>
@@ -57,12 +56,22 @@ export default function Archive({ url, location, category, categories, posts }) 
                             }
                         })}
                     </Grid>
+                    {posts.length < 1 && (
+                        <Placeholder>
+                            {noResults}
+                        </Placeholder>
+                    )}
+
                     <Pagination pageUrl={url} posts={posts} setCurrentPage={setPage} page={page} />
                 </Content>
             </Container>
         </Wrapper>
     )
 }
+
+const Placeholder = styled.div`
+
+`
 
 const Wrapper = styled.section`
 overflow: hidden;

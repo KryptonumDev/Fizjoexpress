@@ -9,10 +9,9 @@ const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categ
       <Hero data={{
         header: wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
         title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
-        noResults: wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow,
         text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
       }} />
-      <Archive url={pageContext.url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
+      <Archive noResults={wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow} url={pageContext.url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
     </main>
   )
 }
