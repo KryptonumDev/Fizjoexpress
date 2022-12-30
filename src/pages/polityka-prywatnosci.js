@@ -3,9 +3,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { Aside } from '../components/aside'
-import { ContentWrapper } from './blog/{WpPost.slug}'
+import SocialMediaIcons from '../components/social-media-icons'
+import { ContentWrapper, SocialWrapper } from './blog/{WpPost.slug}'
 
-const PolitykaPage = ({ data: { otherPosts, wpPage: { politykaPrywatnosci: { tresciPolitykiPrywatnosci } } } }) => {
+const PolitykaPage = ({ data: { global, otherPosts, wpPage: { politykaPrywatnosci: { tresciPolitykiPrywatnosci } } } }) => {
     return (
         <main>
             <MainWrapper>
@@ -17,6 +18,13 @@ const PolitykaPage = ({ data: { otherPosts, wpPage: { politykaPrywatnosci: { tre
                     </ContentWrapper>
                 </div>
                 <Aside posts={otherPosts.nodes} />
+                <SocialWrapper>
+                    <SocialMediaIcons
+                        text='Udostępnij'
+                        sectionVariant='light'
+                        data={global.globalneDaneIUstawienia.globalneGrafiki}
+                    />
+                </SocialWrapper>
             </MainWrapper>
         </main>
     )
@@ -57,6 +65,20 @@ const MainWrapper = styled(Container)`
 
 export const politykasQuery = graphql`
   query {
+    global: wpPage(id: { eq: "cG9zdDo1Mg==" }) {
+      globalneDaneIUstawienia {
+        globalneGrafiki {
+          socialMedia {
+            linkDoSocialMedia
+            ikonaSocialMedia {
+              localFile {
+                publicURL
+              }
+            }
+          }
+        }
+      }
+    }
     wpPage(id: { eq: "cG9zdDo0NA==" }){
         politykaPrywatnosci {
           tresciPolitykiPrywatnosci {

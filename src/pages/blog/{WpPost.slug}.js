@@ -73,7 +73,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
 
 export default BlogPost
 
-const SocialWrapper = styled.div`
+export const SocialWrapper = styled.div`
   margin-left: 100px;
 `
 
@@ -122,7 +122,7 @@ export const ContentWrapper = styled.div`
     color: var(--color-blue);
   }
 
-  h2 {
+  h2, h3 {
     font-size: 18px;
     font-weight: 600;
     line-height: ${35 / 18};
