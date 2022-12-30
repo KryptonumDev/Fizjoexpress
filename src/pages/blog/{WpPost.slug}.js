@@ -318,6 +318,7 @@ export const blogPostQuery = graphql`
         }
       }
       title
+      slug
       terms {
         nodes {
           name

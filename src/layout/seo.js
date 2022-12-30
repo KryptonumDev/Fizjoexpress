@@ -69,13 +69,13 @@ export default function Seo({ post = false, seo }) {
                             "@type": "Organization",
                             "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
                         },
-                        "additionalProperty": {
-                            "@type": "Phisioteraphy",
-                            "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
-                        },
+                        // "additionalProperty": {
+                        //     "@type": "Phisioteraphy",
+                        //     "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
+                        // },
                         "name": "Fizjoexpress by Rehalthy",
                         "legalName": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
-                        "image": "https://fizjoexpress.pl/superzdjecelokalu.jpg",
+                        // "image": "https://fizjoexpress.pl/superzdjecelokalu.jpg", 
                         "url": "https://fizjoexpress.pl/",
                         "website": {
                             "@type": "WebSite",
@@ -134,16 +134,16 @@ export default function Seo({ post = false, seo }) {
                                 "https://facebook.com/jonasz",
                                 "https://www.linkedin.com/company/jonasz"
                             ],
-                            "employee": {
-                                "@type": "Person",
-                                "name": "Edgar Walaszczyk",
-                                "jobTitle": "Fizjoterapeuta",
-                                "alumniOf": "Uniwersytet Rzeszowski",
-                                "sameAs": [
-                                    "https://facebook.com/edgar",
-                                    "https://www.linkedin.com/company/edgar"
-                                ]
-                            }
+                        },
+                        "employee": {
+                            "@type": "Person",
+                            "name": "Edgar Walaszczyk",
+                            "jobTitle": "Fizjoterapeuta",
+                            "alumniOf": "Uniwersytet Rzeszowski",
+                            "sameAs": [
+                                "https://facebook.com/edgar",
+                                "https://www.linkedin.com/company/edgar"
+                            ]
                         }
                     }
                 )}
@@ -179,7 +179,7 @@ export default function Seo({ post = false, seo }) {
                                 "name": "Fizjoexpress",
                                 "website": {
                                     "@type": "Website",
-                                    "url": "https://fizjoexpress.pl"
+                                    "url": "https://fizjoexpress.pl/"
                                 },
                                 "logo": {
                                     "@type": "ImageObject",
