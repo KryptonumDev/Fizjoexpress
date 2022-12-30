@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { textParser } from '../helpers/text-parser'
@@ -26,8 +27,34 @@ export default function Faq({ data: { header, title } }) {
     }
   `)
 
+  const arr = useMemo(() => {
+    let a = []
+    pytaniaIOdpowiedzi.forEach(el => {
+      arr.push({
+        "@type": "Question",
+        "name": el.pytanie,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": el.odpowiedz
+        }
+      })
+    })
+    return a
+  }, [pytaniaIOdpowiedzi])
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": arr
+  };
+
   return (
     <Wrapper>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      </Helmet>
       <Container>
         <Content>
           <span className='text'>{header}</span>
