@@ -30,7 +30,7 @@ export default function Faq({ data: { header, title } }) {
   const arr = useMemo(() => {
     let a = []
     pytaniaIOdpowiedzi.forEach(el => {
-      arr.push({
+      a.push({
         "@type": "Question",
         "name": el.pytanie,
         "acceptedAnswer": {
