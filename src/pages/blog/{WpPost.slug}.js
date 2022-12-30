@@ -1,11 +1,10 @@
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../atoms/container'
 import { Aside } from '../../components/aside'
 import SocialMediaIcons from '../../components/social-media-icons'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
-import { textParser } from '../../helpers/text-parser'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
@@ -54,6 +53,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
       </header>
       <MainWrapper id='blog-content'>
         <ContentWrapper
+        className='content'
           dangerouslySetInnerHTML={{
             __html: content
           }}
@@ -78,6 +78,12 @@ export const SocialWrapper = styled.div`
   @media (max-width: 1200px) {
     margin-left: 0;
   }
+  
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    grid-area: 'share';
+  }
 `
 
 const MainWrapper = styled(Container)`
@@ -95,6 +101,18 @@ const MainWrapper = styled(Container)`
   }
   @media (max-width: 900px) {
     grid-column-gap: clamp(40px, 6.2vw, 72px);
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  grid-template-areas: 
+  'content'
+  'share'
+  'aside';
+
+  .content{
+    grid-area: 'content';
+  }
   }
 `
 

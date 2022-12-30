@@ -14,7 +14,7 @@ const SocialMediaIcons = ({
       <ul>
         {socialMedia?.map(({ linkDoSocialMedia, ikonaSocialMedia }) => (
           <li key={linkDoSocialMedia}>
-            <a href={linkDoSocialMedia} target='_blank'>
+            <a href={linkDoSocialMedia} target='_blank'  rel="noreferrer noopener">
               <img
                 src={ikonaSocialMedia.localFile.publicURL}
                 alt={linkDoSocialMedia}

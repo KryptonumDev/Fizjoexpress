@@ -143,6 +143,7 @@ const FooterWrapper = styled.footer`
   background-color: var(--color-blue);
   color: var(--color-white);
   padding: 60px 0 0 0;
+  overflow: hidden  ;
 `
 
 const FooterContainer = styled(Container)``

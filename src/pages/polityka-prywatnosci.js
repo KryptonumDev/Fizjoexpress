@@ -10,7 +10,7 @@ const PolitykaPage = ({ data: { global, otherPosts, wpPage: { politykaPrywatnosc
     return (
         <main>
             <MainWrapper>
-                <div>
+                <div className='content'>
                     <span className='small-header'>{tresciPolitykiPrywatnosci.malyNaglowekNadTytulem}</span>
                     <h1 className='sub-title'>{tresciPolitykiPrywatnosci.tytulSekcji}</h1>
                     <ContentWrapper>
@@ -48,6 +48,18 @@ const MainWrapper = styled(Container)`
   }
   @media (max-width: 900px) {
     grid-column-gap: clamp(40px, 6.2vw, 72px);
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  grid-template-areas: 
+  'content'
+  'share'
+  'aside';
+
+  .content{
+    grid-area: 'content';
+  }
   }
 
   .small-header, .sub-title{
