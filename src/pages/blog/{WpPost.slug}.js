@@ -90,7 +90,11 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
           })}
         </AsideWrapper>
         <SocialWrapper>
-          <SocialMediaIcons sectionVariant='light' data={globalneGrafiki} />
+          <SocialMediaIcons
+            text='Udostępnij'
+            sectionVariant='light'
+            data={globalneGrafiki}
+          />
         </SocialWrapper>
       </MainWrapper>
     </>

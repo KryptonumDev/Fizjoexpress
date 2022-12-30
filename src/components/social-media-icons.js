@@ -3,13 +3,14 @@ import styled from 'styled-components'
 
 const SocialMediaIcons = ({
   sectionVariant = 'dark',
+  text = 'Social Media',
   data: { socialMedia }
 }) => {
   if (socialMedia?.length < 1) return null
   console.log(socialMedia)
   return (
     <SocialMediaWrapper color={sectionVariant}>
-      <span className='text'>Social Media</span>
+      <span className='text'>{text ? text : 'Social Media'}</span>
       <ul>
         {socialMedia?.map(({ linkDoSocialMedia, ikonaSocialMedia }) => (
           <li key={linkDoSocialMedia}>
