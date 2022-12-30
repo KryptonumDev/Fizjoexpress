@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Fizjoexpress `,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://fizjoexpress.pl`
   },
   plugins: [
     {
@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: './src/static/logo.svg',
+        icon: './src/images/logo.svg',
         name: `Fizjoexpress`,
         short_name: `Fizjoexpress`,
         start_url: `/`,

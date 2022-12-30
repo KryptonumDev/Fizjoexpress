@@ -10,11 +10,11 @@ import Seo from '../../layout/seo'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
-export function Head({ data: { wpPost: { seo } } }) {
+export function Head({ data: { wpPost } }) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo post={wpPost} seo={wpPost.seo} />
     </>
   )
 }
@@ -64,12 +64,12 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
       </header>
       <MainWrapper id='blog-content'>
         <ContentWrapper
-        className='content'
+          className='content'
           dangerouslySetInnerHTML={{
             __html: content
           }}
         />
-        <Aside posts={postsToLink}/>
+        <Aside posts={postsToLink} />
         <SocialWrapper>
           <SocialMediaIcons
             text='Udostępnij'
@@ -304,6 +304,9 @@ export const blogPostQuery = graphql`
   query ($id: String) {
     wpPost(id: { eq: $id }) {
       seo {
+        opengraphModifiedTime
+        metaKeywords
+        opengraphPublishedTime
         canonical
         metaDesc
         opengraphSiteName
