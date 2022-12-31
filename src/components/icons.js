@@ -43,7 +43,7 @@ export const Logo = ({
   onClick,
   variant = FIZJOEXPRESS_LOGO_VARIANTS.COLOR_WITH_BLUE_BG
 }) => (
-  <Link to='/' onClick={onClick}>
+  <Link title='Fizjoexpress – fizjoterapia Warszawa' to='/' onClick={onClick}>
     <StyledLogo
       className={className}
       version='1.1'
@@ -191,6 +191,7 @@ export const KryptonumLogo = () => (
     className='kryptonum-logo'
     href='https://kryptonum.eu/'
     target='_blank'
+    rel='noreferrer'
     title='Kryptonum'>
     <svg
       width='96'

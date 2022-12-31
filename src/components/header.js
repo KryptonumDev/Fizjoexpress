@@ -80,7 +80,10 @@ const Header = () => {
             className='logo--header'
             variant={FIZJOEXPRESS_LOGO_VARIANTS.COLOR_WHITE_BG}
           />
-          <MobileButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+          <MobileButton
+            name='przycisk otwierający menu mobilne'
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}>
             <span />
           </MobileButton>
         </LogoContainer>
@@ -88,7 +91,7 @@ const Header = () => {
           <span className='nav-header sub-title'>Menu</span>
           <ul>
             {naglowek.linkiWNaglowku.map(({ link: { url, title } }) => (
-              <li>
+              <li key={`header-nav-${url}`}>
                 <Link
                   onClick={() => setIsOpen(false)}
                   activeClassName='active'
