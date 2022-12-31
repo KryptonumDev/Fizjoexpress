@@ -12,7 +12,7 @@ const ContactPage = ({
 }) => {
   const { kontaktInformacje, formularzKontaktowy } = kontakt
   return (
-    <main>
+    <main id='content'>
       <TwoColumnWithFormContainer>
         <TextContainer>
           <h1

@@ -6,7 +6,6 @@ const siteUrl = 'https://fizjoexpress.pl'
 export default function Seo({ post = false, seo }) {
   const canonical = siteUrl + seo.canonical
 
-  debugger
   return (
     <>
       <meta charSet='utf-8' />

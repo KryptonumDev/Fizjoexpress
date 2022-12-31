@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import Footer from '../components/footer'
+import Header from '../components/header'
 import GlobalStyles from './../styles/global'
 
 export default function Layout({ children }) {
   return (
     <Wrapper>
       <GlobalStyles />
-      {/* <Header /> */}
+      <Header />
       {children}
       <Footer />
     </Wrapper>

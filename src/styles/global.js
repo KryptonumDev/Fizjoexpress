@@ -14,7 +14,9 @@ const GlobalStyles = createGlobalStyle`
         --color-darker-light-gray: #70707040;
         --color-medium-gray: #E9E9E9;
         --color-dark-gray: #212939;
+        --color-darkest-gray: #272728;
 
+        --color-transparent: transparent;
 
         --margin-intersection: clamp(40px,  ${(100 / 1366) * 100}vw, 100px);
 
@@ -33,6 +35,11 @@ const GlobalStyles = createGlobalStyle`
 
     section{
         padding-top: var(--margin-intersection);
+    }
+
+
+    #content {
+        padding-top: 78px;
     }
 
     body{

@@ -13,7 +13,11 @@ import TwoColumnWithGrayBackground from '../components/two-column-with-gray-back
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import Seo from '../layout/seo'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -29,30 +33,24 @@ const IndexPage = ({
   }
 }) => {
   return (
-    <main>
+    <main id='content'>
       <Hero
         colorVariant='dark'
         headerVariant='bigger'
         data={homepage.sekcjaPowitalnaHomepage}
-        socialMedia={
-          globalneDaneIUstawienia.globalneGrafiki
-        }
+        socialMedia={globalneDaneIUstawienia.globalneGrafiki}
       />
       <TwoColumnFlex
         variant={TwoColumnFlexVariants.buttonOverImage}
         data={{
-          header:
-            homepage.sekcjaOFizjoexpress.aboutSmallHeader,
+          header: homepage.sekcjaOFizjoexpress.aboutSmallHeader,
           title: homepage.sekcjaOFizjoexpress.aboutTitle,
           text: homepage.sekcjaOFizjoexpress.aboutText,
-          image:
-            homepage.sekcjaOFizjoexpress.aboutVerticalImage,
+          image: homepage.sekcjaOFizjoexpress.aboutVerticalImage,
           link: homepage.sekcjaOFizjoexpress.ctaLink
         }}
       />
-      <ServicesGrid
-        data={homepage.sekcjaCoLeczymyWFizjoexpress}
-      />
+      <ServicesGrid data={homepage.sekcjaCoLeczymyWFizjoexpress} />
       <TwoColumnFlex
         reverse={true}
         variant={TwoColumnFlexVariants.buttonUnderText}
@@ -64,18 +62,22 @@ const IndexPage = ({
           link: homepage.sekcjaCzekamyWlasnieNaCiebie.linkPrzycisku
         }}
       />
-      <Process variant={TwoColumnFlexVariants.buttonUnderText} data={homepage.sekcjaProcesWspolpracy} />
-      <Reviews data={{
-        header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
-        title: homepage.homeSekcjaZOpiniami.naglowekSekcji,
-        text: homepage.homeSekcjaZOpiniami.tekstPodNaglowkiem,
-        link: homepage.homeSekcjaZOpiniami.przyciskDoOpinii,
-        image: homepage.homeSekcjaZOpiniami.testimonialsVerticalImage,
-        underlineText: homepage.homeSekcjaZOpiniami.tekstPodKreska,
+      <Process
+        variant={TwoColumnFlexVariants.buttonUnderText}
+        data={homepage.sekcjaProcesWspolpracy}
+      />
+      <Reviews
+        data={{
+          header: homepage.homeSekcjaZOpiniami.malyNaglowekNadTytulem,
+          title: homepage.homeSekcjaZOpiniami.naglowekSekcji,
+          text: homepage.homeSekcjaZOpiniami.tekstPodNaglowkiem,
+          link: homepage.homeSekcjaZOpiniami.przyciskDoOpinii,
+          image: homepage.homeSekcjaZOpiniami.testimonialsVerticalImage,
+          underlineText: homepage.homeSekcjaZOpiniami.tekstPodKreska,
 
-        reviewsTitle: homepage.homeSekcjaZOpiniami.tytulNadOpiniami,
-        reviewsHeader: homepage.homeSekcjaZOpiniami.malyNaglowekNadOpiniami
-      }}
+          reviewsTitle: homepage.homeSekcjaZOpiniami.tytulNadOpiniami,
+          reviewsHeader: homepage.homeSekcjaZOpiniami.malyNaglowekNadOpiniami
+        }}
       />
       <TwoColumnWithGrayBackground
         data={{
@@ -84,17 +86,16 @@ const IndexPage = ({
           text: homepage.sekcjaSiedzacyTrybZyciaIBtp.trescPodTytulem,
           link: homepage.sekcjaSiedzacyTrybZyciaIBtp.przyciskZLinkiem,
           image: homepage.sekcjaSiedzacyTrybZyciaIBtp.poziomeZdjecieWSekcji
-        }} />
+        }}
+      />
       <TwoColumnFlex
         variant={TwoColumnFlexVariants.buttonOverImage}
         data={{
-          header:
-            homepage.sekcjaFizjoterapiaWarszawa.malyNaglowekPrzedTytulem,
+          header: homepage.sekcjaFizjoterapiaWarszawa.malyNaglowekPrzedTytulem,
           title: homepage.sekcjaFizjoterapiaWarszawa.tytulSekcji,
           text: homepage.sekcjaFizjoterapiaWarszawa.tekstPodTytulem,
           cytate: homepage.sekcjaFizjoterapiaWarszawa.trescCytatu,
-          image:
-            homepage.sekcjaFizjoterapiaWarszawa.zdjeciePionowe,
+          image: homepage.sekcjaFizjoterapiaWarszawa.zdjeciePionowe,
           link: homepage.sekcjaFizjoterapiaWarszawa.przyciskZLinkiem
         }}
       />
@@ -122,7 +123,8 @@ const IndexPage = ({
           text: homepage.homeSekcjaBloga.trescPodTytulem,
           link: homepage.homeSekcjaBloga.przyciskZLinkiem,
           image: homepage.homeSekcjaBloga.homeBlogVerticalImage,
-          blogSlider: homepage.homeSekcjaBloga.wyswietlacSekcjeZNajnowszymiArtykulami
+          blogSlider:
+            homepage.homeSekcjaBloga.wyswietlacSekcjeZNajnowszymiArtykulami
         }}
       />
     </main>
@@ -248,8 +250,8 @@ export const query = graphql`
           }
           poziomeZdjecieWSekcji {
             altText
-            localFile{
-              childImageSharp{
+            localFile {
+              childImageSharp {
                 gatsbyImageData
               }
             }
@@ -261,8 +263,8 @@ export const query = graphql`
           malyNaglowekNadTytulem
           waitVerticalImage {
             altText
-            localFile{
-              childImageSharp{
+            localFile {
+              childImageSharp {
                 gatsbyImageData
               }
             }

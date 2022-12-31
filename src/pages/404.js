@@ -3,7 +3,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import Hero from '../components/hero-homepage'
 
-export function Head({ data}) {
+export function Head({ data }) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -11,9 +11,15 @@ export function Head({ data}) {
   )
 }
 
-const ErrorPage = ({ data: { wpPage: {error: {heroErrorpage}} } }) => {
+const ErrorPage = ({
+  data: {
+    wpPage: {
+      error: { heroErrorpage }
+    }
+  }
+}) => {
   return (
-    <main>
+    <main id='content'>
       <Hero
         colorVariant='dark'
         headerVariant='bigger'
@@ -33,27 +39,27 @@ export default ErrorPage
 
 export const errorQuery = graphql`
   query {
-    wpPage(id: { eq: "cG9zdDo0OQ==" }){
-        error {
-          heroErrorpage {
-            tytulSekcji
-            tekstPodTytulem
-            przyciskZLinkiem {
-              url
-              title
-              target
-            }
-            malyNaglowekNadTytulemSekcji
-            grafikaWTle {
-              altText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
+    wpPage(id: { eq: "cG9zdDo0OQ==" }) {
+      error {
+        heroErrorpage {
+          tytulSekcji
+          tekstPodTytulem
+          przyciskZLinkiem {
+            url
+            title
+            target
+          }
+          malyNaglowekNadTytulemSekcji
+          grafikaWTle {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
               }
             }
           }
         }
+      }
     }
   }
 `

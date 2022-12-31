@@ -5,7 +5,11 @@ import Archive from '../../components/blog-archive'
 import Hero from '../../components/blog-hero'
 import Seo from '../../layout/seo'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -16,13 +20,25 @@ export function Head({ data: { wpPage: { seo } } }) {
 
 const BlogPage = ({ location, data: { wpPage, categories, posts } }) => {
   return (
-    <main>
-      <Hero data={{
-        header: wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
-        title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
-        text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
-      }} />
-      <Archive noResults={wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow} url='/blog/' location={location} categories={categories.nodes} posts={posts.nodes} />
+    <main id='content'>
+      <Hero
+        data={{
+          header:
+            wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
+          title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
+          text: wpPage.blog.informacjeNaStronieBloga
+            .akapitTekstuWSekcjiPowitalnej
+        }}
+      />
+      <Archive
+        noResults={
+          wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow
+        }
+        url='/blog/'
+        location={location}
+        categories={categories.nodes}
+        posts={posts.nodes}
+      />
     </main>
   )
 }
@@ -31,9 +47,7 @@ export default BlogPage
 
 export const blogQuery = graphql`
   query {
-    categories: allWpCategory(
-      filter: { id: { ne: "dGVybTox" } }
-    ) {
+    categories: allWpCategory(filter: { id: { ne: "dGVybTox" } }) {
       nodes {
         name
         slug
@@ -61,7 +75,7 @@ export const blogQuery = graphql`
         excerpt
       }
     }
-    wpPage(id: { eq: "cG9zdDozOA==" }){
+    wpPage(id: { eq: "cG9zdDozOA==" }) {
       seo {
         canonical
         metaDesc

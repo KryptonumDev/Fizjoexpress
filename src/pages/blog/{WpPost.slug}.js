@@ -49,7 +49,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
   const postsToLink = otherPosts.nodes
 
   return (
-    <>
+    <main id='content'>
       <header>
         <TwoColumnFlexBlogPost
           data={{
@@ -62,7 +62,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
           }}
         />
       </header>
-      <MainWrapper id='blog-content'>
+      <MainWrapper id='blog-content' as='main'>
         <ContentWrapper
           className='content'
           dangerouslySetInnerHTML={{
@@ -78,7 +78,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
           />
         </SocialWrapper>
       </MainWrapper>
-    </>
+    </main>
   )
 }
 

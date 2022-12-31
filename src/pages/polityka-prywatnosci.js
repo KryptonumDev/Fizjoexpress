@@ -8,7 +8,11 @@ import SocialMediaIcons from '../components/social-media-icons'
 import Seo from '../layout/seo'
 import { ContentWrapper, SocialWrapper } from './blog/{WpPost.slug}'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -17,32 +21,45 @@ export function Head({ data: { wpPage: { seo } } }) {
   )
 }
 
-const PolitykaPage = ({ data: { global, otherPosts, wpPage: { politykaPrywatnosci: { tresciPolitykiPrywatnosci } } } }) => {
-    return (
-        <main>
-            <MainWrapper>
-                <div className='content'>
-                    <span className='small-header'>{tresciPolitykiPrywatnosci.malyNaglowekNadTytulem}</span>
-                    <h1 className='sub-title'>{tresciPolitykiPrywatnosci.tytulSekcji}</h1>
-                    <ContentWrapper>
-                        <div dangerouslySetInnerHTML={{ __html: tresciPolitykiPrywatnosci.trescPolityki }} />
-                    </ContentWrapper>
-                </div>
-                <Aside posts={otherPosts.nodes} />
-                <SocialWrapper>
-                    <SocialMediaIcons
-                        text='Udostępnij'
-                        sectionVariant='light'
-                        data={global.globalneDaneIUstawienia.globalneGrafiki}
-                    />
-                </SocialWrapper>
-            </MainWrapper>
-        </main>
-    )
+const PolitykaPage = ({
+  data: {
+    global,
+    otherPosts,
+    wpPage: {
+      politykaPrywatnosci: { tresciPolitykiPrywatnosci }
+    }
+  }
+}) => {
+  return (
+    <main id='content'>
+      <MainWrapper>
+        <div className='content'>
+          <span className='small-header'>
+            {tresciPolitykiPrywatnosci.malyNaglowekNadTytulem}
+          </span>
+          <h1 className='sub-title'>{tresciPolitykiPrywatnosci.tytulSekcji}</h1>
+          <ContentWrapper>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: tresciPolitykiPrywatnosci.trescPolityki
+              }}
+            />
+          </ContentWrapper>
+        </div>
+        <Aside posts={otherPosts.nodes} />
+        <SocialWrapper>
+          <SocialMediaIcons
+            text='Udostępnij'
+            sectionVariant='light'
+            data={global.globalneDaneIUstawienia.globalneGrafiki}
+          />
+        </SocialWrapper>
+      </MainWrapper>
+    </main>
+  )
 }
 
 export default PolitykaPage
-
 
 const MainWrapper = styled(Container)`
   max-width: 1366px;
@@ -63,24 +80,25 @@ const MainWrapper = styled(Container)`
 
   @media (max-width: 860px) {
     grid-template-columns: 1fr;
-  grid-template-areas: 
-  'content'
-  'share'
-  'aside';
+    grid-template-areas:
+      'content'
+      'share'
+      'aside';
 
-  .content{
-    grid-area: 'content';
-  }
+    .content {
+      grid-area: 'content';
+    }
   }
 
-  .small-header, .sub-title{
+  .small-header,
+  .sub-title {
     margin-left: 100px;
 
     @media (max-width: 1200px) {
-    margin-left: 0;
+      margin-left: 0;
     }
   }
-  .sub-title{
+  .sub-title {
     margin-bottom: 30px;
     margin-top: 10px;
   }
@@ -102,25 +120,25 @@ export const politykasQuery = graphql`
         }
       }
     }
-    wpPage(id: { eq: "cG9zdDo0NA==" }){
-        seo {
-          canonical
-          metaDesc
-          opengraphSiteName
-          title
-          opengraphImage {
-            localFile {
-              publicURL
-            }
+    wpPage(id: { eq: "cG9zdDo0NA==" }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
           }
         }
-        politykaPrywatnosci {
-          tresciPolitykiPrywatnosci {
-            malyNaglowekNadTytulem
-            tytulSekcji
-            trescPolityki
-          }
+      }
+      politykaPrywatnosci {
+        tresciPolitykiPrywatnosci {
+          malyNaglowekNadTytulem
+          tytulSekcji
+          trescPolityki
         }
+      }
     }
     otherPosts: allWpPost(limit: 2) {
       nodes {

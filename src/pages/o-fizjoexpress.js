@@ -13,7 +13,11 @@ import TwoColumnWithDarkBackground from '../components/two-column-with-dark-back
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import Seo from '../layout/seo'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -42,7 +46,7 @@ const AboutPage = ({
   }
 }) => {
   return (
-    <main>
+    <main id='content'>
       <Hero
         colorVariant='light'
         headerVariant='smaller'
@@ -51,14 +55,10 @@ const AboutPage = ({
           heroText: aboutSekcjaPowitalna.tekstPodTytulem,
           text: aboutSekcjaPowitalna.malyNaglowekNadTytulemSekcji,
           buttonLink: aboutSekcjaPowitalna.przyciskZLinkiem,
-          zdjecieWTle:
-            aboutSekcjaPowitalna.aboutHeroBgImage,
-          featuredTextOverBg:
-            aboutSekcjaPowitalna.tekstWSzarymProstokacie
+          zdjecieWTle: aboutSekcjaPowitalna.aboutHeroBgImage,
+          featuredTextOverBg: aboutSekcjaPowitalna.tekstWSzarymProstokacie
         }}
-        socialMedia={
-          globalneDaneIUstawienia.globalneGrafiki
-        }
+        socialMedia={globalneDaneIUstawienia.globalneGrafiki}
       />
       <TwoColumnFlex
         data={{
@@ -76,18 +76,13 @@ const AboutPage = ({
           text: sekcjaLokalizacjaFizjoexpress?.aboutText,
           link: sekcjaLokalizacjaFizjoexpress?.buttonWithCtaLink,
           image: sekcjaLokalizacjaFizjoexpress?.aboutLocalizationHorizontalImage
-        }} />
+        }}
+      />
       <TwoColumnTextSection
-        smallHeader={
-          sekcjaPoczatkiFizjoexpress.aboutSmallHeader
-        }
+        smallHeader={sekcjaPoczatkiFizjoexpress.aboutSmallHeader}
         title={sekcjaPoczatkiFizjoexpress.aboutTitle}
-        firstColumnContent={
-          sekcjaPoczatkiFizjoexpress.pierwszaKolumnaTresci
-        }
-        secondColumnContent={
-          sekcjaPoczatkiFizjoexpress.drugaKolumnaTresci
-        }
+        firstColumnContent={sekcjaPoczatkiFizjoexpress.pierwszaKolumnaTresci}
+        secondColumnContent={sekcjaPoczatkiFizjoexpress.drugaKolumnaTresci}
         link={sekcjaPoczatkiFizjoexpress.buttonWithCtaLink}
       />
       <Team
@@ -111,7 +106,7 @@ const AboutPage = ({
           header: aboutFastComebackToFitness.malyNaglowekPrzedTytulem,
           title: aboutFastComebackToFitness.tytulSekcji,
           text: aboutFastComebackToFitness.trescPodTytulem,
-          image: aboutFastComebackToFitness.kwadratoweZdjecie,
+          image: aboutFastComebackToFitness.kwadratoweZdjecie
         }}
       />
       <Cta
@@ -122,7 +117,7 @@ const AboutPage = ({
           text: aboutFastComebackToFitness.featuredTextOnGrayBg
         }}
       />
-     <Reserve
+      <Reserve
         data={{
           header: aboutSekcjaZarezerwujTermin.malyNaglowekPrzedTytulem,
           title: aboutSekcjaZarezerwujTermin.tytulSekcji,
