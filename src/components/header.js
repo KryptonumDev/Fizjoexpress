@@ -129,6 +129,7 @@ const HeaderWrapper = styled.header`
 
   @media (max-width: 896px) {
     background-color: transparent;
+    pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
     box-shadow: none;
   }
 `
@@ -147,6 +148,7 @@ const HeaderContainer = styled(Container)`
     background-color: transparent;
     padding: 0;
     gap: 0;
+    pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
   }
 `
 
@@ -163,6 +165,7 @@ const LogoContainer = styled.div`
     padding: 0 16px;
     max-height: 72px;
     z-index: 2;
+    pointer-events: all;
     .logo--header {
       margin-top: 13px;
     }
