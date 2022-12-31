@@ -1,16 +1,27 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { Aside } from '../components/aside'
 import SocialMediaIcons from '../components/social-media-icons'
+import Seo from '../layout/seo'
 import { ContentWrapper, SocialWrapper } from './blog/{WpPost.slug}'
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const PolitykaPage = ({ data: { global, otherPosts, wpPage: { politykaPrywatnosci: { tresciPolitykiPrywatnosci } } } }) => {
     return (
         <main>
             <MainWrapper>
-                <div>
+                <div className='content'>
                     <span className='small-header'>{tresciPolitykiPrywatnosci.malyNaglowekNadTytulem}</span>
                     <h1 className='sub-title'>{tresciPolitykiPrywatnosci.tytulSekcji}</h1>
                     <ContentWrapper>
@@ -50,6 +61,18 @@ const MainWrapper = styled(Container)`
     grid-column-gap: clamp(40px, 6.2vw, 72px);
   }
 
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  grid-template-areas: 
+  'content'
+  'share'
+  'aside';
+
+  .content{
+    grid-area: 'content';
+  }
+  }
+
   .small-header, .sub-title{
     margin-left: 100px;
 
@@ -80,6 +103,17 @@ export const politykasQuery = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDo0NA==" }){
+        seo {
+          canonical
+          metaDesc
+          opengraphSiteName
+          title
+          opengraphImage {
+            localFile {
+              publicURL
+            }
+          }
+        }
         politykaPrywatnosci {
           tresciPolitykiPrywatnosci {
             malyNaglowekNadTytulem

@@ -54,7 +54,7 @@ export default function Hero({
           )}
           {buttonLinkSecond?.url && (
             <Link
-              className='button'
+              className='button second'
               to={buttonLinkSecond.url}
               target={
                 buttonLinkSecond.target
@@ -103,6 +103,29 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+
+  .second{
+    margin-left: 30px;
+    position: relative;
+
+
+    &::after{
+      content: "";
+      position: absolute;
+      background-color: var(--color-blue);
+      width: 80px;
+      left: 0;
+      bottom: -5px;
+      height: 2px;
+      transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    &:hover{
+      &::after{
+        width: 100%;
+      }
+    }
+  }
 
   @media (max-width: 1240px) {
     ${({ color }) =>

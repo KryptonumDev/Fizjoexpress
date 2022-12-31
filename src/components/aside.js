@@ -3,51 +3,77 @@ import React from "react"
 import styled from "styled-components"
 import { textParser } from "../helpers/text-parser"
 
-export const Aside = ({posts}) => (
-    <Wrapper>
-        <span className='aside-header big-text'>
-            Dowiedz się jeszcze więcej
-        </span>
-        {posts.map((post) => {
-            const {
-                title,
-                slug,
-                excerpt,
-                terms: { nodes: categories }
-            } = post
-            const category = categories.filter((category) => category.name)[0]
-            return (
-                <Link className='other-post' key={post.slug} to={`/blog/${slug}`}>
-                    <article>
-                        <span className='post-category'>{category.name}</span>
-                        <h3 className='post-header big-text'>{title}</h3>
-                        <div
-                            className='post-excerpt'
-                            dangerouslySetInnerHTML={{
-                                __html: textParser(excerpt)
-                            }}
-                        />
-                        <span className='button button--secondary'>
-                            Poznaj więcej szczegółów
-                        </span>
-                    </article>
-                </Link>
-            )
-        })}
-    </Wrapper>
+export const Aside = ({ posts }) => (
+  <Wrapper>
+    <span className='aside-header big-text'>
+      Dowiedz się jeszcze więcej
+    </span>
+    <Posts>
+      {posts.map((post, index) => {
+        const {
+          title,
+          slug,
+          excerpt,
+          terms: { nodes: categories }
+        } = post
+        const category = categories.filter((category) => category.name)[0]
+        return (
+          <Link className='other-post' key={post.slug + index} to={`/blog/${slug}`}>
+            <article>
+              <span className='post-category'>{category.name}</span>
+              <h3 className='post-header big-text'>{title}</h3>
+              <div
+                className='post-excerpt'
+                dangerouslySetInnerHTML={{
+                  __html: textParser(excerpt)
+                }}
+              />
+              <span className='button button--secondary'>
+                Poznaj więcej szczegółów
+              </span>
+            </article>
+          </Link>
+        )
+      })}
+    </Posts>
+  </Wrapper>
 )
+
+const Posts = styled.div`
+a{
+  display: block;
+}
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: 10px;
+
+@media (max-width: 860px){
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+@media (max-width: 580px) {
+  grid-template-columns: 1fr;
+  max-width: 380px;
+}
+`
 
 const Wrapper = styled.aside`
 position: sticky;
 top: 40px;
 max-height: min(80vh, 655px);
-display: flex;
-flex-direction: column;
-gap: 10px;
 padding-right: 100px;
 
 @media (max-width: 1200px) {
   padding-right: 0;
+}
+
+@media (max-width: 860px){
+  position: unset;
+  margin-top: 30px;
+  grid-area: aside;
 }
 
 .aside-header {
@@ -57,6 +83,13 @@ padding-right: 100px;
   padding: 20px 30px 16px;
   background-color: var(--color-light-gray);
   aspect-ratio: 1/1;
+
+  @media (max-width: 680px) {
+  min-height: 285px;
+  aspect-ratio: unset;
+    
+  }
+
 
   > article {
     display: flex;

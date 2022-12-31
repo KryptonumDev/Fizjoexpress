@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import Cta from '../components/cta'
 import Faq from '../components/faq'
 import Hero from '../components/hero-homepage'
@@ -10,6 +11,16 @@ import TwoColumnFlex from '../components/two-column-flex'
 import TwoColumnTextSection from '../components/two-column-text-section'
 import TwoColumnWithDarkBackground from '../components/two-column-with-dark-background'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
+import Seo from '../layout/seo'
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const AboutPage = ({
   data: {
@@ -161,6 +172,17 @@ export const query = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDoyOQ==" }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       oFizjoexpress {
         aboutSekcjaFaq {
           faqTitle

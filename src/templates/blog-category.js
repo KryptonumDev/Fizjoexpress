@@ -1,7 +1,18 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
+import Seo from '../layout/seo'
 import Archive from './../components/blog-archive'
 import Hero from './../components/blog-hero'
+
+export function Head({ data: { wpPage: { seo } } }) {
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
 
 const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categories, posts } }) => {
   return (
@@ -54,6 +65,17 @@ export const CategoryPageQuery = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDozOA==" }){
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       blog {
         informacjeNaStronieBloga {
           tytulSekcji

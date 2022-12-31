@@ -11,8 +11,8 @@ export default function Cta({ gray, data: { text, linkOne, linkTwo } }) {
                 <TextBlock className={gray ? 'gray' : ''}>
                     <div className="big-text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     <Buttons>
-                        <Button>{linkOne.title}</Button>
-                        <a className="link button">{linkTwo.title}</a>
+                        <Button to={linkOne.url} target={linkOne.target}>{linkOne.title}</Button>
+                        <a className="link button second" href={linkTwo.url} target={linkTwo.target ? linkTwo : ''}>{linkTwo.title}</a>
                     </Buttons>
                 </TextBlock>
             </Container>
@@ -89,18 +89,25 @@ const Buttons = styled.div`
         grid-gap: 30px;
     }
 
-    .link{
+    .second{
         position: relative;
         font-weight: 700;
 
         &::after{
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 80px;
-            height: 2px;
-            background-color: var(--color-blue);
+        content: "";
+        position: absolute;
+        background-color: var(--color-blue);
+        width: 80px;
+        left: 0;
+        bottom: -5px;
+        height: 2px;
+        transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        &:hover{
+        &::after{
+            width: 100%;
+        }
         }
     }
 `

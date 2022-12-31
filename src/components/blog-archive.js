@@ -1,9 +1,8 @@
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Container } from "../atoms/container"
-import { textParser } from "../helpers/text-parser"
+import { Card } from "../moleculas/blog-card"
 import { Pagination } from "../organisms/pagination"
 
 export default function Archive({ noResults, url, location, category, categories, posts }) {
@@ -27,8 +26,8 @@ export default function Archive({ noResults, url, location, category, categories
                     <Categories>
                         <span className="big-text">Kategorie</span>
                         <div className="flex">
-                            {categories.map(el => (
-                                <Link activeClassName="active" to={'/blog/' + el.slug + '/'}>
+                            {categories.map((el, index) => (
+                                <Link key={el.name + index} activeClassName="active" to={'/blog/' + el.slug + '/'}>
                                     {el.name}
                                 </Link>
                             ))}
@@ -41,17 +40,9 @@ export default function Archive({ noResults, url, location, category, categories
                         {posts.map((el, index) => {
                             if (((index >= (8 * (page - 1) + (page - 1))) && index <= (8 * page) + (page - 1))) {
                                 return (
-                                    <Item>
-                                        <Link to={'/blog/' + el.slug + '/'}>
-                                            <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
-                                                alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
-                                            <div className="content">
-                                                <span className="small-header">{el.date}</span>
-                                                <p className="big-text">{el.title}</p>
-                                                <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
-                                            </div>
-                                        </Link>
-                                    </Item>
+                                    <React.Fragment key={el.title + index}>
+                                        <Card data={el} />
+                                    </React.Fragment>
                                 )
                             }
                         })}
@@ -152,23 +143,5 @@ const Grid = styled.div`
         top: 200px;
         bottom: 0;
         background-color: var(--color-light-gray);
-    }
-`
-
-const Item = styled.div`
-    background-color: #fff;
-
-    .image{
-        height: 200px;
-    }
-
-    .content{
-        height: calc(100% - 200px);
-        padding: clamp(20px, ${30 / 1366 * 100}vw, 30px) clamp(20px, ${30 / 1366 * 100}vw, 30px) 24px clamp(20px, ${30 / 1366 * 100}vw, 30px);
-
-        .big-text{
-            padding-top: 15px;
-            padding-bottom: 20px;
-        }
     }
 `

@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ImageWithButton } from '../organisms/image-with-button'
-import { TextBlock } from '../organisms/text-block'
+import { TextBlock } from '../organisms/text-block-blog'
 import { Container } from '../atoms/container'
-import { Link } from 'gatsby'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 
 export default function TwoColumnFlexBlogPost({
@@ -19,12 +18,15 @@ export default function TwoColumnFlexBlogPost({
               ? 'reverse two-column-content align-bottom'
               : 'two-column-content align-bottom'
           }>
-          <ImageWithButton
-            image={image}
-            variant={TwoColumnFlexVariants.blogPost}
-          />
+          <div className='desctop'>
+            <ImageWithButton
+              image={image}
+              variant={TwoColumnFlexVariants.blogPost}
+            />
+          </div>
           <div className='text-content'>
             <TextBlock
+              image={image}
               variant={TwoColumnFlexVariants.blogPost}
               header={categories}
               title={title}
@@ -36,8 +38,8 @@ export default function TwoColumnFlexBlogPost({
                   {authors?.length > 1 ? 'Autorzy:' : 'Autor'}
                 </p>
                 <div className='authors'>
-                  {authors?.map((author) => (
-                    <span key={author.name} className='data data--post-data'>
+                  {authors?.map((author, index) => (
+                    <span key={author.name + index} className='data data--post-data'>
                       {author.name}
                     </span>
                   ))}
@@ -55,7 +57,23 @@ export default function TwoColumnFlexBlogPost({
   )
 }
 
-const Wrapper = styled.section``
+const Wrapper = styled.section`
+  .mobile{
+    display: none;
+  }
+
+  @media (max-width: 840px) {
+    .desctop{
+      display: none;
+    }
+    .mobile{
+      display: block;
+    }
+    .image-block{
+      padding-bottom: 0;
+    }
+  }
+`
 
 const Content = styled.div`
   display: flex;
@@ -63,6 +81,10 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-right: 100px;
+
+  @media (max-width: 840px){
+    display: block;
+  }
 
   &.reverse {
     flex-direction: row-reverse;
@@ -80,10 +102,15 @@ const Content = styled.div`
 
   .text-content {
     max-width: clamp(320px, 29.4vw, 404px);
+
+    @media (max-width: 840px){
+      max-width: unset;
+    }
   }
 
   .blog-post-data {
     display: flex;
+    flex-wrap: wrap;
     gap: clamp(24px, 2.7vw, 37px);
     padding-top: clamp(30px, 3vw, 40px);
     margin-top: clamp(50px, 4.97vw, 68px);

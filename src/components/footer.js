@@ -89,10 +89,10 @@ const Footer = () => {
           <ArticlesColumn>
             <p className='header'>{tytulNadListaLinkowDoArtykulow}</p>
             <ul>
-              {listaLinkow.map(({ linkDoPodstrony: link }) => (
-                <li key={link.url}>
-                  <Link to={link.url} target={link.target}>
-                    {link.title}
+              {listaLinkow.map((el, index) => (
+                <li key={el.linkDoPodstrony.url + index}>
+                  <Link to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                    {el.linkDoPodstrony.title}
                   </Link>
                 </li>
               ))}
@@ -101,10 +101,10 @@ const Footer = () => {
           <LinksColumn>
             <p className='header'>{tytulNadListaLinkowPodstrony}</p>
             <ul>
-              {podstrony.map(({ linkDoPodstrony: link }) => (
-                <li key={link.url}>
-                  <Link to={link.url} target={link.target}>
-                    {link.title}
+              {podstrony.map((el, index) => (
+                <li key={el.linkDoPodstrony.url + index}>
+                  <Link to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                    {el.linkDoPodstrony.title}
                   </Link>
                 </li>
               ))}
@@ -116,7 +116,7 @@ const Footer = () => {
           <p>
             {tekstPrzyPrzyciskuWStopce}
             <a
-              class='button--secondary yellow'
+              className='button--secondary yellow'
               href={przyciskWStopce.url}
               target={przyciskWStopce.target}>
               {przyciskWStopce.title}
@@ -143,6 +143,7 @@ const FooterWrapper = styled.footer`
   background-color: var(--color-blue);
   color: var(--color-white);
   padding: 60px 0 0 0;
+  overflow: hidden  ;
 `
 
 const FooterContainer = styled(Container)``

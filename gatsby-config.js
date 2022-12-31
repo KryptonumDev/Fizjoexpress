@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Fizjoexpress `,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://fizjoexpress.pl`
   },
   plugins: [
     {
@@ -18,6 +18,8 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-robots-txt',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -25,6 +27,18 @@ module.exports = {
         "path": "./src/images/"
       },
       __key: "images"
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: './src/images/logo.svg',
+        name: `Fizjoexpress`,
+        short_name: `Fizjoexpress`,
+        start_url: `/`,
+        background_color: `#F9F5F0`,
+        theme_color: `#996D3E`,
+        display: `standalone`
+      }
     }
   ]
 };

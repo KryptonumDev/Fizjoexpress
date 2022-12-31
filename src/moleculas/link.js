@@ -6,7 +6,7 @@ export const Button = ({
   children,
   className,
   variant = 'primary',
-  to,
+  to = '/',
   target
 }) => (
   <Wrapper
@@ -56,6 +56,13 @@ const Wrapper = styled(Link)`
   width: 100%;
   text-align: center;
 
+  &:hover{
+    .angle{
+      right: 5px;
+      bottom: 5px;
+    }
+  }
+
   &.white{
     background-color: var(--color-white);
 
@@ -70,6 +77,7 @@ const Wrapper = styled(Link)`
 
   .angle {
     position: absolute;
+    transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
     right: 10px;
     bottom: 10px;
   }
