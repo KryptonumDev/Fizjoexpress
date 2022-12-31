@@ -49,7 +49,7 @@ const ContactPage = ({
           </a>
         </TextContainer>
         <FormContainer>
-          <Form />
+          <Form data={formularzKontaktowy} />
         </FormContainer>
       </TwoColumnWithFormContainer>
     </main>
@@ -71,44 +71,66 @@ const formMessages = {
   }
 }
 
-const Form = () => {
+const Form = ({ data }) => {
+  const {
+    tekstNadPierwszymPolem,
+    tekstBleduPierwszePole,
+    tekstNadDrugimPolem,
+    tekstBleduDrugiePole,
+    tekstNadTrzecimPolem,
+    tekstBleduTrzeciePole,
+    tekstNadPolemWiadomosci,
+    tekstBleduPoleWiadomosci,
+    tekstPrzyPolitycePrywatnosci,
+    tekstBleduPolitykaPrywatnosci,
+    tekstPoPoprawnymWyslaniuFormularza,
+    tekstPoBledzieWysylkaFormularza,
+    tekstPrzycisku
+  } = data
   const {
     register,
     control,
+    reset,
+    resetField,
     formState: { errors },
     handleSubmit
   } = useForm({
     mode: 'onChange' // "onChange"
   })
 
+  const [message, setMessage] = React.useState(formMessages.blank)
+
   const onSubmit = (data, e) => {
-    console.log(data, e)
-    setMessage(formMessages.success.text)
+    console.log('Onsubmit', data, e)
+    setMessage(formMessages.success)
+    setTimeout(() => {
+      setMessage(formMessages.blank)
+    }, 8000)
+    reset()
+    resetField('phoneNumber')
   }
   const onError = (errors, e) => {
-    console.log(errors, e)
-    setMessage(formMessages.error.text)
+    console.log('ERRORS', errors, e)
+    // setMessage(formMessages.error.text)
   }
-
-  const [message, setMessage] = React.useState(formMessages.success)
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <FieldWrapper>
           <div className='wrapper'>
-            <label htmlFor='nameAndSurname'>Imię i nazwisko</label>
+            <label htmlFor='nameAndSurname'>{tekstNadPierwszymPolem}</label>
             <p
               className={`error ${
                 errors.nameAndSurname?.type === 'required' && 'error--show'
               }`}>
-              Required.
+              {tekstBleduPierwszePole}
             </p>
             <p
               className={`error ${
                 errors.nameAndSurname?.type === 'minLength' && 'error--show'
               }`}>
-              minLength.
+              Minimum 3 znaki.
             </p>
             <p
               className={`error ${
@@ -129,12 +151,12 @@ const Form = () => {
         </FieldWrapper>
         <FieldWrapper>
           <div className='wrapper'>
-            <label htmlFor='email'>Adres e-mail</label>
+            <label htmlFor='email'>{tekstNadDrugimPolem}</label>
             <p
               className={`error ${
                 errors.email?.type === 'required' && 'error--show'
               }`}>
-              Required.
+              {tekstBleduDrugiePole}
             </p>
             <p
               className={`error ${
@@ -157,7 +179,9 @@ const Form = () => {
           />
         </FieldWrapper>
         <FieldWrapper>
-          <label htmlFor='phoneNumber'>Numer telefonu</label>
+          <div className='wrapper'>
+            <label htmlFor='phoneNumber'>{tekstNadTrzecimPolem}</label>
+          </div>
           <Controller
             name='phoneNumber'
             control={control}
@@ -175,17 +199,23 @@ const Form = () => {
             )}
             rules={{ required: true }}
           />
-          {errors.phoneNumber && <p className={`error`}>Number Required</p>}
+          {errors.phoneNumber && (
+            <p className={`error`}>{tekstBleduTrzeciePole}</p>
+          )}
         </FieldWrapper>
 
         <FieldWrapper>
           <div className='wrapper'>
-            <label htmlFor='message'>Wiadomość</label>
+            {/* , ,
+            , ,
+            tekstPoPoprawnymWyslaniuFormularza, tekstPoBledzieWysylkaFormularza,
+             */}
+            <label htmlFor='message'>{tekstNadPolemWiadomosci}</label>
             <p
               className={`error ${
                 errors.message?.type === 'required' && 'error--show'
               }`}>
-              Required.
+              {tekstBleduPoleWiadomosci}
             </p>
             <p
               className={`error ${
@@ -202,37 +232,32 @@ const Form = () => {
           />
         </FieldWrapper>
         <FieldWrapper>
-          <div className='wrapper'>
-            <label
+          <div className='wrapper wrapper--checkbox'>
+            <input
+              type='checkbox'
+              id='privacyPolicy'
               className={errors?.privacyPolicy && 'input--error'}
-              htmlFor='privacyPolicy'>
-              Wyrażam zgodę na przetwarzanie…………
-            </label>
-            <p
-              className={`error ${
-                errors.privacyPolicy?.type === 'required' && 'error--show'
-              }`}>
-              Required.
-            </p>
+              {...register('privacyPolicy', { required: true })}
+            />
+            <label
+              className={`checkbox ${errors?.privacyPolicy && 'input--error'}`}
+              htmlFor='privacyPolicy'
+              dangerouslySetInnerHTML={{ __html: tekstPrzyPolitycePrywatnosci }}
+            />
           </div>
-          <input
-            type='checkbox'
-            id='privacyPolicy'
-            className={errors?.privacyPolicy && 'input--error'}
-            {...register('privacyPolicy', { required: true })}
-          />
         </FieldWrapper>
         <input
-          aria-disabled={errors && errors.length > 0}
-          disabled={errors && errors.length > 0}
+          aria-disabled={errors && Object.keys(errors).length !== 0}
+          disabled={errors && Object.keys(errors).length !== 0}
           type='submit'
+          value={tekstPrzycisku}
         />
       </form>
       <p
         className={`form-message ${
           message.type !== '' && 'form-message--show'
         } ${message.type === 'error' ? 'form-message--show__error' : ''}`}>
-        {message.text}
+        {message?.text && message.text}
       </p>
     </>
   )
@@ -286,6 +311,7 @@ const FormContainer = styled.div`
   flex: 1 1 50%;
   background-color: var(--color-yellow);
   align-self: stretch;
+  position: relative;
 
   button[type='submit'],
   input[type='button'],
@@ -300,6 +326,11 @@ const FormContainer = styled.div`
     background-color: var(--color-blue);
     color: var(--color-white);
     font-weight: bold;
+    transition: opacity 0.15s ease-out;
+    &:disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
   }
 
   form {
@@ -313,7 +344,7 @@ const FormContainer = styled.div`
     opacity: 0;
     transition: color 0.15s ease-out, opacity 0.15s ease-out;
     position: absolute;
-    bottom: 0;
+    bottom: -32px;
     left: 40px;
     font-size: 12px;
     &--show {
@@ -374,6 +405,62 @@ const FieldWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-top: 10px;
+
+    &--checkbox {
+      input[type='checkbox'] {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      label {
+        position: relative;
+        padding-left: 2rem;
+        &.input--error {
+          outline: 2px solid #b11515;
+        }
+      }
+
+      label:before {
+        content: '';
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        border: 1px solid var(--color-white);
+        background-color: var(--color-white);
+        background-clip: content-box;
+        position: absolute;
+        left: 0;
+        top: 3px;
+        transition: all 0.15s ease-out;
+      }
+
+      label:after {
+        content: '';
+        width: 11px;
+        height: 11px;
+        background-color: #2b2b2d;
+        position: absolute;
+        left: 5px;
+        top: 8px;
+        transform-origin: center center;
+        transform: scale(0);
+        transition: transform 0.15s ease-out;
+      }
+
+      input[type='checkbox']:checked + label:after {
+        transform: scale(1);
+      }
+
+      input[type='checkbox']:focus-visible + label {
+        outline: 2px solid var(--color-blue);
+      }
+    }
   }
 
   label {
@@ -399,19 +486,19 @@ export const contactPageQuery = graphql`
           }
         }
         formularzKontaktowy {
-          tekstPrzycisku
+          tekstNadPierwszymPolem
+          tekstBleduPierwszePole
+          tekstNadDrugimPolem
+          tekstBleduDrugiePole
+          tekstNadTrzecimPolem
+          tekstBleduTrzeciePole
+          tekstNadPolemWiadomosci
+          tekstBleduPoleWiadomosci
           tekstPrzyPolitycePrywatnosci
+          tekstBleduPolitykaPrywatnosci
           tekstPoPoprawnymWyslaniuFormularza
           tekstPoBledzieWysylkaFormularza
-          tekstNadTrzecimPolem
-          tekstNadPolemWiadomosci
-          tekstNadPierwszymPolem
-          tekstNadDrugimPolem
-          tekstBleduTrzeciePole
-          tekstBleduPolitykaPrywatnosci
-          tekstBleduPoleWiadomosci
-          tekstBleduPierwszePole
-          tekstBleduDrugiePole
+          tekstPrzycisku
         }
       }
     }
