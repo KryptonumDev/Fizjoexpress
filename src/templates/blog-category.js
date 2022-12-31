@@ -5,7 +5,11 @@ import Seo from '../layout/seo'
 import Archive from './../components/blog-archive'
 import Hero from './../components/blog-hero'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
@@ -14,15 +18,32 @@ export function Head({ data: { wpPage: { seo } } }) {
   )
 }
 
-const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categories, posts } }) => {
+const CategoryPage = ({
+  pageContext,
+  location,
+  data: { wpCategory, wpPage, categories, posts }
+}) => {
   return (
-    <main>
-      <Hero data={{
-        header: wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
-        title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
-        text: wpPage.blog.informacjeNaStronieBloga.akapitTekstuWSekcjiPowitalnej
-      }} />
-      <Archive noResults={wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow} url={pageContext.url} location={location} categories={categories.nodes} posts={posts.nodes} category={wpCategory.name} />
+    <main id='content'>
+      <Hero
+        data={{
+          header:
+            wpPage.blog.informacjeNaStronieBloga.malyNaglowekNadTytulemSekcji,
+          title: wpPage.blog.informacjeNaStronieBloga.tytulSekcji,
+          text: wpPage.blog.informacjeNaStronieBloga
+            .akapitTekstuWSekcjiPowitalnej
+        }}
+      />
+      <Archive
+        noResults={
+          wpPage.blog.informacjeNaStronieBloga.tekstDoWyswietleniaGdyBrakWynikow
+        }
+        url={pageContext.url}
+        location={location}
+        categories={categories.nodes}
+        posts={posts.nodes}
+        category={wpCategory.name}
+      />
     </main>
   )
 }
@@ -30,20 +51,20 @@ const CategoryPage = ({ pageContext, location, data: { wpCategory, wpPage, categ
 export default CategoryPage
 
 export const CategoryPageQuery = graphql`
-  query($id: String!, $slug: String!) {
+  query ($id: String!, $slug: String!) {
     wpCategory(id: { eq: $id }) {
       name
     }
-    categories: allWpCategory(
-      filter: { id: { ne: "dGVybTox" } }
-    ) {
+    categories: allWpCategory(filter: { id: { ne: "dGVybTox" } }) {
       nodes {
         name
         slug
         id
       }
     }
-    posts: allWpPost(filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}) {
+    posts: allWpPost(
+      filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
+    ) {
       nodes {
         title
         slug
@@ -64,7 +85,7 @@ export const CategoryPageQuery = graphql`
         excerpt
       }
     }
-    wpPage(id: { eq: "cG9zdDozOA==" }){
+    wpPage(id: { eq: "cG9zdDozOA==" }) {
       seo {
         canonical
         metaDesc
