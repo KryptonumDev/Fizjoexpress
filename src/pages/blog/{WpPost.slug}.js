@@ -1,11 +1,10 @@
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../atoms/container'
 import { Aside } from '../../components/aside'
 import SocialMediaIcons from '../../components/social-media-icons'
 import TwoColumnFlexBlogPost from '../../components/two-column-flex-blog-post'
-import { textParser } from '../../helpers/text-parser'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
@@ -58,7 +57,7 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
             __html: content
           }}
         />
-        <Aside posts={postsToLink}/>
+        <Aside posts={postsToLink} />
         <SocialWrapper>
           <SocialMediaIcons
             text='Udostępnij'
@@ -125,7 +124,8 @@ export const ContentWrapper = styled.div`
     color: var(--color-blue);
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     font-size: 18px;
     font-weight: 600;
     line-height: ${35 / 18};
