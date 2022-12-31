@@ -12,7 +12,11 @@ const StyledLogo = styled.svg`
     }
   }
   &.logo--header {
-    width: clamp(140px, ${(206 / 1366) * 100}vw, 206px);
+    width: clamp(168px, ${(206 / 1366) * 100}vw, 206px);
+
+    @media (max-width: 896px) {
+      width: clamp(148px, ${(168 / 360) * 100}vw, 190px);
+    }
   }
 `
 
@@ -36,9 +40,10 @@ const LogoStyles = {
 
 export const Logo = ({
   className,
+  onClick,
   variant = FIZJOEXPRESS_LOGO_VARIANTS.COLOR_WITH_BLUE_BG
 }) => (
-  <Link to='/'>
+  <Link to='/' onClick={onClick}>
     <StyledLogo
       className={className}
       version='1.1'
