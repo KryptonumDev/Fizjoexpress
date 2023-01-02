@@ -75,10 +75,10 @@ export default function Seo({ post = false, seo }) {
             '@type': 'Organization',
             name: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ'
           },
-          // "additionalProperty": {
-          //     "@type": "Phisioteraphy",
-          //     "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
-          // },
+          "additionalProperty": {
+              "@type": "Phisioteraphy",
+              "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
+          },
           name: 'Fizjoexpress by Rehalthy',
           legalName: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ',
           // "image": "https://fizjoexpress.pl/superzdjecelokalu.jpg",
@@ -166,17 +166,17 @@ export default function Seo({ post = false, seo }) {
             name: seo.title,
             description: seo.metaDesc,
             image: seo.opengraphImage.localFile.publicURL,
-            keywords: seo.metaKeywords,
-            // "author": {
-            //     "@type": "Person",
-            //     "name": "Edgar Walaszczyk",
-            //     "jobTitle": "Fizjoterapeuta",
-            //     "alumniOf": "Uniwersytet Rzeszowski",
-            //     "sameAs": [
-            //         "https://facebook.com/edgar",
-            //         "https://www.linkedin.com/company/edgar"
-            //     ]
-            // },
+              keywords: seo.metaKeywords,
+              // "author": {
+              //     "@type": "Person",
+              //     "name": "Edgar Walaszczyk",
+              //     "jobTitle": "Fizjoterapeuta",
+              //     "alumniOf": "Uniwersytet Rzeszowski",
+              //     "sameAs": [
+              //         "https://facebook.com/edgar",
+              //         "https://www.linkedin.com/company/edgar"
+              //     ]
+              // },
             publisher: {
               '@type': 'Organization',
               name: 'Fizjoexpress',
