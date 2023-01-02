@@ -30,7 +30,7 @@ export function Head({
       {
         "@type": "ListItem",
         "position": 3,
-        "name": 'Blog | ' + wpCategory.name,
+        "name": wpCategory.name,
         "item": 'https://fizjoexpress.pl/blog/' + wpCategory.slug
       }
     ]
