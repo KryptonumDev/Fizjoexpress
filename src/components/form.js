@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
@@ -48,15 +49,37 @@ const Form = ({ data }) => {
   const [message, setMessage] = React.useState(formMessages.blank)
 
   const onSubmit = (data, e) => {
-    // console.log('Onsubmit', data, e)
-    setTimeout(() => {
-      setMessage(formMessages.success)
-    }, 500)
-    setTimeout(() => {
-      setMessage(formMessages.blank)
-      reset()
-    }, 8000)
+    let url = 'https://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
+    let body = new FormData()
+    body.append('your-email', data.email)
+    body.append('your-name', data.nameAndSurname)
+    body.append('your-telephon', data.phoneNumber)
+    body.append('your-message', data.message)
+    axios.post(url, body)
+      .then((res) => {
+        if (res.status === 200) {
+          setMessage(formMessages.success)
+          reset()
+          setTimeout(() => {
+            setMessage(formMessages.blank)
+          }, 7500)
+        } else {
+          setMessage(formMessages.error)
+          setTimeout(() => {
+            setMessage(formMessages.blank)
+            reset()
+          }, 7500)
+        }
+      })  
+      .catch(() => {
+        reset()
+        setMessage(formMessages.error)
+        setTimeout(() => {
+          setMessage(formMessages.blank)
+        }, 7500)
+      })
   }
+
   const onError = (errors, e) => {
     // console.log('ERRORS', errors, e)
     setTimeout(() => {
@@ -75,21 +98,18 @@ const Form = ({ data }) => {
           <div className='wrapper'>
             <label htmlFor='nameAndSurname'>{tekstNadPierwszymPolem}</label>
             <p
-              className={`error ${
-                errors.nameAndSurname?.type === 'required' && 'error--show'
-              }`}>
+              className={`error ${errors.nameAndSurname?.type === 'required' && 'error--show'
+                }`}>
               {tekstBleduPierwszePole}
             </p>
             <p
-              className={`error ${
-                errors.nameAndSurname?.type === 'minLength' && 'error--show'
-              }`}>
+              className={`error ${errors.nameAndSurname?.type === 'minLength' && 'error--show'
+                }`}>
               Minimum 3 znaki.
             </p>
             <p
-              className={`error ${
-                errors.nameAndSurname?.type === 'maxLength' && 'error--show'
-              }`}>
+              className={`error ${errors.nameAndSurname?.type === 'maxLength' && 'error--show'
+                }`}>
               maxLength.
             </p>
           </div>
@@ -107,15 +127,13 @@ const Form = ({ data }) => {
           <div className='wrapper'>
             <label htmlFor='email'>{tekstNadDrugimPolem}</label>
             <p
-              className={`error ${
-                errors.email?.type === 'required' && 'error--show'
-              }`}>
+              className={`error ${errors.email?.type === 'required' && 'error--show'
+                }`}>
               {tekstBleduDrugiePole}
             </p>
             <p
-              className={`error ${
-                errors?.email?.type === 'pattern' && 'error--show'
-              }`}>
+              className={`error ${errors?.email?.type === 'pattern' && 'error--show'
+                }`}>
               {errors?.email?.message}
             </p>
           </div>
@@ -166,15 +184,13 @@ const Form = ({ data }) => {
              */}
             <label htmlFor='message'>{tekstNadPolemWiadomosci}</label>
             <p
-              className={`error ${
-                errors.message?.type === 'required' && 'error--show'
-              }`}>
+              className={`error ${errors.message?.type === 'required' && 'error--show'
+                }`}>
               {tekstBleduPoleWiadomosci}
             </p>
             <p
-              className={`error ${
-                errors?.message?.type === 'minLength' && 'error--show'
-              }`}>
+              className={`error ${errors?.message?.type === 'minLength' && 'error--show'
+                }`}>
               Minimum 10 znaków.
             </p>
           </div>
@@ -208,9 +224,8 @@ const Form = ({ data }) => {
         />
       </form>
       <p
-        className={`form-message ${
-          message.type !== '' && 'form-message--show'
-        } ${message.type === 'error' ? 'form-message--show__error' : ''}`}>
+        className={`form-message ${message.type !== '' && 'form-message--show'
+          } ${message.type === 'error' ? 'form-message--show__error' : ''}`}>
         {message?.text && message.text}
       </p>
     </>

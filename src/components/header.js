@@ -124,7 +124,7 @@ const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 10000;
 
   .read-more {
     padding: 33px 16px;

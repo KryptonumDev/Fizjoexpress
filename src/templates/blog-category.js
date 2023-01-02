@@ -7,11 +7,39 @@ import Hero from './../components/blog-hero'
 
 export function Head({
   data: {
+    wpCategory,
     wpPage: { seo }
   }
 }) {
+  let ldJson = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Fizjoexpress",
+        "item": 'https://fizjoexpress.pl'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": 'https://fizjoexpress.pl/blog/'
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": 'Blog | ' + wpCategory.name,
+        "item": 'https://fizjoexpress.pl/blog/' + wpCategory.slug
+      }
+    ]
+  };
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(ldJson)}
+      </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Seo seo={seo} />
     </>
@@ -54,6 +82,7 @@ export const CategoryPageQuery = graphql`
   query ($id: String!, $slug: String!) {
     wpCategory(id: { eq: $id }) {
       name
+      slug
     }
     categories: allWpCategory(filter: { id: { ne: "dGVybTox" } }) {
       nodes {

@@ -72,6 +72,7 @@ export default function Hero({
           )}
         </TextBlock>
         <GatsbyImage
+          
           className='image'
           loading='eager'
           image={

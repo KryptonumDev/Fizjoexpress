@@ -15,7 +15,16 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          placeholder: `none`,
+          quality: 80,
+          backgroundColor: `transparent`,
+        },
+      },
+    },
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     `gatsby-plugin-sitemap`,

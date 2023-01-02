@@ -4,6 +4,43 @@ import { Container } from '../atoms/container'
 import styled from 'styled-components'
 import { textParser } from '../helpers/text-parser'
 import Form from '../components/form'
+import Seo from '../layout/seo'
+import { Helmet } from 'react-helmet'
+
+export function Head({
+  data: {
+    wpPage: { seo }
+  }
+}) {
+  let ldJson = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Fizjoexpress",
+        "item": 'https://fizjoexpress.pl'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Kontakt",
+        "item": 'https://fizjoexpress.pl/kontakt/'
+      }
+    ]
+  };
+  return (
+    <>
+      <script type="application/ld+json">
+        {JSON.stringify(ldJson)}
+      </script>
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
+    </>
+  )
+}
+
 
 const ContactPage = ({
   data: {
@@ -221,6 +258,17 @@ const FormContainer = styled.div`
 export const contactPageQuery = graphql`
   query {
     wpPage(id: { eq: "cG9zdDo0MQ==" }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       kontakt {
         kontaktInformacje {
           akapitTekstuNadPrzyciskiem

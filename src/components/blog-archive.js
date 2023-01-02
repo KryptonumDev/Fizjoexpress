@@ -26,6 +26,9 @@ export default function Archive({ noResults, url, location, category, categories
                     <Categories>
                         <span className="big-text">Kategorie</span>
                         <div className="flex">
+                                <Link activeClassName="active" to={'/blog/'}>
+                                    Wszystkie
+                                </Link>
                             {categories.map((el, index) => (
                                 <Link key={el.name + index} activeClassName="active" to={'/blog/' + el.slug + '/'}>
                                     {el.name}
@@ -61,7 +64,7 @@ export default function Archive({ noResults, url, location, category, categories
 }
 
 const Placeholder = styled.div`
-
+    margin-bottom: 50px;
 `
 
 const Wrapper = styled.section`

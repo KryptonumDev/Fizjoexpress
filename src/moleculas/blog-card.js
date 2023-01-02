@@ -21,8 +21,19 @@ export const Card = ({data: el }) => (
 const Item = styled.div`
     background-color: #fff;
 
+    &:hover{
+        .image{
+            img{
+                transform: scale(1.08);
+            }
+        }
+    }
+
     .image{
         height: 200px;
+        img{
+            transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
     }
 
     .content{

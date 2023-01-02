@@ -18,8 +18,29 @@ export function Head({
     wpPage: { seo }
   }
 }) {
+  let ldJson = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Fizjoexpress",
+        "item": 'https://fizjoexpress.pl'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "O fizjoexpress",
+        "item": 'https://fizjoexpress.pl/o-fizjoexpress/'
+      }
+    ]
+  };
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(ldJson)}
+      </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Seo seo={seo} />
     </>

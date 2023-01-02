@@ -11,8 +11,35 @@ import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
 export function Head({ data: { wpPost } }) {
+  let ldJson = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Fizjoexpress",
+        "item": 'https://fizjoexpress.pl'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": 'https://fizjoexpress.pl/blog/'
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": 'Blog | ' + wpPost.title,
+        "item": 'https://fizjoexpress.pl/blog/' + wpPost.slug
+      }
+    ]
+  };
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify(ldJson)}
+      </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Seo post={wpPost} seo={wpPost.seo} />
     </>
