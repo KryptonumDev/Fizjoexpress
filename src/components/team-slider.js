@@ -29,7 +29,7 @@ export default function TeamSlider({
         }]
     }
     return (
-        <Wrapper>
+        <Wrapper  id='zespol'>
             <Container>
                 <Control
                     white={true}
