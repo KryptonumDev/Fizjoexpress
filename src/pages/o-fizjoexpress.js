@@ -86,7 +86,7 @@ const AboutPage = ({
           header: sekcjaMisjaFizjoexpress.aboutSmallHeader,
           title: sekcjaMisjaFizjoexpress.aboutTitle,
           text: sekcjaMisjaFizjoexpress.aboutText,
-          image: sekcjaMisjaFizjoexpress.aboutVerticalImage,
+          image: sekcjaMisjaFizjoexpress.aboutImage,
           link: sekcjaMisjaFizjoexpress.buttonWithCtaLink
         }}
       />
@@ -319,7 +319,7 @@ export const query = graphql`
           aboutSmallHeader
           aboutText
           aboutTitle
-          aboutVerticalImage {
+          aboutImage {
             altText
             localFile {
               childImageSharp {

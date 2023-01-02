@@ -46,7 +46,7 @@ const IndexPage = ({
           header: homepage.sekcjaOFizjoexpress.aboutSmallHeader,
           title: homepage.sekcjaOFizjoexpress.aboutTitle,
           text: homepage.sekcjaOFizjoexpress.aboutText,
-          image: homepage.sekcjaOFizjoexpress.aboutVerticalImage,
+          image: homepage.sekcjaOFizjoexpress.aboutImage,
           link: homepage.sekcjaOFizjoexpress.ctaLink
         }}
       />
@@ -340,7 +340,7 @@ export const query = graphql`
           aboutSmallHeader
           aboutTitle
           aboutText
-          aboutVerticalImage {
+          aboutImage {
             altText
             localFile {
               childImageSharp {
