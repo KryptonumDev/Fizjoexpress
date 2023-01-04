@@ -58,11 +58,6 @@ const GlobalStyles = createGlobalStyle`
         padding-top: var(--margin-intersection);
     }
 
-
-    #content {
-        padding-top: 78px;
-    }
-
     body{
         max-width: 1920px;
         margin: 0 auto !important;

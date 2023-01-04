@@ -82,6 +82,7 @@ const Header = () => {
             variant={FIZJOEXPRESS_LOGO_VARIANTS.COLOR_WHITE_BG}
           />
           <MobileButton
+            aria-label='open mobile menu'
             name='przycisk otwierający menu mobilne'
             isOpen={isOpen}
             onClick={() => setIsOpen(!isOpen)}>
@@ -119,7 +120,7 @@ const Header = () => {
 }
 
 const HeaderWrapper = styled.header`
-  position: fixed;
+  position: sticky;
   background-color: var(--color-white);
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
   top: 0;
