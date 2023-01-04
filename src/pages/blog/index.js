@@ -7,6 +7,7 @@ import Seo from '../../layout/seo'
 
 export function Head({
   data: {
+    allWpAuthor,
     wpPage: { slug, seo }
   }
 }) {
@@ -34,7 +35,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={'/' + slug + '/'} seo={seo} />
+      <Seo authors={allWpAuthor} slug={'/' + slug + '/'} seo={seo} />
     </>
   )
 }
@@ -68,6 +69,17 @@ export default BlogPage
 
 export const blogQuery = graphql`
   query {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     categories: allWpCategory(filter: { id: { ne: "dGVybTox" } }) {
       nodes {
         name

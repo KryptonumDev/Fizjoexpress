@@ -10,6 +10,7 @@ import { Button } from '../moleculas/link'
 
 export function Head({
   data: {
+    allWpAuthor,
     wpPage: { slug, seo }
   }
 }) {
@@ -37,7 +38,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={'/' + slug + '/'} seo={seo} />
+      <Seo authors={allWpAuthor} slug={'/' + slug + '/'} seo={seo} />
     </>
   )
 }
@@ -258,6 +259,17 @@ const FormContainer = styled.div`
 
 export const contactPageQuery = graphql`
   query {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     wpPage(id: { eq: "cG9zdDo0MQ==" }) {
       slug
       seo {

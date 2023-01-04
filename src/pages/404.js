@@ -4,12 +4,12 @@ import { Helmet } from 'react-helmet'
 import Hero from '../components/hero-homepage'
 import Seo from '../layout/seo'
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({ data: { allWpAuthor, wpPage: { seo } } }) {
 
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo authors={allWpAuthor} seo={seo} />
     </>
   )
 }
@@ -42,6 +42,17 @@ export default ErrorPage
 
 export const errorQuery = graphql`
   query {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     wpPage(id: { eq: "cG9zdDo0OQ==" }) {
       seo {
         canonical

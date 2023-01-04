@@ -15,13 +15,14 @@ import Seo from '../layout/seo'
 
 export function Head({
   data: {
-    wpPage: { slug, seo }
+    allWpAuthor,
+    wpPage: { seo }
   }
 }) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={'/'} seo={seo} />
+      <Seo authors={allWpAuthor} slug={'/'} seo={seo} />
     </>
   )
 }
@@ -135,6 +136,17 @@ export default IndexPage
 
 export const query = graphql`
   query homepage {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     global: wpPage(id: { eq: "cG9zdDo1Mg==" }) {
       globalneDaneIUstawienia {
         globalneGrafiki {

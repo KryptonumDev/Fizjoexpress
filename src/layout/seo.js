@@ -3,9 +3,21 @@ import Logo from './../images/logo.png'
 
 const siteUrl = 'https://fizjoexpress.pl'
 
-export default function Seo({ slug, post = false, seo }) {
+export default function Seo({ authors, slug, post = false, seo }) {
   const canonical = siteUrl + (slug ? slug : seo?.canonical ? seo.canonical : '/')
   const author = []
+  const employe = authors.nodes.map(el => {
+    return {
+      "@type": "Person",
+      "name": el.name,
+      "jobTitle": "Fizjoterapeuta",
+      "alumniOf": el.dodatkowePolaAutora.wyksztalcenieAutora,
+      "sameAs": el.dodatkowePolaAutora.authorSocialMediaLinks.map(inEl => {
+        return inEl.socialMediaLink
+      })
+    }
+  })
+
   if (post) {
     post?.authors?.nodes?.forEach(element => {
 
@@ -152,47 +164,7 @@ export default function Seo({ slug, post = false, seo }) {
             "https://www.youtube.com/@arkadiuszmartyniukofficial1469",
             "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3/", "https://booksy.com/pl-pl/163820_fizjoexpress-by-rehealthy_zdrowie_3_warszawa"
           ],
-          "employee": [{
-            "@type": "Person",
-            "name": "Arkadiusz Martyniuk",
-            "jobTitle": "Fizjoterapeuta",
-            "alumniOf": "Podkowiańska Wyższa Szkoła Medyczna",
-            "sameAs": [
-              "https://www.facebook.com/rehealthy/",
-              "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3",
-              "https://www.instagram.com/arkadiuszmartyniuk/",
-            ]
-          }, {
-            "@type": "Person",
-            "name": "Edgar Walaszczyk",
-            "jobTitle": "Fizjoterapeuta",
-            "alumniOf": "Uniwersytet Rzeszowski",
-            "sameAs": [
-              "https://www.facebook.com/edgar.eddiewalaszczyk/",
-              "https://www.linkedin.com/in/edgarwalaszczyk"
-            ]
-          }, {
-            "@type": "Person",
-            "name": "Jonasz Siwek",
-            "jobTitle": "Fizjoterapeuta",
-            "alumniOf": "Akademia Wychowania Fizycznego w Warszawie",
-            "sameAs": [
-              "https://www.facebook.com/jonasz.siwek"
-            ]
-          }, {
-            "@type": "Person",
-            "name": "Michał Kasica",
-            "jobTitle": "Fizjoterapeuta",
-            "alumniOf": "Śląska Akademia Medyczna w KatowicachŚląska Akademia Medyczna w Katowicach",
-            "sameAs": [
-              "https://www.linkedin.com/in/micha%C5%82-kasica-052646189/"
-            ]
-          }, {
-            "@type": "Person",
-            "name": "Przemysław Kozłowski",
-            "jobTitle": "Fizjoterapeuta",
-            "alumniOf": "Akademia Wychowania Fizycznego im. Józefa Piłsudskiego w Warszawie oraz Wyższa Szkoła Rehabilitacji w Warszawie"
-          }]
+          "employee": employe
         })}
       </script>
 

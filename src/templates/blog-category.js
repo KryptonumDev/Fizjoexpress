@@ -8,6 +8,7 @@ import Hero from './../components/blog-hero'
 export function Head({
   data: {
     wpCategory,
+    allWpAuthor,
     wpPage: { slug, seo }
   }
 }) {
@@ -41,7 +42,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={'/' + slug + '/' + wpCategory.slug + '/'} seo={seo} />
+      <Seo authors={allWpAuthor} slug={'/' + slug + '/' + wpCategory.slug + '/'} seo={seo} />
     </>
   )
 }
@@ -80,6 +81,17 @@ export default CategoryPage
 
 export const CategoryPageQuery = graphql`
   query ($id: String!, $slug: String!) {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     wpCategory(id: { eq: $id }) {
       name
       slug

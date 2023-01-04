@@ -10,7 +10,7 @@ import Seo from '../../layout/seo'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
-export function Head({ data: { wpPost } }) {
+export function Head({ data: { allWpAuthor, wpPost } }) {
   let ldJson = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -41,7 +41,7 @@ export function Head({ data: { wpPost } }) {
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={'/' + wpPost.slug + '/'} post={wpPost} seo={wpPost.seo} />
+      <Seo authors={allWpAuthor} slug={'/' + wpPost.slug + '/'} post={wpPost} seo={wpPost.seo} />
     </>
   )
 }
@@ -329,6 +329,17 @@ export const ContentWrapper = styled.div`
 
 export const blogPostQuery = graphql`
   query ($id: String) {
+    allWpAuthor {
+      nodes {
+        name
+        dodatkowePolaAutora {
+          wyksztalcenieAutora
+          authorSocialMediaLinks {
+            socialMediaLink
+          }
+        }
+      }
+    }
     wpPost(id: { eq: $id }) {
       authors {
         nodes {
