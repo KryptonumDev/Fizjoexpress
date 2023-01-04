@@ -5,6 +5,7 @@ import { TextBlock } from '../organisms/text-block-blog'
 import { Container } from '../atoms/container'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import { Link } from 'gatsby'
+import { Button } from '../moleculas/link'
 
 export default function TwoColumnFlexBlogPost({
   reverse = true,
@@ -40,9 +41,11 @@ export default function TwoColumnFlexBlogPost({
                 </p>
                 <div className='authors'>
                   {authors?.map((author, index) => (
-                    <Link to='/o-fizjoexpress/#zespol' key={author.name + index} className='data data--post-data'>
-                      {author.name}
-                    </Link>
+                    <React.Fragment key={author.name + index} >
+                      <Button to='/o-fizjoexpress/#zespol' >
+                        {author.name}
+                      </Button>
+                    </React.Fragment>
                   ))}
                 </div>
               </div>

@@ -12,7 +12,7 @@ export default function Seo({ authors, slug, post = false, seo }) {
       "name": el.name,
       "jobTitle": "Fizjoterapeuta",
       "alumniOf": el.dodatkowePolaAutora.wyksztalcenieAutora,
-      "sameAs": el.dodatkowePolaAutora.authorSocialMediaLinks.map(inEl => {
+      "sameAs": el?.dodatkowePolaAutora?.authorSocialMediaLinks?.map(inEl => {
         return inEl.socialMediaLink
       })
     }
