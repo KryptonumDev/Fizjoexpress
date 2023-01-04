@@ -19,24 +19,22 @@ export default function Reserve({
               text={text}
               link={false}
               cytate={false}
-              variant={
-                TwoColumnFlexVariants.buttonUnderText
-              }
+              variant={TwoColumnFlexVariants.buttonUnderText}
             />
           </div>
           <Steps>
             {steps.map((el, index) => (
               <Step key={el.nazwaKroku + index}>
-                <span className='bix-text'>
-                  {index + 1}
-                </span>
+                <span className='bix-text'>{index + 1}</span>
                 <p className='text'>{el.nazwaKroku}</p>
               </Step>
             ))}
           </Steps>
         </Content>
         <div className='button-wrap'>
-          <Button className={'white'}>{link.title}</Button>
+          <Button to={link?.url} target={link?.target} className={'white'}>
+            {link?.title}
+          </Button>
         </div>
       </Container>
     </Wrapper>

@@ -25,13 +25,9 @@ export default function Hero({
     <Wrapper color={colorVariant}>
       <Container heroWithImageContainer>
         <TextBlock color={colorVariant}>
-          <span className='small-header'>{text}</span>
-          <h1
-            className={
-              headerVariant === 'bigger'
-                ? 'main-title'
-                : 'sub-title'
-            }
+          <h1 className='small-header'>{text}</h1>
+          <span
+            className={headerVariant === 'bigger' ? 'main-title' : 'sub-title'}
             dangerouslySetInnerHTML={{
               __html: textParser(heroTitle)
             }}
@@ -46,9 +42,7 @@ export default function Hero({
             <Button
               className='button'
               to={buttonLink.url}
-              target={
-                buttonLink.target ? buttonLink.target : null
-              }>
+              target={buttonLink.target ? buttonLink.target : null}>
               {buttonLink.title}
             </Button>
           )}
@@ -56,11 +50,7 @@ export default function Hero({
             <Link
               className='button second'
               to={buttonLinkSecond.url}
-              target={
-                buttonLinkSecond.target
-                  ? buttonLinkSecond.target
-                  : null
-              }>
+              target={buttonLinkSecond.target ? buttonLinkSecond.target : null}>
               {buttonLinkSecond.title}
             </Link>
           )}
@@ -72,13 +62,9 @@ export default function Hero({
           )}
         </TextBlock>
         <GatsbyImage
-          
           className='image'
           loading='eager'
-          image={
-            zdjecieWTle.localFile.childImageSharp
-              .gatsbyImageData
-          }
+          image={zdjecieWTle.localFile.childImageSharp.gatsbyImageData}
           alt={zdjecieWTle.altText}
         />
         {featuredTextOverBg && (
@@ -95,9 +81,7 @@ export default function Hero({
 
 const Wrapper = styled.section`
   background-color: ${({ color }) =>
-    color === 'dark'
-      ? 'var(--color-blue)'
-      : 'var(--color-white)'};
+    color === 'dark' ? 'var(--color-blue)' : 'var(--color-white)'};
   min-height: 768px;
   position: relative;
   padding-top: 240px;
@@ -105,24 +89,23 @@ const Wrapper = styled.section`
   justify-content: flex-start;
   align-items: stretch;
 
-  .second{
+  .second {
     margin-left: 30px;
     position: relative;
 
-
-    &::after{
-      content: "";
+    &::after {
+      content: '';
       position: absolute;
       background-color: var(--color-blue);
       width: 80px;
       left: 0;
       bottom: -5px;
       height: 2px;
-      transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: width 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
-    &:hover{
-      &::after{
+    &:hover {
+      &::after {
         width: 100%;
       }
     }
@@ -179,9 +162,7 @@ const TextBlock = styled.div`
 
   * {
     color: ${({ color }) =>
-      color === 'dark'
-        ? 'var(--color-white)'
-        : 'var(--color-blue)'};
+      color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
   }
 
   h1 {
