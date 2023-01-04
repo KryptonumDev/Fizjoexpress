@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet'
 import Hero from '../components/hero-homepage'
 import Seo from '../layout/seo'
 
-export function Head({ data: { seo } }) {
+export function Head({ data: { wpPage: { seo } } }) {
+
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />

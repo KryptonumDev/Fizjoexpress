@@ -26,11 +26,11 @@ export default function Archive({ noResults, url, location, category, categories
                     <Categories>
                         <span className="big-text">Kategorie</span>
                         <div className="flex">
-                                <Link activeClassName="active" to={'/blog/'}>
-                                    Wszystkie
-                                </Link>
+                            <Link data-name="Wszystkie" activeClassName="active" to={'/blog/'}>
+                                Wszystkie
+                            </Link>
                             {categories.map((el, index) => (
-                                <Link key={el.name + index} activeClassName="active" to={'/blog/' + el.slug + '/'}>
+                                <Link data-name={el.name} key={el.name + index} activeClassName="active" to={'/blog/' + el.slug + '/'}>
                                     {el.name}
                                 </Link>
                             ))}
@@ -104,10 +104,38 @@ const Categories = styled.div`
         margin-right: 12px;
     }
 
+    a{
+        position: relative;
+    transition: color 0.15s ease-out;
+        &::before{
+            content: attr(data-name);
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.15s ease-out;
+            color: var(--color-blue);
+            font-size: 16px;
+        }
+        &:hover{
+            color: transparent;
+            &::before{
+                opacity: 1;
+            }
+        }
+    }
+
     .active{
         font-weight: 700;
+        color: var(--color-blue) !important;
 
         position: relative;
+
+        &::before{
+            display:  none !important;
+        }
 
         &::after{
             content: "";

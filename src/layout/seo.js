@@ -4,7 +4,7 @@ import Logo from './../images/logo.png'
 const siteUrl = 'https://fizjoexpress.pl'
 
 export default function Seo({ slug, post = false, seo }) {
-  const canonical = siteUrl + (slug ? '/' + slug + '/' : seo.canonical)
+  const canonical = siteUrl + (slug ? '/' + slug + '/' : seo?.canonical ? seo.canonical : '/')
   return (
     <>
       <meta charSet='utf-8' />

@@ -35,7 +35,12 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        excludes: ['/404/**', '/404.html/', '/404/*']
+      }
+    },
     'gatsby-plugin-robots-txt',
     {
       resolve: 'gatsby-source-filesystem',

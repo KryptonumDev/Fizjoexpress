@@ -38,23 +38,25 @@ export default function Hero({
               __html: textParser(heroText)
             }}
           />
-          {buttonLink?.url && (
-            <Button
-              variant={colorVariant === 'dark' ? 'white' : 'primary'}
-              className='button'
-              to={buttonLink.url}
-              target={buttonLink.target ? buttonLink.target : null}>
-              {buttonLink.title}
-            </Button>
-          )}
-          {buttonLinkSecond?.url && (
-            <Link
-              className='button second'
-              to={buttonLinkSecond.url}
-              target={buttonLinkSecond.target ? buttonLinkSecond.target : null}>
-              {buttonLinkSecond.title}
-            </Link>
-          )}
+          <div className='buttons'>
+            {buttonLink?.url && (
+              <Button
+                variant={colorVariant === 'dark' ? 'white' : 'primary'}
+                className='button'
+                to={buttonLink.url}
+                target={buttonLink.target ? buttonLink.target : null}>
+                {buttonLink.title}
+              </Button>
+            )}
+            {buttonLinkSecond?.url && (
+              <Link
+                className='button second'
+                to={buttonLinkSecond.url}
+                target={buttonLinkSecond.target ? buttonLinkSecond.target : null}>
+                {buttonLinkSecond.title}
+              </Link>
+            )}
+          </div>
           {socialMedia && (
             <SocialMediaIcons
               sectionVariant={colorVariant}
@@ -90,8 +92,15 @@ const Wrapper = styled.section`
   justify-content: flex-start;
   align-items: stretch;
 
+  .buttons{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
   .second {
-    margin-left: 30px;
     position: relative;
 
     &::after {

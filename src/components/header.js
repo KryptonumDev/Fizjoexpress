@@ -96,6 +96,7 @@ const Header = () => {
             {naglowek.linkiWNaglowku.map(({ link: { url, title } }) => (
               <li key={`header-nav-${url}`}>
                 <Link
+                  partiallyActive={url !== '/' ? true : false}
                   onClick={() => setIsOpen(false)}
                   activeClassName='active'
                   data-link-text={title}
@@ -128,6 +129,7 @@ const HeaderWrapper = styled.header`
   left: 0;
   right: 0;
   z-index: 10000;
+  height: 70px;
 
   .read-more {
     padding: 33px 16px;

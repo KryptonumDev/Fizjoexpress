@@ -101,13 +101,15 @@ const Footer = () => {
           <LinksColumn>
             <p className='header'>{tytulNadListaLinkowPodstrony}</p>
             <ul>
-              {podstrony.map((el, index) => (
-                <li key={el.linkDoPodstrony.url + index}>
-                  <Link activeClassName='active' data-link-text={el.linkDoPodstrony.title} to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
-                    {el.linkDoPodstrony.title}
-                  </Link>
-                </li>
-              ))}
+              {podstrony.map((el, index) => {
+                return (
+                  <li key={el.linkDoPodstrony.url + index}>
+                    <Link partiallyActive={el.linkDoPodstrony.url !== '/' ? true : false} activeClassName='active' data-link-text={el.linkDoPodstrony.title} to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                      {el.linkDoPodstrony.title}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </LinksColumn>
         </LogoAndSitemapRow>
