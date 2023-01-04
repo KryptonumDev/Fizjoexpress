@@ -59,7 +59,7 @@ export default function BlogSlider({ data }) {
     ]
   }
 
-  let header = 'Blog'
+  let header = 'Blog o fizjoterapii i osteopatii'
   let title = 'Najnowsze wpisy na blogu'
 
   return (
