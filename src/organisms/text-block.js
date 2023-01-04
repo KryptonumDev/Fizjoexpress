@@ -19,8 +19,8 @@ export const TextBlock = ({
       id={cytate ? 'cytate' : ''}
       variant={variant}
       className={
-        (variant === TwoColumnFlexVariants.buttonUnderText ||
-          variant === TwoColumnFlexVariants.blogPost)
+        variant === TwoColumnFlexVariants.buttonUnderText ||
+        variant === TwoColumnFlexVariants.blogPost
           ? underline
             ? 'text-block with-line'
             : 'text-block'
@@ -30,16 +30,12 @@ export const TextBlock = ({
         <ul className='category-wrapper'>
           {header.map((category, index) => (
             <li key={category.name + index} className='text header'>
-              <Link to={`/blog/${category.slug}`}>
-                {category.name}
-              </Link>
+              <Link to={`/blog/${category.slug}`}>{category.name}</Link>
             </li>
           ))}
         </ul>
       ) : (
-        <span className='small-header header'>
-          {header}
-        </span>
+        <span className='small-header header'>{header}</span>
       )}
       <h2
         className='sub-title'
@@ -47,10 +43,7 @@ export const TextBlock = ({
           __html: textParser(title)
         }}
       />
-      <div
-        className='text'
-        dangerouslySetInnerHTML={{ __html: text }}
-      />
+      <div className='text' dangerouslySetInnerHTML={{ __html: text }} />
       {cytate && (
         <div className='cytate'>
           <span className='big-text'>{cytate}</span>
@@ -60,9 +53,7 @@ export const TextBlock = ({
             width='59.505'
             height='51.005'
             viewBox='0 0 59.505 51.005'>
-            <g
-              id='quote'
-              transform='translate(59.505 51.005) rotate(180)'>
+            <g id='quote' transform='translate(59.505 51.005) rotate(180)'>
               <path
                 id='Path_130'
                 data-name='Path 130'
@@ -103,17 +94,13 @@ export const TextBlock = ({
           </svg>
         </div>
       )}
-      {link?.url &&
-        variant ===
-        TwoColumnFlexVariants.buttonUnderText && (
-          <Button to={link.url} target={link.target}>
-            {link.title}
-          </Button>
-        )}
+      {link?.url && variant === TwoColumnFlexVariants.buttonUnderText && (
+        <Button to={link.url} target={link.target}>
+          {link.title}
+        </Button>
+      )}
       {variant === TwoColumnFlexVariants.blogPost && (
-        <a
-          href='#blog-content'
-          className='read-more btn--triangle'>
+        <a href='#blog-content' className='read-more btn--triangle'>
           Czytaj dalej
         </a>
       )}
@@ -135,11 +122,7 @@ const Wrapper = styled.div`
   }
 
   &#cytate {
-    padding-bottom: clamp(
-      30px,
-      ${(70 / 1366) * 100}vw,
-      70px
-    );
+    padding-bottom: clamp(30px, ${(70 / 1366) * 100}vw, 70px);
   }
 
   .cytate {
