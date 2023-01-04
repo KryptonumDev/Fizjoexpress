@@ -8,6 +8,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "G-98EN6J3FJJ",
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
         "url": "http://www-data.fizjoexpress.pl/graphql"
