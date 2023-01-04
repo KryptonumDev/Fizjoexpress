@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
@@ -37,6 +38,8 @@ export default function ServicesGrid({
             </Item>
           ))}
           <Item>
+            <Link to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę'>
+            </Link>
             <p className='text'>Poznaj nasza ofertę</p>
           </Item>
         </Grid>
@@ -151,16 +154,64 @@ const Item = styled.div`
     margin-bottom: 24px;
   }
 
+  
+
   p {
   }
 
   &:last-child {
-    background-color: var(--color-yellow);
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: var(--color-yellow);
+      z-index: -1;
+    }
+
+    &::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: var(--color-blue);
+      z-index: -1;
+      transform: translateY(100%);
+      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    &:hover{
+      p{
+        color: #fff;
+        &::after{
+          background-color: #fff;
+        }
+      }
+      &::after{
+        transform: unset;
+      }
+    }
+    a{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
     p {
       font-weight: 700;
       padding-bottom: 10px;
       position: relative;
+      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
       &::after {
         position: absolute;
@@ -171,6 +222,7 @@ const Item = styled.div`
         left: 50%;
         transform: translateX(-50%);
         width: 50px;
+      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
       }
     }
   }

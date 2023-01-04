@@ -26,6 +26,7 @@ export default function CtaBackground({
               dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
             <Buttons>
               <Button
+              variant='white'
                 to={firstButton?.url}
                 title={firstButton?.title}
                 className='link white'>

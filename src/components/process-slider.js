@@ -13,7 +13,7 @@ export const ProcessSlider = ({
   var settings = {
     dots: false,
     arrows: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -60,20 +60,6 @@ export const ProcessSlider = ({
                   )
                 }}
               />
-              <svg
-                className='arrow'
-                xmlns='http://www.w3.org/2000/svg'
-                width='6.765'
-                height='6.765'
-                viewBox='0 0 6.765 6.765'>
-                <path
-                  id='Path_207'
-                  data-name='Path 207'
-                  d='M4345.146,95.471l-6.765,6.765h6.765Z'
-                  transform='translate(-4338.381 -95.471)'
-                  fill='#141c2b'
-                />
-              </svg>
             </Item>
           ))}
         </Slider>

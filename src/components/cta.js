@@ -94,20 +94,20 @@ const Buttons = styled.div`
         font-weight: 700;
 
         &::after{
-        content: "";
-        position: absolute;
-        background-color: var(--color-blue);
-        width: 80px;
-        left: 0;
-        bottom: -5px;
-        height: 2px;
-        transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            content: "";
+            position: absolute;
+            background-color: var(--color-blue);
+            width: 50%;
+            left: 0;
+            bottom: -5px;
+            height: 2px;
+            transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
 
         &:hover{
-        &::after{
-            width: 100%;
-        }
+            &::after{
+                width: 100%;
+            }
         }
     }
 `

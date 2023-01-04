@@ -19,7 +19,7 @@ export const Button = ({
       className={className}
       variant={variant}>
       <span className='button'>{children}</span>
-      {variant === 'primary' && (
+      {(variant === 'primary' || variant === 'white') && (
         <svg
           className='angle'
           xmlns='http://www.w3.org/2000/svg'
@@ -45,10 +45,70 @@ const Wrapper = styled(Link)`
   align-items: center;
   padding: 26px 16px;
   position: relative;
-  background-color: ${({ variant }) =>
-    variant === 'primary' ? 'var(--color-yellow)' : 'var(--color-transparent)'};
+  background-color: transparent;
   color: var(--color-blue);
   max-width: 300px;
+  overflow: hidden;
+
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  background-color: ${({ variant }) =>
+    variant === 'primary' ? 'var(--color-yellow)' : 'var(--color-white)'};
+    z-index: 0;
+  }
+
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  background-color: ${({ variant }) =>
+    variant === 'primary' ? 'var(--color-blue)' : 'var(--color-yellow)'};
+    z-index: 0;
+    transform: translateY(100%);
+    transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  span{
+    color: var(--color-blue);
+  }
+
+  path{
+    fill: ${({ variant }) =>
+    variant === 'primary' ? 'var(--color-blue)' : 'var(--color-yellow)'};
+  }
+
+&:hover{
+  span{
+    color: ${({ variant }) =>
+    variant === 'primary' ? '#fff' : 'var(--color-blue)'};
+  }
+  path{
+    fill: ${({ variant }) =>
+    variant === 'primary' ? 'var(--color-yellow)' : 'var(--color-blue)'};
+    }
+  &::after{
+    transform: unset;
+  }
+    .angle {
+      right: 5px;
+      bottom: 5px;
+    }
+}
+
+span, path{
+  position: relative;
+  z-index: 1;
+  transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
 
   @media (max-width: 520px) {
     width: fit-content;
@@ -59,21 +119,6 @@ const Wrapper = styled(Link)`
   width: 100%;
   text-align: center;
 
-  &:hover {
-    .angle {
-      right: 5px;
-      bottom: 5px;
-    }
-  }
-
-  &.white {
-    background-color: var(--color-white);
-
-    path {
-      fill: var(--color-yellow);
-    }
-  }
-
   > span {
     color: var(--color-blue);
   }
@@ -83,5 +128,6 @@ const Wrapper = styled(Link)`
     transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
     right: 10px;
     bottom: 10px;
+    z-index: 2;
   }
 `

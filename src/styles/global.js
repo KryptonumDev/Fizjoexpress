@@ -33,6 +33,27 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    .slick-track{
+        display: flex !important;
+    }
+
+    .slick-slide {
+    height: auto !important;
+    div{
+        height: 100% ; 
+        div{
+            height: 100%;
+            div{
+                height: auto;
+            }
+        }
+    }
+    }
+
+    .slick-slide {
+        float: none !important;
+    }
+
     section{
         padding-top: var(--margin-intersection);
     }

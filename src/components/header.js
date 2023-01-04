@@ -7,6 +7,7 @@ import { FIZJOEXPRESS_LOGO_VARIANTS } from '../constants/logo-variants'
 import { Logo } from './icons'
 import scrollLock from '../helpers/scroll-lock'
 import SocialMediaIcons from './social-media-icons'
+import { Button } from '../moleculas/link'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -105,12 +106,12 @@ const Header = () => {
           <SocialMediaIcons className='mobile--nav' data={globalneGrafiki} />
         </NavigationContainer>
         <ButtonContainer isOpen={isOpen}>
-          <a
-            className='read-more btn--triangle'
-            href={naglowek.przycisk.url}
+          <Button
+            className='link'
+            to={naglowek.przycisk.url}
             target={naglowek.przycisk.target}>
             {naglowek.przycisk.title}
-          </a>
+          </Button>
         </ButtonContainer>
       </HeaderContainer>
     </HeaderWrapper>
@@ -226,7 +227,7 @@ const NavigationContainer = styled.nav`
     transition: visibility 0.2s ease-out, transform 0.2s ease-out,
       opacity 0.2s ease-out;
     transform: ${({ isOpen }) =>
-      isOpen ? 'translateY(0)' : 'translateY(-32px)'};
+    isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
     visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
@@ -298,11 +299,11 @@ const ButtonContainer = styled.div`
     transition: visibility 0.2s ease-out, transform 0.2s ease-out,
       opacity 0.2s ease-out;
     transform: ${({ isOpen }) =>
-      isOpen ? 'translateY(0)' : 'translateY(-32px)'};
+    isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
     visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-    .read-more {
+    .link {
       width: 100%;
       max-width: unset;
     }

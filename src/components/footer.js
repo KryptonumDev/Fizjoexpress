@@ -103,7 +103,7 @@ const Footer = () => {
             <ul>
               {podstrony.map((el, index) => (
                 <li key={el.linkDoPodstrony.url + index}>
-                  <Link to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                  <Link activeClassName='active' data-link-text={el.linkDoPodstrony.title} to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
                     {el.linkDoPodstrony.title}
                   </Link>
                 </li>
@@ -322,6 +322,29 @@ const LinksColumn = styled(ArticlesColumn)`
   a {
     padding: 1px 4px;
     margin: 0 0 0 -4px;
+    position: relative;
+    &:after {
+      content: attr(data-link-text);
+      font-weight: 700;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      opacity: 0;
+      width: max-content;
+      transition: opacity 0.15s ease-out;
+      color: var(--color-white);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    &.active,
+    &:hover {
+      color: transparent;
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    
     &:before {
       content: none;
     }

@@ -114,7 +114,7 @@ const Item = styled.div`
         }
     }
     .hover{
-        opacity: 0;
+        transform: translateY(100%);
         pointer-events: none;
         background-color: #141C2Bb6;
         position: absolute;
@@ -127,7 +127,7 @@ const Item = styled.div`
         flex-direction: column;
         justify-content: center;
         padding: 0 40px;
-        transition: opacity .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: transform .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         .big-text{
             margin-bottom: 20px;
         }
@@ -152,7 +152,7 @@ const Item = styled.div`
             opacity: 0;
         }
         .hover{
-            opacity: 1;
+            transform: unset;
             pointer-events: all;
         }
     }

@@ -91,8 +91,8 @@ export const CategoryPageQuery = graphql`
         id
       }
     }
-    posts: allWpPost(
-      filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
+    posts: allWpPost (
+      sort: {date: DESC}, filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
     ) {
       nodes {
         title

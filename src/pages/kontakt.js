@@ -6,6 +6,7 @@ import { textParser } from '../helpers/text-parser'
 import Form from '../components/form'
 import Seo from '../layout/seo'
 import { Helmet } from 'react-helmet'
+import { Button } from '../moleculas/link'
 
 export function Head({
   data: {
@@ -77,12 +78,12 @@ const ContactPage = ({
               __html: textParser(kontaktInformacje.akapitTekstuNadPrzyciskiem)
             }}
           />
-          <a
-            className='read-more btn--triangle'
+          <Button
+            className=''
             target={kontaktInformacje.link.target}
-            href={kontaktInformacje.link.url}>
+            to={kontaktInformacje.link.url}>
             {kontaktInformacje.link.title}
-          </a>
+          </Button>
         </TextContainer>
         <FormContainer>
           <Form data={formularzKontaktowy} />

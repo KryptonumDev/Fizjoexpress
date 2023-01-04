@@ -12,7 +12,8 @@ export const TextBlock = ({
   text,
   link,
   cytate,
-  variant = 'default'
+  variant = 'default',
+  buttonVariant = 'primary'
 }) => {
   return (
     <Wrapper
@@ -20,7 +21,7 @@ export const TextBlock = ({
       variant={variant}
       className={
         variant === TwoColumnFlexVariants.buttonUnderText ||
-        variant === TwoColumnFlexVariants.blogPost
+          variant === TwoColumnFlexVariants.blogPost
           ? underline
             ? 'text-block with-line'
             : 'text-block'
@@ -95,7 +96,7 @@ export const TextBlock = ({
         </div>
       )}
       {link?.url && variant === TwoColumnFlexVariants.buttonUnderText && (
-        <Button to={link.url} target={link.target}>
+        <Button variant={buttonVariant} to={link.url} target={link.target}>
           {link.title}
         </Button>
       )}

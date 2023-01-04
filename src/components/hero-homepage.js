@@ -40,6 +40,7 @@ export default function Hero({
           />
           {buttonLink?.url && (
             <Button
+              variant={colorVariant === 'dark' ? 'white' : 'primary'}
               className='button'
               to={buttonLink.url}
               target={buttonLink.target ? buttonLink.target : null}>
@@ -113,25 +114,25 @@ const Wrapper = styled.section`
 
   @media (max-width: 1240px) {
     ${({ color }) =>
-      color === 'light'
-        ? `
+    color === 'light'
+      ? `
           .image{
             max-width: 60vw;
           }
         `
-        : null}
+      : null}
   }
 
   @media (max-width: 480px) {
     ${({ color }) =>
-      color === 'light'
-        ? `
+    color === 'light'
+      ? `
           padding-top: clamp(0px, 66.66vw, 320px) !important;
           .image{
             max-width: 80vw;
           }
         `
-        : null}
+      : null}
   }
 
   @media (max-width: 640px) {
@@ -162,7 +163,7 @@ const TextBlock = styled.div`
 
   * {
     color: ${({ color }) =>
-      color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
+    color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
   }
 
   h1 {

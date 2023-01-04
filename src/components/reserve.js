@@ -32,7 +32,7 @@ export default function Reserve({
           </Steps>
         </Content>
         <div className='button-wrap'>
-          <Button to={link?.url} target={link?.target} className={'white'}>
+          <Button variant='white' to={link?.url} target={link?.target} className={'white'}>
             {link?.title}
           </Button>
         </div>

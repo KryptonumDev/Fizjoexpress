@@ -97,8 +97,7 @@ export default function Faq({ data: { header, title } }) {
                       <g
                         id='Rectangle_105'
                         data-name='Rectangle 105'
-                        fill='#fff'
-                        stroke='#d2d2d2'
+                        fill='#d2d2d2'
                         strokeWidth='1'>
                         <rect
                           width='8'
@@ -157,9 +156,10 @@ const Grid = styled.div`
 `
 
 const Item = styled.details`
-  padding: 24px clamp(24px, ${(40 / 1366) * 100}vw, 40px);
   background-color: var(--color-light-gray);
   summary {
+  padding: 24px clamp(24px, ${(40 / 1366) * 100}vw, 40px) 0;
+  padding-bottom: 24px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -168,16 +168,40 @@ const Item = styled.details`
       min-width: 30px;
       width: 30px;
       height: 30px;
-      background-color: var(--color-white);
-
+      background-color: transparent;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+
+      svg{
+        position: relative;
+        z-index: 1;
+      }
+
+      &::before{
+        content: '';
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        background-color: var(--color-white);
+      }
+
+      &::after{
+        content: '';
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        background-color: var(--color-yellow);
+        transform: translateY(100%);
+        transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      }
     }
   }
 
   .text {
-    margin-top: clamp(20px, ${(32 / 1366) * 100}vw, 32px);
+  padding: 0 clamp(24px, ${(40 / 1366) * 100}vw, 40px) 24px ;
   }
 
   .minus {
@@ -185,11 +209,30 @@ const Item = styled.details`
   }
 
   &[open] {
+    summary{
+      padding-bottom: clamp(20px, ${(32 / 1366) * 100}vw, 32px);
+    }
     .minus {
       display: block;
     }
     .plus {
       display: none;
+    }
+  }
+
+  path, g{
+    transition: stroke .3s cubic-bezier(0.39, 0.575, 0.565, 1), fill .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  summary:hover{
+    .control::after{
+      transform: unset;
+    }
+    svg{
+      path, g{
+        stroke: var(--colro-blue);
+        fill: var(--color-blue);
+      }
     }
   }
 `

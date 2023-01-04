@@ -3,6 +3,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
 import styled from 'styled-components'
+import { Button } from '../moleculas/button-input'
 
 const Form = ({ data }) => {
   const {
@@ -70,7 +71,7 @@ const Form = ({ data }) => {
             reset()
           }, 7500)
         }
-      })  
+      })
       .catch(() => {
         reset()
         setMessage(formMessages.error)
@@ -80,20 +81,9 @@ const Form = ({ data }) => {
       })
   }
 
-  const onError = (errors, e) => {
-    // console.log('ERRORS', errors, e)
-    setTimeout(() => {
-      setMessage(formMessages.error)
-    }, 500)
-    setTimeout(() => {
-      setMessage(formMessages.blank)
-      reset()
-    }, 8000)
-  }
-
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <FieldWrapper>
           <div className='wrapper'>
             <label htmlFor='nameAndSurname'>{tekstNadPierwszymPolem}</label>
@@ -216,12 +206,13 @@ const Form = ({ data }) => {
             />
           </div>
         </FieldWrapper>
-        <input
-          aria-disabled={errors && Object.keys(errors).length !== 0}
+        <Button
+          ariaDisabled={errors && Object.keys(errors).length !== 0}
           disabled={errors && Object.keys(errors).length !== 0}
           type='submit'
-          value={tekstPrzycisku}
-        />
+        >
+          {tekstPrzycisku}
+        </Button>
       </form>
       <p
         className={`form-message ${message.type !== '' && 'form-message--show'

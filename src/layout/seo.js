@@ -9,16 +9,23 @@ export default function Seo({ post = false, seo }) {
   return (
     <>
       <meta charSet='utf-8' />
-      <meta name='robots' content='noindex' />
+      <meta name='robots' content='index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+      />
       <meta property='og:site_name' content={seo.opengraphSiteName} />
       {/* <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" /> */}
 
-      {canonical ? (
-        <>
-          <link rel='canonical' href={canonical} />
-          <meta property='og:url' content={canonical} />
-        </>
-      ) : null}
+      {canonical === '/blog/nowosci/'
+        ? <>
+          <link rel='canonical' href={'/blog/'} />
+          <meta property='og:url' content={'/blog/'} />
+        </> : <>
+          {canonical ? (
+            <>
+              <link rel='canonical' href={canonical} />
+              <meta property='og:url' content={canonical} />
+            </>
+          ) : null}
+        </>}
 
       {seo?.title ? (
         <>
@@ -76,8 +83,8 @@ export default function Seo({ post = false, seo }) {
             name: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ'
           },
           "additionalProperty": {
-              "@type": "Phisioteraphy",
-              "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
+            "@type": "Phisioteraphy",
+            "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
           },
           name: 'Fizjoexpress by Rehalthy',
           legalName: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ',
@@ -166,17 +173,17 @@ export default function Seo({ post = false, seo }) {
             name: seo.title,
             description: seo.metaDesc,
             image: seo.opengraphImage.localFile.publicURL,
-              keywords: seo.metaKeywords,
-              // "author": {
-              //     "@type": "Person",
-              //     "name": "Edgar Walaszczyk",
-              //     "jobTitle": "Fizjoterapeuta",
-              //     "alumniOf": "Uniwersytet Rzeszowski",
-              //     "sameAs": [
-              //         "https://facebook.com/edgar",
-              //         "https://www.linkedin.com/company/edgar"
-              //     ]
-              // },
+            keywords: seo.metaKeywords,
+            // "author": {
+            //     "@type": "Person",
+            //     "name": "Edgar Walaszczyk",
+            //     "jobTitle": "Fizjoterapeuta",
+            //     "alumniOf": "Uniwersytet Rzeszowski",
+            //     "sameAs": [
+            //         "https://facebook.com/edgar",
+            //         "https://www.linkedin.com/company/edgar"
+            //     ]
+            // },
             publisher: {
               '@type': 'Organization',
               name: 'Fizjoexpress',

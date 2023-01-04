@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
-import { textParser } from '../helpers/text-parser'
 import { TextBlock } from '../organisms/text-block'
 
 export default function TwoColumnWithDarkBackground({
@@ -15,6 +14,7 @@ export default function TwoColumnWithDarkBackground({
       <Container>
         <Content>
           <TextBlock
+            buttonVariant={'white'}
             header={header}
             title={title}
             text={text}

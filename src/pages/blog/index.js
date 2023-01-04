@@ -75,7 +75,7 @@ export const blogQuery = graphql`
         id
       }
     }
-    posts: allWpPost {
+    posts: allWpPost(sort: {date: DESC}) {
       nodes {
         title
         slug
