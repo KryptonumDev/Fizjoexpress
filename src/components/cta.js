@@ -24,6 +24,8 @@ const Wrapper = styled.section`
     .big-text{
         font-weight: 300;
         margin-bottom: 36px;
+        display: grid;
+        grid-gap: 1.5em;
     }
 `
 

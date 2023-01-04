@@ -40,7 +40,7 @@ export default function ServicesGrid({
           <Item>
             <Link to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę'>
             </Link>
-            <p className='text'>Poznaj nasza ofertę</p>
+            <p className='text'>Poznaj naszą ofertę</p>
           </Item>
         </Grid>
       </Container>
