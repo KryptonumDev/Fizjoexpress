@@ -54,6 +54,13 @@ const GlobalStyles = createGlobalStyle`
         float: none !important;
     }
 
+    .no-focus {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        top: 0;
+    }
+
     section{
         padding-top: var(--margin-intersection);
     }

@@ -10,7 +10,7 @@ import { ContentWrapper, SocialWrapper } from './blog/{WpPost.slug}'
 
 export function Head({
   data: {
-    wpPage: { seo }
+    wpPage: { slug, seo }
   }
 }) {
   let ldJson = {
@@ -37,7 +37,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo slug={slug} seo={seo} />
     </>
   )
 }
@@ -142,6 +142,7 @@ export const politykasQuery = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDo0NA==" }) {
+      slug
       seo {
         canonical
         metaDesc

@@ -10,7 +10,7 @@ import { Button } from '../moleculas/link'
 
 export function Head({
   data: {
-    wpPage: { seo }
+    wpPage: { slug, seo }
   }
 }) {
   let ldJson = {
@@ -37,7 +37,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo slug={slug} seo={seo} />
     </>
   )
 }
@@ -259,6 +259,7 @@ const FormContainer = styled.div`
 export const contactPageQuery = graphql`
   query {
     wpPage(id: { eq: "cG9zdDo0MQ==" }) {
+      slug
       seo {
         canonical
         metaDesc

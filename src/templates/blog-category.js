@@ -8,7 +8,7 @@ import Hero from './../components/blog-hero'
 export function Head({
   data: {
     wpCategory,
-    wpPage: { seo }
+    wpPage: { slug, seo }
   }
 }) {
   let ldJson = {
@@ -41,7 +41,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo slug={slug + '/' + wpCategory.slug} seo={seo} />
     </>
   )
 }
@@ -115,6 +115,7 @@ export const CategoryPageQuery = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDozOA==" }) {
+      slug
       seo {
         canonical
         metaDesc

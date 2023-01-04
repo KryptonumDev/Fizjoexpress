@@ -75,6 +75,7 @@ const Header = () => {
   return (
     <HeaderWrapper isOpen={isOpen} isHomepage={location?.pathname === '/'}>
       <HeaderContainer isOpen={isOpen}>
+        <a className="no-focus" href="#content" aria-label='przejdź do treści' />
         <LogoContainer>
           <Logo
             onClick={() => setIsOpen(false)}

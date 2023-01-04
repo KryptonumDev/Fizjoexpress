@@ -50,6 +50,7 @@ const Form = ({ data }) => {
   const [message, setMessage] = React.useState(formMessages.blank)
 
   const onSubmit = (data, e) => {
+    debugger
     let url = 'https://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
     let body = new FormData()
     body.append('your-email', data.email)
@@ -100,7 +101,7 @@ const Form = ({ data }) => {
             <p
               className={`error ${errors.nameAndSurname?.type === 'maxLength' && 'error--show'
                 }`}>
-              maxLength.
+              Maksimum 50 znaków.
             </p>
           </div>
           <input
@@ -108,7 +109,7 @@ const Form = ({ data }) => {
             className={errors?.nameAndSurname && 'input--error'}
             {...register('nameAndSurname', {
               required: true,
-              minLength: 2,
+              minLength: 3,
               maxLength: 50
             })}
           />
@@ -135,7 +136,7 @@ const Form = ({ data }) => {
               required: true,
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'invalid email address'
+                message: 'Nieprawidłowy adres E-mail'
               }
             })}
           />
@@ -159,7 +160,6 @@ const Form = ({ data }) => {
                 required
               />
             )}
-            rules={{ required: true }}
           />
           {errors.phoneNumber && (
             <p className={`error`}>{tekstBleduTrzeciePole}</p>
@@ -181,14 +181,14 @@ const Form = ({ data }) => {
             <p
               className={`error ${errors?.message?.type === 'minLength' && 'error--show'
                 }`}>
-              Minimum 10 znaków.
+              Minimum 5 znaków.
             </p>
           </div>
           <textarea
             className={errors?.message && 'input--error'}
             id='message'
             rows='4'
-            {...register('message', { required: true, minLength: 10 })}
+            {...register('message', { required: true, minLength: 5 })}
           />
         </FieldWrapper>
         <FieldWrapper>

@@ -101,7 +101,7 @@ const Buttons = styled.div`
             left: 0;
             bottom: -5px;
             height: 2px;
-            transition: width .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            transition: width .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
 
         &:hover{

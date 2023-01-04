@@ -2,11 +2,13 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import Hero from '../components/hero-homepage'
+import Seo from '../layout/seo'
 
-export function Head({ data }) {
+export function Head({ data: { seo } }) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <Seo seo={seo} />
     </>
   )
 }
@@ -40,6 +42,17 @@ export default ErrorPage
 export const errorQuery = graphql`
   query {
     wpPage(id: { eq: "cG9zdDo0OQ==" }) {
+      seo {
+        canonical
+        metaDesc
+        opengraphSiteName
+        title
+        opengraphImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
       error {
         heroErrorpage {
           tytulSekcji

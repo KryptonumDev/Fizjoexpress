@@ -15,7 +15,7 @@ import Seo from '../layout/seo'
 
 export function Head({
   data: {
-    wpPage: { seo }
+    wpPage: { slug, seo }
   }
 }) {
   let ldJson = {
@@ -42,7 +42,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo seo={seo} />
+      <Seo slug={slug} seo={seo} />
     </>
   )
 }
@@ -177,6 +177,7 @@ export const query = graphql`
       }
     }
     wpPage(id: { eq: "cG9zdDozMw==" }) {
+      slug
       seo {
         canonical
         metaDesc

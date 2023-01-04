@@ -3,9 +3,8 @@ import Logo from './../images/logo.png'
 
 const siteUrl = 'https://fizjoexpress.pl'
 
-export default function Seo({ post = false, seo }) {
-  const canonical = siteUrl + seo.canonical
-
+export default function Seo({ slug, post = false, seo }) {
+  const canonical = siteUrl + (slug ? '/' + slug + '/' : seo.canonical)
   return (
     <>
       <meta charSet='utf-8' />
@@ -14,10 +13,10 @@ export default function Seo({ post = false, seo }) {
       <meta property='og:site_name' content={seo.opengraphSiteName} />
       {/* <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" /> */}
 
-      {canonical === '/blog/nowosci/'
+      {slug === 'blog/nowosci'
         ? <>
-          <link rel='canonical' href={'/blog/'} />
-          <meta property='og:url' content={'/blog/'} />
+          <link rel='canonical' href={siteUrl + '/blog/'} />
+          <meta property='og:url' content={siteUrl + '/blog/'} />
         </> : <>
           {canonical ? (
             <>
