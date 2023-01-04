@@ -73,7 +73,7 @@ const Wrapper = styled(Link)`
     variant === 'primary' ? 'var(--color-blue)' : 'var(--color-yellow)'};
     z-index: 0;
     transform: translateY(100%);
-    transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
   }
 
   span{
@@ -106,7 +106,7 @@ const Wrapper = styled(Link)`
 span, path{
   position: relative;
   z-index: 1;
-  transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 

@@ -32,6 +32,11 @@ export default function Seo({ authors, slug, post = false, seo }) {
         "name": element.name,
         "jobTitle": "Fizjoterapeuta",
         "alumniOf": element.dodatkowePolaAutora.wyksztalcenieAutora,
+        "url": element.name.toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/[\s_-]+/g, '-')
+          .replace(/^-+|-+$/g, ''),
         "sameAs": sameAs
       })
     });
@@ -162,7 +167,8 @@ export default function Seo({ authors, slug, post = false, seo }) {
             "https://www.facebook.com/rehealthy",
             "https://www.instagram.com/arkadiuszmartyniuk/",
             "https://www.youtube.com/@arkadiuszmartyniukofficial1469",
-            "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3/", "https://booksy.com/pl-pl/163820_fizjoexpress-by-rehealthy_zdrowie_3_warszawa"
+            "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3/",
+            "https://booksy.com/pl-pl/163820_fizjoexpress-by-rehealthy_zdrowie_3_warszawa"
           ],
           "employee": employe
         })}

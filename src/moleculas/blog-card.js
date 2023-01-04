@@ -32,7 +32,7 @@ const Item = styled.div`
     .image{
         height: 200px;
         img{
-            transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
     }
 

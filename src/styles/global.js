@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
         color: var(--color-blue);
         font-family: Poppins;
         box-sizing: border-box;
+        scroll-margin-top: 100px;
     }
 
     .slick-track{

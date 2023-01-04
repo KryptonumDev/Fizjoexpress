@@ -186,7 +186,7 @@ const Item = styled.div`
       background-color: var(--color-blue);
       z-index: -1;
       transform: translateY(100%);
-      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
     &:hover{
@@ -208,10 +208,11 @@ const Item = styled.div`
       top: 0;
     }
     p {
+      pointer-events: none;
       font-weight: 700;
       padding-bottom: 10px;
       position: relative;
-      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
 
       &::after {
         position: absolute;
@@ -222,7 +223,7 @@ const Item = styled.div`
         left: 50%;
         transform: translateX(-50%);
         width: 50px;
-      transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
       }
     }
   }

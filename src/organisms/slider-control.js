@@ -44,7 +44,7 @@ const Buttons = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: background-color .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         border: none;
         cursor: pointer;
         position: relative;
@@ -77,7 +77,7 @@ const Buttons = styled.div`
             top: 0;
             background-color: var(--color-yellow);
             transform: translateY(100%);
-            transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
 
         &:first-child{
@@ -89,7 +89,7 @@ const Buttons = styled.div`
         }
 
         svg{
-            transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
         }
 
         &:hover{

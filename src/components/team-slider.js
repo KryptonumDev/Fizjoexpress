@@ -29,7 +29,7 @@ export default function TeamSlider({
         }]
     }
     return (
-        <Wrapper  id='zespol'>
+        <Wrapper>
             <Container>
                 <Control
                     white={true}
@@ -39,10 +39,14 @@ export default function TeamSlider({
                 />
                 <Slider ref={slickRef} {...settings}>
                     {team.map((el, index) => (
-                        <Item key={el.name + index}>
+                        <Item id={el.name.toLowerCase()
+                            .trim()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-')
+                            .replace(/^-+|-+$/g, '')} key={el.name + index}>
                             <GatsbyImage
                                 className="image"
-                                 image={el.dodatkowePolaAutora.zdjecieAutora
+                                image={el.dodatkowePolaAutora.zdjecieAutora
                                     .localFile.childImageSharp
                                     .gatsbyImageData
                                 }

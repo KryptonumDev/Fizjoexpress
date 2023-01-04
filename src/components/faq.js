@@ -195,7 +195,7 @@ const Item = styled.details`
         inset: 0;
         background-color: var(--color-yellow);
         transform: translateY(100%);
-        transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
       }
     }
   }
@@ -221,7 +221,7 @@ const Item = styled.details`
   }
 
   path, g{
-    transition: stroke .3s cubic-bezier(0.39, 0.575, 0.565, 1), fill .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: stroke .2s cubic-bezier(0.39, 0.575, 0.565, 1), fill .2s cubic-bezier(0.39, 0.575, 0.565, 1);
   }
 
   summary:hover{
