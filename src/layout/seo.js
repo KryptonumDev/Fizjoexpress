@@ -13,7 +13,7 @@ export default function Seo({ slug, post = false, seo }) {
       <meta property='og:site_name' content={seo.opengraphSiteName} />
       {/* <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" /> */}
 
-      {slug === 'blog/nowosci'
+      {slug === '/blog/nowosci/'
         ? <>
           <link rel='canonical' href={siteUrl + '/blog/'} />
           <meta property='og:url' content={siteUrl + '/blog/'} />
