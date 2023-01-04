@@ -41,7 +41,7 @@ export function Head({
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={slug + '/' + wpCategory.slug} seo={seo} />
+      <Seo slug={'/' + slug + '/' + wpCategory.slug + '/'} seo={seo} />
     </>
   )
 }

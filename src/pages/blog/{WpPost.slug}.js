@@ -10,7 +10,7 @@ import Seo from '../../layout/seo'
 import quoteBefore from '../../static/quote-befre.svg'
 import quoteAfter from '../../static/quote.svg'
 
-export function Head({ data: { slug, wpPost } }) {
+export function Head({ data: { wpPost } }) {
   let ldJson = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -41,7 +41,7 @@ export function Head({ data: { slug, wpPost } }) {
         {JSON.stringify(ldJson)}
       </script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={slug} post={wpPost} seo={wpPost.seo} />
+      <Seo slug={'/' + wpPost.slug + '/'} post={wpPost} seo={wpPost.seo} />
     </>
   )
 }

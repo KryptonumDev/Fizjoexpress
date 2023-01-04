@@ -325,6 +325,7 @@ const LinksColumn = styled(ArticlesColumn)`
     padding: 1px 4px;
     margin: 0 0 0 -4px;
     position: relative;
+      transition: color 0.15s ease-out;
     &:after {
       content: attr(data-link-text);
       font-weight: 700;

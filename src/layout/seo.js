@@ -4,7 +4,7 @@ import Logo from './../images/logo.png'
 const siteUrl = 'https://fizjoexpress.pl'
 
 export default function Seo({ slug, post = false, seo }) {
-  const canonical = siteUrl + (slug ? '/' + slug + '/' : seo?.canonical ? seo.canonical : '/')
+  const canonical = siteUrl + (slug ? slug : seo?.canonical ? seo.canonical : '/')
   return (
     <>
       <meta charSet='utf-8' />
@@ -75,35 +75,31 @@ export default function Seo({ slug, post = false, seo }) {
 
       <script type='application/ld+json'>
         {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'MedicalBusiness',
-          ispartof: {
-            '@type': 'Organization',
-            name: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ'
+          "@context": "https://schema.org",
+          "@type": "MedicalBusiness",
+          "ispartof":{
+          "@type":"Organization",
+          "name":"FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
           },
-          "additionalProperty": {
-            "@type": "Phisioteraphy",
-            "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
-          },
-          name: 'Fizjoexpress by Rehalthy',
-          legalName: 'FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ',
-          // "image": "https://fizjoexpress.pl/superzdjecelokalu.jpg",
-          url: 'https://fizjoexpress.pl/',
-          website: {
-            '@type': 'WebSite',
-            name: 'Fizjoexpress',
-            url: 'https://fizjoexpress.pl/'
-          },
-          vatId: 'PL7011114194',
-          telephone: '510520120',
-          email: 'kontakt@fizjoexpress.pl',
-          priceRange: '100-1000zł',
-          paymentAccepted: 'Gotówka, Karta',
-          currenciesAccepted: 'PLN',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Łucka 20 lok. 94',
-            addressLocality: 'Warsaw',
+          "name": "Fizjoexpress by Rehalthy",
+          "legalName": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+          "image": "https://fizjoexpress.pl/superzdjecie.jpg",
+          "url": "https://fizjoexpress.pl/",
+          "subjectof":{
+          "@type": "WebSite",
+          "name": "Fizjoexpress",
+          "url": "https://fizjoexpress.pl/"},
+          "vatId": "PL7011114194",
+          "telephone": "510520120",
+          "email": "kontakt@fizjoexpress.pl",
+          "priceRange": "100-1000zł",
+          "paymentAccepted": "Gotówka, Karta",
+          "currenciesAccepted": "PLN",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Łucka 20 lok. 94",
+            "addressLocality": "Warsaw",
+
             postalCode: '00-842',
             addressCountry: 'PL'
           },

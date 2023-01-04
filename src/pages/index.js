@@ -21,7 +21,7 @@ export function Head({
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo slug={slug} seo={seo} />
+      <Seo slug={'/'} seo={seo} />
     </>
   )
 }
