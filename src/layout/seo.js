@@ -5,6 +5,25 @@ const siteUrl = 'https://fizjoexpress.pl'
 
 export default function Seo({ slug, post = false, seo }) {
   const canonical = siteUrl + (slug ? slug : seo?.canonical ? seo.canonical : '/')
+  const author = []
+  if (post) {
+    post?.authors?.nodes?.forEach(element => {
+
+      const sameAs = []
+
+      element.dodatkowePolaAutora.authorSocialMediaLinks.forEach(el => {
+        sameAs.push(el.socialMediaLink)
+      })
+
+      author.push({
+        "@type": "Person",
+        "name": element.name,
+        "jobTitle": "Fizjoterapeuta",
+        "alumniOf": element.dodatkowePolaAutora.wyksztalcenieAutora,
+        "sameAs": sameAs
+      })
+    });
+  }
   return (
     <>
       <meta charSet='utf-8' />
@@ -77,18 +96,19 @@ export default function Seo({ slug, post = false, seo }) {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalBusiness",
-          "ispartof":{
-          "@type":"Organization",
-          "name":"FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
+          "ispartof": {
+            "@type": "Organization",
+            "name": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
           },
           "name": "Fizjoexpress by Rehalthy",
           "legalName": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
-          "image": "https://fizjoexpress.pl/superzdjecie.jpg",
+          // "image": "https://fizjoexpress.pl/superzdjecie.jpg",
           "url": "https://fizjoexpress.pl/",
-          "subjectof":{
-          "@type": "WebSite",
-          "name": "Fizjoexpress",
-          "url": "https://fizjoexpress.pl/"},
+          "subjectof": {
+            "@type": "WebSite",
+            "name": "Fizjoexpress",
+            "url": "https://fizjoexpress.pl/"
+          },
           "vatId": "PL7011114194",
           "telephone": "510520120",
           "email": "kontakt@fizjoexpress.pl",
@@ -99,59 +119,80 @@ export default function Seo({ slug, post = false, seo }) {
             "@type": "PostalAddress",
             "streetAddress": "Łucka 20 lok. 94",
             "addressLocality": "Warsaw",
-
-            postalCode: '00-842',
-            addressCountry: 'PL'
+            "postalCode": "00-842",
+            "addressCountry": "PL"
           },
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 52.232335,
-            longitude: 20.9870986
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 52.232335,
+            "longitude": 20.9870986
           },
-          openingHoursSpecification: [
-            {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday', 'Friday', 'Thursday'],
-              opens: '15:00',
-              closes: '20:00'
-            },
-            {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Tuesday', 'Wednesday'],
-              opens: '10:00',
-              closes: '20:00'
-            }
+          "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday"
+            ],
+            "opens": "10:00",
+            "closes": "20:00"
+          }, {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Friday"
+            ],
+            "opens": "10:00",
+            "closes": "15:00"
+          }],
+          "keywords": "Fizjoterapia Warszawa, Fizjoterapia Warszawa Centrum, Fizjoterapia Warszawa Wola, Fizjoterapia Warszawa Mokotów, Masaż leczniczy Warszawa, Basic Treatment Protocol®, Ból Kręgosłupa, Choroby Kręgosłupa",
+          "sameAs": [
+            "https://www.facebook.com/rehealthy",
+            "https://www.instagram.com/arkadiuszmartyniuk/",
+            "https://www.youtube.com/@arkadiuszmartyniukofficial1469",
+            "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3/", "https://booksy.com/pl-pl/163820_fizjoexpress-by-rehealthy_zdrowie_3_warszawa"
           ],
-          keywords:
-            'Fizjoterapia Warszawa, Fizjoterapia Warszawa Centrum, Fizjoterapia Warszawa Wola, Fizjoterapia Warszawa Mokotów, Masaż leczniczy Warszawa, Basic Treatment Protocol®, Ból Kręgosłupa, Choroby Kręgosłupa',
-          sameAs: [
-            'https://www.facebook.com/rehealthy',
-            'https://www.instagram.com/arkadiuszmartyniuk/',
-            'https://www.youtube.com/@arkadiuszmartyniukofficial1469',
-            'https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3/',
-            'https://booksy.com/pl-pl/163820_fizjoexpress-by-rehealthy_zdrowie_3_warszawa'
-          ],
-          employee: {
-            '@type': 'Person',
-            name: 'Jonasz Siwek',
-            jobTitle: 'Fizjoterapeuta',
-            alumniOf:
-              'Wychowanie Fizyczne w Warszawie oraz Wyższa Szkoła Rehabilitacji — studia z zakresu fizjoterapii',
-            sameAs: [
-              'https://facebook.com/jonasz',
-              'https://www.linkedin.com/company/jonasz'
+          "employee": [{
+            "@type": "Person",
+            "name": "Arkadiusz Martyniuk",
+            "jobTitle": "Fizjoterapeuta",
+            "alumniOf": "Podkowiańska Wyższa Szkoła Medyczna",
+            "sameAs": [
+              "https://www.facebook.com/rehealthy/",
+              "https://www.linkedin.com/in/arkadiusz-piotr-martyniuk-840663a3",
+              "https://www.instagram.com/arkadiuszmartyniuk/",
             ]
-          },
-          employee: {
-            '@type': 'Person',
-            name: 'Edgar Walaszczyk',
-            jobTitle: 'Fizjoterapeuta',
-            alumniOf: 'Uniwersytet Rzeszowski',
-            sameAs: [
-              'https://facebook.com/edgar',
-              'https://www.linkedin.com/company/edgar'
+          }, {
+            "@type": "Person",
+            "name": "Edgar Walaszczyk",
+            "jobTitle": "Fizjoterapeuta",
+            "alumniOf": "Uniwersytet Rzeszowski",
+            "sameAs": [
+              "https://www.facebook.com/edgar.eddiewalaszczyk/",
+              "https://www.linkedin.com/in/edgarwalaszczyk"
             ]
-          }
+          }, {
+            "@type": "Person",
+            "name": "Jonasz Siwek",
+            "jobTitle": "Fizjoterapeuta",
+            "alumniOf": "Akademia Wychowania Fizycznego w Warszawie",
+            "sameAs": [
+              "https://www.facebook.com/jonasz.siwek"
+            ]
+          }, {
+            "@type": "Person",
+            "name": "Michał Kasica",
+            "jobTitle": "Fizjoterapeuta",
+            "alumniOf": "Śląska Akademia Medyczna w KatowicachŚląska Akademia Medyczna w Katowicach",
+            "sameAs": [
+              "https://www.linkedin.com/in/micha%C5%82-kasica-052646189/"
+            ]
+          }, {
+            "@type": "Person",
+            "name": "Przemysław Kozłowski",
+            "jobTitle": "Fizjoterapeuta",
+            "alumniOf": "Akademia Wychowania Fizycznego im. Józefa Piłsudskiego w Warszawie oraz Wyższa Szkoła Rehabilitacji w Warszawie"
+          }]
         })}
       </script>
 
@@ -160,39 +201,30 @@ export default function Seo({ slug, post = false, seo }) {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
-            mainEntityOfPage: {
+            "mainEntityOfPage": {
               '@type': 'WebPage',
               '@id': 'https://fizjoexpress.pl/blog/' + post.slug + '/'
             },
-            headline: post.title,
-            name: seo.title,
-            description: seo.metaDesc,
-            image: seo.opengraphImage.localFile.publicURL,
-            keywords: seo.metaKeywords,
-            // "author": {
-            //     "@type": "Person",
-            //     "name": "Edgar Walaszczyk",
-            //     "jobTitle": "Fizjoterapeuta",
-            //     "alumniOf": "Uniwersytet Rzeszowski",
-            //     "sameAs": [
-            //         "https://facebook.com/edgar",
-            //         "https://www.linkedin.com/company/edgar"
-            //     ]
-            // },
-            publisher: {
+            "headline": post.title,
+            "name": seo.title,
+            "description": seo.metaDesc,
+            "image": seo.opengraphImage.localFile.publicURL,
+            "keywords": seo.metaKeywords,
+            "author": author,
+            "publisher": {
               '@type': 'Organization',
-              name: 'Fizjoexpress',
-              website: {
+              "name": 'Fizjoexpress',
+              "website": {
                 '@type': 'Website',
-                url: 'https://fizjoexpress.pl/'
+                "url": 'https://fizjoexpress.pl/'
               },
-              logo: {
+              "logo": {
                 '@type': 'ImageObject',
-                url: Logo
+                "url": Logo
               }
             },
-            datePublished: seo.opengraphPublishedTime,
-            dateModified: seo.opengraphModifiedTime
+            "datePublished": seo.opengraphPublishedTime,
+            "dateModified": seo.opengraphModifiedTime
           })}
         </script>
       )}

@@ -330,6 +330,17 @@ export const ContentWrapper = styled.div`
 export const blogPostQuery = graphql`
   query ($id: String) {
     wpPost(id: { eq: $id }) {
+      authors {
+        nodes {
+          name
+          dodatkowePolaAutora {
+            wyksztalcenieAutora
+            authorSocialMediaLinks {
+              socialMediaLink
+            }
+          }
+        }
+      }
       seo {
         opengraphModifiedTime
         metaKeywords
