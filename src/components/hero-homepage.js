@@ -195,7 +195,7 @@ const FeaturedTextOverBg = styled.p`
   font-weight: 600;
   color: var(--color-blue);
   background-color: var(--color-light-gray);
-  padding: ${47 / 18}em ${10 / 18}em;
+  padding: ${47 / 18}em 80px;
   position: absolute;
   bottom: 10.9vw;
   right: 20.1vw;
@@ -207,6 +207,8 @@ const FeaturedTextOverBg = styled.p`
     top: 80px;
     right: unset;
     bottom: unset;
+    width: 320px;
+    padding: ${47 / 18}em 10px;
   }
 
   @media (max-width: 480px) {
