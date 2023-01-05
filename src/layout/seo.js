@@ -4,6 +4,20 @@ import Logo from './../images/logo.png'
 const siteUrl = 'https://fizjoexpress.pl'
 
 export default function Seo({ authors, slug, post = false, seo }) {
+  const { wpPage: { seo: { opengraphImage } } } = useStaticQuery(graphql`
+    query {
+      wpPage(id: { eq: "cG9zdDo1Mg==" }) {
+        seo {
+          opengraphImage {
+            localFile {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+  `)
+
   const canonical = siteUrl + (slug ? slug : seo?.canonical ? seo.canonical : '/')
   const author = []
   const employe = authors.nodes.map(el => {
@@ -119,7 +133,7 @@ export default function Seo({ authors, slug, post = false, seo }) {
           },
           "name": "Fizjoexpress by Rehalthy",
           "legalName": "FIZJOEXPRESS SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
-          // "image": "https://fizjoexpress.pl/superzdjecie.jpg",
+          "image": opengraphImage.localFile.publicURL,
           "url": "https://fizjoexpress.pl/",
           "subjectof": {
             "@type": "WebSite",
