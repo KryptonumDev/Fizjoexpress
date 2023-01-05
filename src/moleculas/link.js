@@ -50,6 +50,10 @@ const Wrapper = styled(Link)`
   max-width: 300px;
   overflow: hidden;
 
+  &:focus-visible {
+    outline: 2px solid ${props => props.variant === 'white' ? 'var(--color-yellow)' : 'var(--color-blue)'};
+  }
+
   &::before{
     content: "";
     position: absolute;

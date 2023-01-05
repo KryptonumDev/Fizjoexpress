@@ -37,9 +37,7 @@ export default function ServicesGrid({
                 }}></p>
             </Item>
           ))}
-          <Item>
-            <Link to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę'>
-            </Link>
+          <Item to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę'>
             <p className='text'>Poznaj naszą ofertę</p>
           </Item>
         </Grid>
@@ -134,7 +132,7 @@ const Grid = styled.div`
   }
 `
 
-const Item = styled.div`
+const Item = styled(Link)`
   background-color: var(--color-light-gray);
   padding: 50px 32px;
   display: flex;
@@ -199,13 +197,6 @@ const Item = styled.div`
       &::after{
         transform: unset;
       }
-    }
-    a{
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
     }
     p {
       pointer-events: none;

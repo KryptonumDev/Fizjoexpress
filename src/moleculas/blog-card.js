@@ -4,22 +4,24 @@ import React from "react"
 import styled from "styled-components"
 import { textParser } from "../helpers/text-parser"
 
-export const Card = ({data: el }) => (
-    <Item className="item">
-        <Link to={'/blog/' + el.slug + '/'}>
-            <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
-                alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
+export const Card = ({ data: el }) => (
+    <Item to={'/blog/' + el.slug + '/'} className="item">
+        <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
+            alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
             <div className="content">
-                <span className="small-header">{el.date}</span>
-                <p className="big-text">{el.title}</p>
-                <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
-            </div>
-        </Link>
+            <span className="small-header">{el.date}</span>
+            <p className="big-text">{el.title}</p>
+            <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
+        </div>
     </Item>
 )
 
-const Item = styled.div`
+const Item = styled(Link)`
     background-color: #fff;
+    display: block;
+        outline-offset: -2px;
+        outline-color: var(--color-yellow);
+    
 
     &:hover{
         .image{
@@ -30,6 +32,8 @@ const Item = styled.div`
     }
 
     .image{
+        position: relative;
+        z-index: 0;
         height: 200px;
         img{
             transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);

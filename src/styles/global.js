@@ -39,16 +39,16 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .slick-slide {
-    height: auto !important;
-    div{
-        height: 100% ; 
+        height: auto !important;
         div{
-            height: 100%;
-            div{
-                height: auto;
+            height: 100% ; 
+            div, a{
+                height: 100%;
+                div{
+                    height: auto;
+                }
             }
         }
-    }
     }
 
     .slick-slide {
@@ -125,10 +125,15 @@ const GlobalStyles = createGlobalStyle`
         width: 100%;
         text-align: center;
         outline-offset: 1px;
+        transition: all .15s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
-    a, button, .button, .link {
-        outline-offset: 1px;
+    .wp-block-button__link:hover{
+        background-color: var(--color-blue) !important;
+        color: var(--color-white) !important;
+    }
+
+    * {
         &:focus {
             outline: none;
         }

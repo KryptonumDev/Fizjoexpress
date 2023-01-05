@@ -51,6 +51,10 @@ const Buttons = styled.div`
         background-color: transparent;
         overflow: hidden;
 
+        &:focus-visible {
+        outline: 2px solid var(--color-yellow);
+        }
+
         svg{
             position: relative;
             z-index: 1;

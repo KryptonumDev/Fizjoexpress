@@ -265,8 +265,16 @@ const CopyrightsRow = styled(SocialMediaRow)`
 const Column = styled.div``
 const LogoColumn = styled(Column)`
   .logo-footer {
-    margin-bottom: clamp(32px, ${(49 / 1366) * 100}vw, 49px);
   }
+
+  a{
+    margin-bottom: clamp(32px, ${(49 / 1366) * 100}vw, 49px);
+    display: block;
+    &:focus-visible {
+      outline: 2px solid var(--color-white) !important;
+    }
+  }
+
   > p {
     max-width: 300px;
   }
