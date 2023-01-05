@@ -8,33 +8,33 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: "GTM-KSGXTL6",
+        id: 'GTM-KSGXTL6',
         includeInDevelopment: false,
-        defaultDataLayer: { platform: "gatsby" },
-      },
+        defaultDataLayer: { platform: 'gatsby' }
+      }
     },
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        "url": "http://www-data.fizjoexpress.pl/graphql"
+        url: 'http://www-data.fizjoexpress.pl/graphql'
       }
     },
     'gatsby-plugin-react-helmet',
-    "gatsby-plugin-image",
+    'gatsby-plugin-image',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
           placeholder: `none`,
           quality: 80,
-          backgroundColor: `transparent`,
-        },
-      },
+          backgroundColor: `transparent`
+        }
+      }
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-styled-components",
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
@@ -45,10 +45,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "images",
-        "path": "./src/images/"
+        name: 'images',
+        path: './src/images/'
       },
-      __key: "images"
+      __key: 'images'
     },
     {
       resolve: 'gatsby-plugin-manifest',
@@ -63,4 +63,4 @@ module.exports = {
       }
     }
   ]
-};
+}
