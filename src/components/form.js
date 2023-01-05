@@ -50,8 +50,7 @@ const Form = ({ data }) => {
   const [message, setMessage] = React.useState(formMessages.blank)
 
   const onSubmit = (data, e) => {
-    debugger
-    let url = 'https://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
+    let url = 'http://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
     let body = new FormData()
     body.append('your-email', data.email)
     body.append('your-name', data.nameAndSurname)
@@ -73,7 +72,7 @@ const Form = ({ data }) => {
           }, 7500)
         }
       })
-      .catch(() => {
+      .catch((err) => {
         reset()
         setMessage(formMessages.error)
         setTimeout(() => {
