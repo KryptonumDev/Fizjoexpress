@@ -8,9 +8,9 @@ export default function Hero({ data: { header, title, noResults, text } }) {
         <Wrapper>
             <Container>
                 <Content>
-                    <span className="small-header">{header}</span>
+                    <h1 className="small-header">{header}</h1>
                     <div className="flex">
-                        <h1 className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        <span className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                         <div className="text" dangerouslySetInnerHTML={{ __html: text }} />
                     </div>
                 </Content>
@@ -29,7 +29,7 @@ const Content = styled.div`
     padding: clamp(40px, ${60 / 1366 * 100}vw, 60px) 0 0 0;
     position: relative;
 
-    h1{
+    .sub-title{
         min-width: 300px;
 
         @media (max-width: 640px) {

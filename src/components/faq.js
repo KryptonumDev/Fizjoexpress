@@ -57,8 +57,8 @@ export default function Faq({ data: { header, title } }) {
       </Helmet>
       <Container>
         <Content>
-          <span className='text'>{header}</span>
-          <h2
+          <h2 className='text'>{header}</h2>
+          <span
             className='sub-title'
             dangerouslySetInnerHTML={{
               __html: textParser(title)
@@ -131,11 +131,12 @@ export default function Faq({ data: { header, title } }) {
 }
 
 const Wrapper = styled.section`
-  span.text {
+  h2.text {
     font-weight: 700;
     color: var(--color-yellow);
   }
-  h2 {
+  .sub-title {
+    display: block;
     margin-bottom: clamp(
       30px,
       ${(40 / 1366) * 100}vw,

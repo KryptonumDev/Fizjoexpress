@@ -14,13 +14,13 @@ const TwoColumnTextSection = ({
     <TwoColSectionWrapper>
       <Container>
         <div className='headers-wrapper'>
-          <span
+          <h2
             className='small-header'
             dangerouslySetInnerHTML={{
               __html: smallHeader
             }}
           />
-          <h2
+          <span
             className='sub-title'
             dangerouslySetInnerHTML={{
               __html: title
@@ -67,6 +67,7 @@ const TwoColSectionWrapper = styled.section`
     }
   }
   .sub-title{
+    display: block;
     margin-top: 10px;
   }
 `

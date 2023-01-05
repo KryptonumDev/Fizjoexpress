@@ -175,9 +175,10 @@ const TextBlock = styled.div`
     color === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
   }
 
-  h1 {
+  .main-title, .sub-title {
     margin-top: 10px;
     margin-bottom: 20px;
+    display: block;
   }
   > a {
     margin-top: 30px;

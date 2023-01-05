@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import { PatternFormat } from 'react-number-format'
+import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { Button } from '../moleculas/button-input'
 
@@ -80,7 +79,6 @@ const Form = ({ data }) => {
         }, 7500)
       })
   }
-
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -143,28 +141,22 @@ const Form = ({ data }) => {
         <FieldWrapper>
           <div className='wrapper'>
             <label htmlFor='phoneNumber'>{tekstNadTrzecimPolem}</label>
-          </div>
-          <Controller
-            name='phoneNumber'
-            control={control}
-            render={({ field }) => (
-              <PatternFormat
-                {...field}
-                // ref={null} is getting rid of the error about forwardRef in Controller component
-                ref={null}
-                id='phoneNumber'
-                format='###-###-###'
-                allowEmptyFormatting
-                mask='_'
-                required
-              />
+            {errors?.phoneNumber && (
+              <p className={`error error--show`}>{tekstBleduTrzeciePole}</p>
             )}
+          </div>
+          <input
+            type='number'
+            id='phoneNumber'
+            placeholder='___-___-___'
+            className={errors?.email && 'input--error'}
+            {...register('phoneNumber', {
+              required: true,
+              maxLength: 9,
+              minLength: 9
+            })}
           />
-          {errors.phoneNumber && (
-            <p className={`error`}>{tekstBleduTrzeciePole}</p>
-          )}
         </FieldWrapper>
-
         <FieldWrapper>
           <div className='wrapper'>
             {/* , ,
@@ -297,5 +289,13 @@ const FieldWrapper = styled.div`
     font-size: 12px;
     line-height: 1.5;
     color: var(--color-blue);
+
+@media (max-width: 400px){
+  padding-left: 0;
+}
+
+@media (max-width: 320px) {
+  font-size: 10px;
+}
   }
 `

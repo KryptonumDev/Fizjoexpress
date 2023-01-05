@@ -14,10 +14,10 @@ export default function ServicesGrid({
   return (
     <Wrapper>
       <Container>
-        <span className='text'>
+        <h2 className='text'>
           {malyNaglowekNadTytulem}
-        </span>
-        <h2
+        </h2>
+        <span
           className='sub-title'
           dangerouslySetInnerHTML={{
             __html: textParser(tytulSekcji)
@@ -47,7 +47,7 @@ export default function ServicesGrid({
 }
 
 const Wrapper = styled.section`
-  span {
+  h2 {
     color: var(--color-yellow);
     font-weight: 700;
     padding-left: 100px;
@@ -62,7 +62,8 @@ const Wrapper = styled.section`
     }
   }
 
-  h2 {
+  .sub-title {
+    display: block;
     margin-top: 10px;
     margin-bottom: 30px;
     padding-left: 100px;

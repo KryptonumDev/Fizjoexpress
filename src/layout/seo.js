@@ -190,16 +190,9 @@ export default function Seo({ authors, slug, post = false, seo }) {
             "keywords": seo.metaKeywords,
             "author": author,
             "publisher": {
-              '@type': 'Organization',
-              "name": 'Fizjoexpress',
-              "website": {
-                '@type': 'Website',
-                "url": 'https://fizjoexpress.pl/'
-              },
-              "logo": {
-                '@type': 'ImageObject',
-                "url": Logo
-              }
+              "@type": "Organization",
+              "name": "Fizjoexpress",
+              "url": "https://fizjoexpress.pl"
             },
             "datePublished": seo.opengraphPublishedTime,
             "dateModified": seo.opengraphModifiedTime

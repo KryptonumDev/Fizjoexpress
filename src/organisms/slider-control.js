@@ -5,8 +5,8 @@ import { textParser } from "../helpers/text-parser"
 export const Control = ({ white = false, header, title, slickRef }) => (
     <Wrapper className="control">
         <div>
-            <span className="small-header header">{header}</span>
-            <h2 className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+            <h2 className="small-header header">{header}</h2>
+            <span className="sub-title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
         </div>
         <Buttons className={white ? 'white' : ''}>
             {/* disabled={slickRef?.current?.innerSlider?.state?.currentSlide === 0} */}

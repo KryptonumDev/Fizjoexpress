@@ -24,7 +24,7 @@ const Wrapper = styled.div`
         *{
             color: var(--color-white);
         }
-        span{
+        h2{
             color: var(--color-yellow);
         }
     }

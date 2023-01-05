@@ -70,11 +70,12 @@ export const ProcessSlider = ({
 
 const Wrapper = styled.section`
   position: relative;
-  span {
+  h2 {
     font-weight: 700;
     color: var(--color-yellow);
   }
-  h2 {
+  .sub-title {
+    display: block;
     color: var(--color-white);
     margin-top: 10px;
   }
@@ -106,7 +107,6 @@ const Wrapper = styled.section`
 
 const Item = styled.div`
   background-color: var(--color-light-gray);
-  aspect-ratio: 1/1;
   position: relative;
   max-width: 248px;
   min-height: 200px;
@@ -118,7 +118,6 @@ const Item = styled.div`
   }
 
   @media (max-width: 820px) {
-    aspect-ratio: 1/1.1;
   }
 
   @media (max-width: 600px) {
@@ -137,6 +136,7 @@ const Item = styled.div`
 
   .regular {
     margin-top: clamp(0px, ${(20 / 1366) * 100}vw, 20px);
+    padding-bottom: 50px;
 
     @media (max-width: 940px) {
       margin-top: clamp(0px, ${(20 / 940) * 100}vw, 20px);

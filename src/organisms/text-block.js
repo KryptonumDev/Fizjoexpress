@@ -36,9 +36,9 @@ export const TextBlock = ({
           ))}
         </ul>
       ) : (
-        <span className='small-header header'>{header}</span>
+        <h2 className='small-header header'>{header}</h2>
       )}
-      <h2
+      <span
         className='sub-title'
         dangerouslySetInnerHTML={{
           __html: textParser(title)
@@ -181,7 +181,7 @@ const Wrapper = styled.div`
       }
     `}
 
-  h2 {
+  .sub-title {
     margin-top: 10px;
     margin-bottom: 20px;
   }
