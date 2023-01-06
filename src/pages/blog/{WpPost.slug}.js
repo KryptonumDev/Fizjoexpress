@@ -12,36 +12,39 @@ import quoteAfter from '../../static/quote.svg'
 
 export function Head({ data: { allWpAuthor, wpPost } }) {
   let ldJson = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Fizjoexpress",
-        "item": 'https://fizjoexpress.pl'
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Fizjoexpress',
+        item: 'https://fizjoexpress.pl'
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": 'https://fizjoexpress.pl/blog/'
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'https://fizjoexpress.pl/blog/'
       },
       {
-        "@type": "ListItem",
-        "position": 3,
-        "name": wpPost.title,
-        "item": 'https://fizjoexpress.pl/blog/' + wpPost.slug
+        '@type': 'ListItem',
+        position: 3,
+        name: wpPost.title,
+        item: 'https://fizjoexpress.pl/blog/' + wpPost.slug
       }
     ]
-  };
+  }
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(ldJson)}
-      </script>
+      <script type='application/ld+json'>{JSON.stringify(ldJson)}</script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
-      <Seo authors={allWpAuthor} slug={'/' + wpPost.slug + '/'} post={wpPost} seo={wpPost.seo} />
+      <Seo
+        authors={allWpAuthor}
+        slug={'/' + wpPost.slug + '/'}
+        post={wpPost}
+        seo={wpPost.seo}
+      />
     </>
   )
 }
@@ -53,7 +56,6 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
     date,
     excerpt,
     content,
-    seo,
     singlePostData: articleImages
   } = wpPost
 
@@ -61,10 +63,8 @@ const BlogPost = ({ data: { wpPost, otherPosts, global } }) => {
     globalneDaneIUstawienia: { globalneGrafiki }
   } = global
 
-  const {
-    obrazekWyrozniajacyNaStroneArtykulu: featuredImage,
-    singlePostObrazekWyrozniajacyOgImage: ogImage
-  } = articleImages.szablonArtykuluDodatkoweDane
+  const { obrazekWyrozniajacyNaStroneArtykulu: featuredImage } =
+    articleImages.szablonArtykuluDodatkoweDane
 
   const authors = taxonomies
     .filter((el) => el.taxonomyName === 'autor')

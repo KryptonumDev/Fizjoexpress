@@ -62,12 +62,6 @@ const GlobalStyles = createGlobalStyle`
         top: 0;
     }
 
-    .text--icon{
-        display: flex;
-        gap: 12px;
-        align-items: center;
-    }
-
     section{
         padding-top: var(--margin-intersection);
     }

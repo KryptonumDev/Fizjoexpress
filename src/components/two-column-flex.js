@@ -9,6 +9,7 @@ import { Container } from './../atoms/container'
 export default function TwoColumnFlex({
   underline = false,
   reverse = false,
+  withMapPinIcon = false,
   variant = TwoColumnFlexVariants.buttonUnderText,
   data: { header, title, text, image, link, cytate, underlineText }
 }) {
@@ -17,15 +18,9 @@ export default function TwoColumnFlex({
       <Container>
         <Content
           className={
-            reverse
-              ? 'reverse two-column-content'
-              : 'two-column-content'
+            reverse ? 'reverse two-column-content' : 'two-column-content'
           }>
-          <ImageWithButton
-            link={link}
-            image={image}
-            variant={variant}
-          />
+          <ImageWithButton link={link} image={image} variant={variant} />
           <div>
             <TextBlock
               header={header}
@@ -35,10 +30,16 @@ export default function TwoColumnFlex({
               cytate={cytate}
               variant={variant}
               underline={underline}
+              withMapPinIcon={withMapPinIcon}
             />
-            {underlineText && <div className='text underline' dangerouslySetInnerHTML={{ __html: underlineText }} />}
+            {underlineText && (
+              <div
+                className='text underline'
+                dangerouslySetInnerHTML={{ __html: underlineText }}
+              />
+            )}
 
-            {(link?.url && variant === TwoColumnFlexVariants.buttonOverImage) && (
+            {link?.url && variant === TwoColumnFlexVariants.buttonOverImage && (
               <Button
                 className='link underline-link'
                 to={link.url}
@@ -54,12 +55,12 @@ export default function TwoColumnFlex({
 }
 
 const Wrapper = styled.section`
-  .underline-link{
+  .underline-link {
     display: none;
   }
 
   @media (max-width: 520px) {
-    .underline-link{
+    .underline-link {
       display: block;
       margin-top: 30px;
     }
@@ -68,16 +69,16 @@ const Wrapper = styled.section`
 
 const Content = styled.div`
   display: flex;
-  gap: clamp(0px, ${100 / 1366 * 100}vw, 100px);
+  gap: clamp(0px, ${(100 / 1366) * 100}vw, 100px);
   justify-content: space-between;
   align-items: center;
-  margin-right: clamp(0px, ${100 / 1366 * 100}vw, 100px);
+  margin-right: clamp(0px, ${(100 / 1366) * 100}vw, 100px);
 
   &.reverse {
     flex-direction: row-reverse;
     margin-right: 0;
-    margin-left: clamp(0px, ${100 / 1366 * 100}vw, 100px);
-    .image-block{
+    margin-left: clamp(0px, ${(100 / 1366) * 100}vw, 100px);
+    .image-block {
     }
   }
 
@@ -91,14 +92,14 @@ const Content = styled.div`
     flex-direction: column !important;
   }
 
-  .underline{
+  .underline {
     max-width: 500px;
     margin: 0 auto;
     position: relative;
     margin-top: 40px;
     padding-top: 40px;
-    &::after{
-      content: "";
+    &::after {
+      content: '';
       position: absolute;
       left: 0;
       width: 100px;

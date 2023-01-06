@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
@@ -29,13 +29,13 @@ export default function Faq({ data: { header, title } }) {
 
   const arr = useMemo(() => {
     let a = []
-    pytaniaIOdpowiedzi.forEach(el => {
+    pytaniaIOdpowiedzi.forEach((el) => {
       a.push({
-        "@type": "Question",
-        "name": el.pytanie,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": el.odpowiedz
+        '@type': 'Question',
+        name: el.pytanie,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: el.odpowiedz
         }
       })
     })
@@ -43,17 +43,15 @@ export default function Faq({ data: { header, title } }) {
   }, [pytaniaIOdpowiedzi])
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": arr
-  };
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: arr
+  }
 
   return (
     <Wrapper>
       <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        <script type='application/ld+json'>{JSON.stringify(schema)}</script>
       </Helmet>
       <Container>
         <Content>
@@ -99,11 +97,7 @@ export default function Faq({ data: { header, title } }) {
                         data-name='Rectangle 105'
                         fill='#d2d2d2'
                         strokeWidth='1'>
-                        <rect
-                          width='8'
-                          height='2'
-                          stroke='none'
-                        />
+                        <rect width='8' height='2' stroke='none' />
                         <rect
                           x='0.5'
                           y='0.5'
@@ -137,11 +131,7 @@ const Wrapper = styled.section`
   }
   .sub-title {
     display: block;
-    margin-bottom: clamp(
-      30px,
-      ${(40 / 1366) * 100}vw,
-      40px
-    );
+    margin-bottom: clamp(30px, ${(40 / 1366) * 100}vw, 40px);
     margin-top: 10px;
   }
 `
@@ -159,8 +149,8 @@ const Grid = styled.div`
 const Item = styled.details`
   background-color: var(--color-light-gray);
   summary {
-  padding: 24px clamp(24px, ${(40 / 1366) * 100}vw, 40px) 0;
-  padding-bottom: 24px;
+    padding: 24px clamp(24px, ${(40 / 1366) * 100}vw, 40px) 0;
+    padding-bottom: 24px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -176,12 +166,12 @@ const Item = styled.details`
       align-items: center;
       overflow: hidden;
 
-      svg{
+      svg {
         position: relative;
         z-index: 1;
       }
 
-      &::before{
+      &::before {
         content: '';
         position: absolute;
         z-index: 0;
@@ -189,20 +179,20 @@ const Item = styled.details`
         background-color: var(--color-white);
       }
 
-      &::after{
+      &::after {
         content: '';
         position: absolute;
         z-index: 0;
         inset: 0;
         background-color: var(--color-yellow);
         transform: translateY(100%);
-        transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
       }
     }
   }
 
   .text {
-  padding: 0 clamp(24px, ${(40 / 1366) * 100}vw, 40px) 24px ;
+    padding: 0 clamp(24px, ${(40 / 1366) * 100}vw, 40px) 24px;
   }
 
   .minus {
@@ -210,7 +200,7 @@ const Item = styled.details`
   }
 
   &[open] {
-    summary{
+    summary {
       padding-bottom: clamp(20px, ${(32 / 1366) * 100}vw, 32px);
     }
     .minus {
@@ -221,16 +211,19 @@ const Item = styled.details`
     }
   }
 
-  path, g{
-    transition: stroke .2s cubic-bezier(0.39, 0.575, 0.565, 1), fill .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+  path,
+  g {
+    transition: stroke 0.2s cubic-bezier(0.39, 0.575, 0.565, 1),
+      fill 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
   }
 
-  summary:hover{
-    .control::after{
+  summary:hover {
+    .control::after {
       transform: unset;
     }
-    svg{
-      path, g{
+    svg {
+      path,
+      g {
         stroke: var(--colro-blue);
         fill: var(--color-blue);
       }

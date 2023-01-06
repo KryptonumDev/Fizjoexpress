@@ -13,7 +13,8 @@ export const TextBlock = ({
   link,
   cytate,
   variant = 'default',
-  buttonVariant = 'primary'
+  buttonVariant = 'primary',
+  withMapPinIcon = false
 }) => {
   return (
     <Wrapper
@@ -21,7 +22,7 @@ export const TextBlock = ({
       variant={variant}
       className={
         variant === TwoColumnFlexVariants.buttonUnderText ||
-          variant === TwoColumnFlexVariants.blogPost
+        variant === TwoColumnFlexVariants.blogPost
           ? underline
             ? 'text-block with-line'
             : 'text-block'
@@ -44,7 +45,10 @@ export const TextBlock = ({
           __html: textParser(title)
         }}
       />
-      <div className='text' dangerouslySetInnerHTML={{ __html: text }} />
+      <div
+        className={withMapPinIcon ? 'text text-with-map-icon' : 'text'}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
       {cytate && (
         <div className='cytate'>
           <span className='big-text'>{cytate}</span>
@@ -186,11 +190,17 @@ const Wrapper = styled.div`
     margin-bottom: 20px;
   }
 
-  div {
+  > div {
     display: grid;
     grid-gap: 16px;
     padding-bottom: 40px;
     position: relative;
+  }
+
+  .text-with-map-icon .text--icon {
+    display: flex;
+    gap: 12px;
+    align-items: center;
   }
 
   &.with-line {

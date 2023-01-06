@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Fizjoexpress `,
-    siteUrl: `http://fizjoexpress.pl`
+    siteUrl: `https://fizjoexpress.pl`
   },
   plugins: [
     {

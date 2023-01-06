@@ -69,8 +69,7 @@ const Footer = () => {
           tytulNadListaLinkowDoArtykulow,
           tytulNadListaLinkowPodstrony
         },
-        globalneGrafiki,
-        globalneGrafiki: { logo, socialMedia }
+        globalneGrafiki
       }
     }
   } = data
@@ -91,7 +90,9 @@ const Footer = () => {
             <ul>
               {listaLinkow.map((el, index) => (
                 <li key={el.linkDoPodstrony.url + index}>
-                  <Link to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                  <Link
+                    to={el.linkDoPodstrony.url}
+                    target={el.linkDoPodstrony.target}>
                     {el.linkDoPodstrony.title}
                   </Link>
                 </li>
@@ -104,7 +105,14 @@ const Footer = () => {
               {podstrony.map((el, index) => {
                 return (
                   <li key={el.linkDoPodstrony.url + index}>
-                    <Link partiallyActive={el.linkDoPodstrony.url !== '/' ? true : false} activeClassName='active' data-link-text={el.linkDoPodstrony.title} to={el.linkDoPodstrony.url} target={el.linkDoPodstrony.target}>
+                    <Link
+                      partiallyActive={
+                        el.linkDoPodstrony.url !== '/' ? true : false
+                      }
+                      activeClassName='active'
+                      data-link-text={el.linkDoPodstrony.title}
+                      to={el.linkDoPodstrony.url}
+                      target={el.linkDoPodstrony.target}>
                       {el.linkDoPodstrony.title}
                     </Link>
                   </li>
@@ -145,7 +153,7 @@ const FooterWrapper = styled.footer`
   background-color: var(--color-blue);
   color: var(--color-white);
   padding: 60px 0 0 0;
-  overflow: hidden  ;
+  overflow: hidden;
 `
 
 const FooterContainer = styled(Container)``
@@ -267,7 +275,7 @@ const LogoColumn = styled(Column)`
   .logo-footer {
   }
 
-  a{
+  a {
     margin-bottom: clamp(32px, ${(49 / 1366) * 100}vw, 49px);
     display: block;
     &:focus-visible {
@@ -333,7 +341,7 @@ const LinksColumn = styled(ArticlesColumn)`
     padding: 1px 4px;
     margin: 0 0 0 -4px;
     position: relative;
-      transition: color 0.15s ease-out;
+    transition: color 0.15s ease-out;
     &:after {
       content: attr(data-link-text);
       font-weight: 700;
@@ -355,7 +363,6 @@ const LinksColumn = styled(ArticlesColumn)`
       }
     }
 
-    
     &:before {
       content: none;
     }

@@ -55,6 +55,7 @@ const IndexPage = ({
       <TwoColumnFlex
         reverse={true}
         variant={TwoColumnFlexVariants.buttonUnderText}
+        withMapPinIcon={true}
         data={{
           header: homepage.sekcjaCzekamyWlasnieNaCiebie.malyNaglowekNadTytulem,
           title: homepage.sekcjaCzekamyWlasnieNaCiebie.tytulSekcji,
