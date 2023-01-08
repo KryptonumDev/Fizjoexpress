@@ -41,7 +41,7 @@ export function Head({ data: { allWpAuthor, wpPost } }) {
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Seo
         authors={allWpAuthor}
-        slug={'/' + wpPost.slug + '/'}
+        slug={'/blog/' + wpPost.slug + '/'}
         post={wpPost}
         seo={wpPost.seo}
       />
