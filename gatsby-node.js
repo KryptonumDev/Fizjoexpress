@@ -31,4 +31,70 @@ exports.createPages = async ({
             },
         });
     });
+
+    createRedirect({
+        fromPath: `/jaw/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/flyash/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/mobile/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/pic/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/kontakt/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/tag/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/themes/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/.well-known/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/ads.txt`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/apple-app-site-association`,
+        toPath: `/`,
+        statusCode: 410,
+    })
+
+    createRedirect({
+        fromPath: `/apple-app-site-association/*`,
+        toPath: `/`,
+        statusCode: 410,
+    })
 }
