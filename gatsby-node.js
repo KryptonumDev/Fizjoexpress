@@ -31,70 +31,25 @@ exports.createPages = async ({
             },
         });
     });
+    const { data: { wpPage: { redirects: { redirects } } } } = await graphql(`
+    query{
+        wpPage(id: {eq: "cG9zdDo1Mg=="}) {
+          redirects {
+            redirects {
+              to
+              statusCode
+              from
+            }
+          }
+        }
+      }
+    `)
 
-    createRedirect({
-        fromPath: `/jaw/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/flyash/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/mobile/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/pic/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/kontakt/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/tag/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/themes/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/.well-known/*`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/ads.txt`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/apple-app-site-association`,
-        toPath: `/`,
-        statusCode: 410,
-    })
-
-    createRedirect({
-        fromPath: `/apple-app-site-association/*`,
-        toPath: `/`,
-        statusCode: 410,
+    redirects.forEach(el => {
+        createRedirect({
+            fromPath: el.from,
+            toPath: el.to,
+            statusCode: el.statusCode,
+        })
     })
 }
