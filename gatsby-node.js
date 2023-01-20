@@ -50,6 +50,7 @@ exports.createPages = async ({
             fromPath: el.from,
             toPath: el.to,
             statusCode: el.statusCode,
+            isPermanent: el.statusCode === 410
         })
     })
 }
