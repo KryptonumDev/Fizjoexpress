@@ -220,9 +220,6 @@ export default function Seo({ authors, slug, post = false, seo }) {
           })}
         </script>
       )}
-      <script
-        async
-        src='https://user.callnowbutton.com/domain_562f93e1_baeb_4c20_b6e0_4a491ff760ab.js'></script>
     </>
   )
 }
