@@ -56,9 +56,9 @@ const Header = () => {
 
   useEffect(() => {
     if (isOpen) {
-      scrollLock.enable()
+      scrollLock.enable('header')
     } else {
-      scrollLock.disable()
+      scrollLock.disable('header')
     }
   }, [isOpen])
 

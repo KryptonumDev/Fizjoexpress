@@ -40,7 +40,7 @@ const LogoStyles = {
 
 export const Logo = ({
   className,
-  onClick,
+  onClick = () => { },
   variant = FIZJOEXPRESS_LOGO_VARIANTS.COLOR_WITH_BLUE_BG
 }) => (
   <Link title='Fizjoexpress – fizjoterapia Warszawa' to='/' onClick={onClick}>

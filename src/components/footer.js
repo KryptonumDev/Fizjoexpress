@@ -2,7 +2,6 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
-import { textParser } from '../helpers/text-parser'
 import { KryptonumLogo, Logo } from './icons'
 import SocialMediaIcons from './social-media-icons'
 
@@ -79,11 +78,7 @@ const Footer = () => {
         <LogoAndSitemapRow>
           <LogoColumn>
             <Logo className='logo-footer' />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: textParser(akapitTekstuPodLogo)
-              }}
-            />
+            <div dangerouslySetInnerHTML={{ __html: akapitTekstuPodLogo}}/>
           </LogoColumn>
           <ArticlesColumn>
             <p className='header'>{tytulNadListaLinkowDoArtykulow}</p>
@@ -270,8 +265,8 @@ const CopyrightsRow = styled(SocialMediaRow)`
   }
 `
 
-const Column = styled.div``
-const LogoColumn = styled(Column)`
+
+const LogoColumn = styled.div`
   .logo-footer {
   }
 
@@ -283,15 +278,18 @@ const LogoColumn = styled(Column)`
     }
   }
 
-  > p {
+  > div {
     max-width: 300px;
+    *{
+      color: #fff;
+    }
   }
   @media (max-width: 767px) {
     grid-area: a;
     grid-columns: 1/-1;
   }
 `
-const ArticlesColumn = styled(Column)`
+const ArticlesColumn = styled.div`
   padding-top: 12px;
 
   @media (max-width: 1246px) {
