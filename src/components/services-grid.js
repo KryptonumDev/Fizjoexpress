@@ -133,7 +133,7 @@ const Grid = styled.div`
   }
 `
 
-const Item = styled(Link)`
+const Item = styled.div`
   background-color: var(--color-light-gray);
   padding: 50px 32px;
   display: flex;
