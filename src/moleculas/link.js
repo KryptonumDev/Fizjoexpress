@@ -19,7 +19,7 @@ export const Button = ({
       className={className}
       variant={variant}>
       <span className='button'>{children}</span>
-      {(variant === 'primary' || variant === 'white') && (
+      {(variant === 'primary' || variant === 'white' || variant === 'white-alt') && (
         <svg
           className='angle'
           xmlns='http://www.w3.org/2000/svg'
@@ -51,7 +51,7 @@ const Wrapper = styled(Link)`
   overflow: hidden;
 
   &:focus-visible {
-    outline: 2px solid ${props => props.variant === 'white' ? 'var(--color-yellow)' : 'var(--color-blue)'};
+    outline: 2px solid ${props => (props.variant === 'white' || props.variant === 'white-alt') ? 'var(--color-yellow)' : 'var(--color-blue)'};
   }
 
   &::before{
@@ -62,7 +62,7 @@ const Wrapper = styled(Link)`
     bottom: 0;
     top: 0;
   background-color: ${({ variant }) =>
-    variant === 'primary' ? 'var(--color-yellow)' : 'var(--color-white)'};
+    variant === 'primary' ? 'var(--color-yellow)' : variant === 'white-alt' ? 'var(--color-yellow)' : 'var(--color-white)'};
     z-index: 0;
   }
 
@@ -74,7 +74,7 @@ const Wrapper = styled(Link)`
     bottom: 0;
     top: 0;
   background-color: ${({ variant }) =>
-    variant === 'primary' ? 'var(--color-blue)' : 'var(--color-yellow)'};
+    variant === 'primary' ? 'var(--color-blue)' : variant === 'white-alt' ? 'var(--color-white)' : 'var(--color-yellow)'};
     z-index: 0;
     transform: translateY(100%);
     transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -86,7 +86,7 @@ const Wrapper = styled(Link)`
 
   path{
     fill: ${({ variant }) =>
-    variant === 'primary' ? 'var(--color-blue)' : 'var(--color-yellow)'};
+    variant === 'primary' ? 'var(--color-blue)' : variant === 'white-alt' ? 'var(--color-blue)' : 'var(--color-yellow)'};
   }
 
 &:hover{

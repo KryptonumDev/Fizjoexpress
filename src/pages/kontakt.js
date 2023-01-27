@@ -129,6 +129,10 @@ const TextContainer = styled.div`
 
   .text {
     margin-bottom: 20px;
+    iframe{
+      width: 100%;
+      height: 300px;
+    }
     p + p {
       margin-top: 2em;
     }
@@ -160,6 +164,7 @@ const FormContainer = styled.div`
   background-color: var(--color-yellow);
   align-self: stretch;
   position: relative;
+  height: fit-content;
 
   button[type='submit'],
   input[type='button'],

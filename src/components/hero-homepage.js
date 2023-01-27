@@ -41,7 +41,7 @@ export default function Hero({
           <div className='buttons'>
             {buttonLink?.url && (
               <Button
-                variant={colorVariant === 'dark' ? 'white' : 'primary'}
+                variant={colorVariant === 'dark' ? 'white-alt' : 'primary'}
                 className='button'
                 to={buttonLink.url}
                 target={buttonLink.target ? buttonLink.target : null}>
