@@ -25,7 +25,7 @@ export default function ServicesGrid({
         />
         <Grid>
           {listaCoLeczymy.map((el, index) => (
-            <Item key={`grafika-${el.grafika.altText + index}`}>
+            <Item as='div' key={`grafika-${el.grafika.altText + index}`}>
               <img
                 src={el.grafika.localFile.publicURL}
                 alt={el.grafika.altText}
@@ -133,7 +133,7 @@ const Grid = styled.div`
   }
 `
 
-const Item = styled.div`
+const Item = styled(Link)`
   background-color: var(--color-light-gray);
   padding: 50px 32px;
   display: flex;
