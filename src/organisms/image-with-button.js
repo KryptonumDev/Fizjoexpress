@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     .link{
         margin-left: auto;
         margin-top: -70px;
-        width: 300px;
+        width: calc(100% - 200px);
         height: 70px;
         span{
             margin: 0 auto;

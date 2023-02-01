@@ -1,4 +1,4 @@
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { Container } from '../atoms/container'
@@ -8,6 +8,7 @@ import { Logo } from './icons'
 import scrollLock from '../helpers/scroll-lock'
 import SocialMediaIcons from './social-media-icons'
 import { Button } from '../moleculas/link'
+import { Link } from './transition-link'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -99,7 +100,7 @@ const Header = () => {
                   partiallyActive={url !== '/' ? true : false}
                   onClick={() => setIsOpen(false)}
                   activeClassName='active'
-                  data-link-text={title}
+                  dataText={title}
                   to={url}>
                   {title}
                 </Link>
@@ -233,8 +234,7 @@ const NavigationContainer = styled.nav`
     transform: ${({ isOpen }) =>
     isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
-    visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
     background-color: var(--color-white);
     width: 100%;
 
@@ -305,8 +305,8 @@ const ButtonContainer = styled.div`
     transform: ${({ isOpen }) =>
     isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
-    visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
+    display: flex;
     .link {
       width: 100%;
       max-width: unset;

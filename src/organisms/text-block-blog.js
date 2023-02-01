@@ -1,7 +1,7 @@
 
-import { Link } from 'gatsby'
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Link } from '../components/transition-link'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
 import { textParser } from '../helpers/text-parser'
 import { Button } from '../moleculas/link'

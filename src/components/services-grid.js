@@ -1,8 +1,8 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { textParser } from '../helpers/text-parser'
+import { Link } from './transition-link'
 
 export default function ServicesGrid({
   data: {
@@ -37,7 +37,8 @@ export default function ServicesGrid({
                 }}></p>
             </Item>
           ))}
-          <Item to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę'>
+          <Item>
+            <Link to='/jak-dzialamy/' aria-label='Poznaj nasza ofertę' />
             <p className='text'>Poznaj naszą ofertę</p>
           </Item>
         </Grid>
@@ -133,13 +134,23 @@ const Grid = styled.div`
   }
 `
 
-const Item = styled(Link)`
+const Item = styled.div`
   background-color: var(--color-light-gray);
   padding: 50px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+
+  a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+  }
 
   @media (max-width: 1150px) {
     padding: 40px 12px;

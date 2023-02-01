@@ -4,7 +4,7 @@ import { ImageWithButton } from '../organisms/image-with-button'
 import { TextBlock } from '../organisms/text-block-blog'
 import { Container } from '../atoms/container'
 import { TwoColumnFlexVariants } from '../constants/two-column-flex-variants'
-import { Link } from 'gatsby'
+import { Link } from './transition-link'
 
 export default function TwoColumnFlexBlogPost({
   reverse = true,
@@ -40,13 +40,15 @@ export default function TwoColumnFlexBlogPost({
                 </p>
                 <div className='authors'>
                   {authors?.map((author, index) => (
-                    <Link to={'/o-fizjoexpress/#' + author.name.toLowerCase()
-                      .trim()
-                      .replace(/[^\w\s-]/g, '')
-                      .replace(/[\s_-]+/g, '-')
-                      .replace(/^-+|-+$/g, '')} key={author.name + index} className='data data--post-data'>
-                      {author.name}
-                    </Link>
+                    <React.Fragment key={author.name + index} >
+                      <Link to={'/o-fizjoexpress/#' + author.name.toLowerCase()
+                        .trim()
+                        .replace(/[^\w\s-]/g, '')
+                        .replace(/[\s_-]+/g, '-')
+                        .replace(/^-+|-+$/g, '')} className='data data--post-data'>
+                        {author.name}
+                      </Link>
+                    </React.Fragment>
                   ))}
                 </div>
               </div>

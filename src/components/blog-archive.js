@@ -1,9 +1,9 @@
-import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { Card } from '../moleculas/blog-card'
 import { Pagination } from '../organisms/pagination'
+import { Link } from './transition-link'
 
 export default function Archive({
   noResults,
@@ -40,13 +40,15 @@ export default function Archive({
                 Wszystkie
               </Link>
               {categories.map((el, index) => (
-                <Link
-                  data-name={el.name}
-                  key={el.name + index}
-                  activeClassName='active'
-                  to={'/blog/' + el.slug + '/'}>
-                  {el.name}
-                </Link>
+                <React.Fragment
+                  key={el.name + index}>
+                  <Link
+                    data-name={el.name}
+                    activeClassName='active'
+                    to={'/blog/' + el.slug + '/'}>
+                    {el.name}
+                  </Link>
+                </React.Fragment>
               ))}
             </div>
           </Categories>

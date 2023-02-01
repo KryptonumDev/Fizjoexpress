@@ -84,7 +84,7 @@ const Content = styled.div`
     * {
       color: var(--color-white);
     }
-    a span {
+    .button {
       color: var(--color-blue);
     }
   }

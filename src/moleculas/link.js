@@ -1,6 +1,6 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from '../components/transition-link'
 
 export const Button = ({
   children,
@@ -12,12 +12,14 @@ export const Button = ({
   const internal = /^\/(?!\/)/.test(to)
   return (
     <Wrapper
-      as={!internal ? 'a' : Link}
-      href={internal ? null : to}
-      to={internal ? to : null}
-      target={internal ? null : target}
       className={className}
       variant={variant}>
+      <Link
+        to={to}
+        target={internal ? null : target}
+        className='absolute'
+      >
+      </Link>
       <span className='button'>{children}</span>
       {(variant === 'primary' || variant === 'white' || variant === 'white-alt') && (
         <svg
@@ -39,16 +41,25 @@ export const Button = ({
   )
 }
 
-const Wrapper = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Wrapper = styled.span`
   padding: 26px 16px;
   position: relative;
   background-color: transparent;
   color: var(--color-blue);
   max-width: 300px;
   overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  .absolute{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 3;
+  }
 
   &:focus-visible {
     outline: 2px solid ${props => (props.variant === 'white' || props.variant === 'white-alt') ? 'var(--color-yellow)' : 'var(--color-blue)'};

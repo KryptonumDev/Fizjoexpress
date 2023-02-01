@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Container } from "../atoms/container"
 import { textParser } from "../helpers/text-parser"
 import { Button } from './../moleculas/link'
+import { Link } from "./transition-link"
 
 export default function Cta({ gray, data: { text, linkOne, linkTwo } }) {
     return (
@@ -12,7 +13,7 @@ export default function Cta({ gray, data: { text, linkOne, linkTwo } }) {
                     <div className="big-text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     <Buttons>
                         <Button to={linkOne.url} target={linkOne.target}>{linkOne.title}</Button>
-                        <a className="link button second" href={linkTwo.url} target={linkTwo.target ? linkTwo : ''}>{linkTwo.title}</a>
+                        <Link className="link button second" to={linkTwo.url} target={linkTwo.target ? linkTwo : ''}>{linkTwo.title}</Link>
                     </Buttons>
                 </TextBlock>
             </Container>

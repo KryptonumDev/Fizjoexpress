@@ -1,7 +1,8 @@
-import { Link } from "gatsby"
+
 import React from "react"
 import styled from "styled-components"
 import { textParser } from "../helpers/text-parser"
+import { Link } from "./transition-link"
 
 export const Aside = ({ posts }) => (
   <Wrapper>
@@ -18,21 +19,23 @@ export const Aside = ({ posts }) => (
         } = post
         const category = categories.filter((category) => category.name)[0]
         return (
-          <Link className='other-post' key={post.slug + index} to={`/blog/${slug}`}>
-            <article>
-              <span className='post-category'>{category.name}</span>
-              <h3 className='post-header big-text'>{title}</h3>
-              <div
-                className='post-excerpt'
-                dangerouslySetInnerHTML={{
-                  __html: textParser(excerpt)
-                }}
-              />
-              <span className='button button--secondary'>
-                Poznaj więcej szczegółów
-              </span>
-            </article>
-          </Link>
+          <React.Fragment key={post.slug + index} >
+            <Link className='other-post' to={`/blog/${slug}`}>
+              <article>
+                <span className='post-category'>{category.name}</span>
+                <h3 className='post-header big-text'>{title}</h3>
+                <div
+                  className='post-excerpt'
+                  dangerouslySetInnerHTML={{
+                    __html: textParser(excerpt)
+                  }}
+                />
+                <span className='button button--secondary'>
+                  Poznaj więcej szczegółów
+                </span>
+              </article>
+            </Link>
+          </React.Fragment>
         )
       })}
     </Posts>

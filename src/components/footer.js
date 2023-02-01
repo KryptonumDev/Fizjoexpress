@@ -1,9 +1,10 @@
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../atoms/container'
 import { KryptonumLogo, Logo } from './icons'
 import SocialMediaIcons from './social-media-icons'
+import { Link } from './transition-link'
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -105,7 +106,7 @@ const Footer = () => {
                         el.linkDoPodstrony.url !== '/' ? true : false
                       }
                       activeClassName='active'
-                      data-link-text={el.linkDoPodstrony.title}
+                      dataText={el.linkDoPodstrony.title}
                       to={el.linkDoPodstrony.url}
                       target={el.linkDoPodstrony.target}>
                       {el.linkDoPodstrony.title}

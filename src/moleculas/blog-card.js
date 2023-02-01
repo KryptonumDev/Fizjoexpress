@@ -1,26 +1,28 @@
-import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
+import { Link } from "../components/transition-link"
 import { textParser } from "../helpers/text-parser"
 
 export const Card = ({ data: el }) => (
-    <Item to={'/blog/' + el.slug + '/'} className="item">
-        <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
-            alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
+    <Item className="item">
+        <Link to={'/blog/' + el.slug + '/'}>
+            <GatsbyImage className="image" image={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.localFile.childImageSharp.gatsbyImageData}
+                alt={el.singlePostData.szablonArtykuluDodatkoweDane.singlePostObrazekWyrozniajacyNaListinguBloga.altText} />
             <div className="content">
-            <span className="small-header">{el.date}</span>
-            <p className="big-text">{el.title}</p>
-            <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
-        </div>
+                <span className="small-header">{el.date}</span>
+                <p className="big-text">{el.title}</p>
+                <p className="text" dangerouslySetInnerHTML={{ __html: textParser(el.excerpt) }} />
+            </div>
+        </Link>
     </Item>
 )
 
-const Item = styled(Link)`
+const Item = styled.div`
     background-color: #fff;
     display: block;
-        outline-offset: -2px;
-        outline-color: var(--color-yellow);
+    outline-offset: -2px;
+    outline-color: var(--color-yellow);
     
 
     &:hover{

@@ -1,4 +1,3 @@
-import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
@@ -6,6 +5,7 @@ import { Container } from '../atoms/container'
 import { Button } from '../moleculas/link'
 import { textParser } from './../helpers/text-parser'
 import SocialMediaIcons from './social-media-icons'
+import { Link } from './transition-link'
 
 export default function Hero({
   colorVariant = 'dark',

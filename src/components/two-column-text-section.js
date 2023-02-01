@@ -133,11 +133,11 @@ const ColumnsWrapper = styled.div`
     margin-top: 1.5em;
   }
 
-  p + a {
+  p + span {
     margin-top: ${30 / 16}rem;
   }
 
-  a {
+  span {
     max-width: ${266 / 16}rem;
   }
 `

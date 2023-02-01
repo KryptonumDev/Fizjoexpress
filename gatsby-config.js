@@ -23,6 +23,7 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
+    'gatsby-plugin-transition-link',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {

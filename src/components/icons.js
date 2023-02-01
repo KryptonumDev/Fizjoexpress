@@ -1,7 +1,7 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { FIZJOEXPRESS_LOGO_VARIANTS } from '../constants/logo-variants'
+import { Link } from './transition-link'
 
 const StyledLogo = styled.svg`
   &.logo-footer {
