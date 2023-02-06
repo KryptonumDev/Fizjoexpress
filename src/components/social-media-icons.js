@@ -66,7 +66,7 @@ const SocialMediaWrapper = styled.div`
     variant: ${({ variant }) =>
       variant === 'dark' ? 'var(--color-white)' : 'var(--color-blue)'};
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
 
     line-height: 1;
   }

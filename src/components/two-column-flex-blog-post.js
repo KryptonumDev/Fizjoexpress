@@ -40,12 +40,18 @@ export default function TwoColumnFlexBlogPost({
                 </p>
                 <div className='authors'>
                   {authors?.map((author, index) => (
-                    <React.Fragment key={author.name + index} >
-                      <Link to={'/o-fizjoexpress/#' + author.name.toLowerCase()
-                        .trim()
-                        .replace(/[^\w\s-]/g, '')
-                        .replace(/[\s_-]+/g, '-')
-                        .replace(/^-+|-+$/g, '')} className='data data--post-data'>
+                    <React.Fragment key={author.name + index}>
+                      <Link
+                        to={
+                          '/o-fizjoexpress/#' +
+                          author.name
+                            .toLowerCase()
+                            .trim()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-')
+                            .replace(/^-+|-+$/g, '')
+                        }
+                        className='data data--post-data'>
                         {author.name}
                       </Link>
                     </React.Fragment>
@@ -65,18 +71,18 @@ export default function TwoColumnFlexBlogPost({
 }
 
 const Wrapper = styled.section`
-  .mobile{
+  .mobile {
     display: none;
   }
 
   @media (max-width: 840px) {
-    .desctop{
+    .desctop {
       display: none;
     }
-    .mobile{
+    .mobile {
       display: block;
     }
-    .image-block{
+    .image-block {
       padding-bottom: 0;
     }
   }
@@ -89,7 +95,7 @@ const Content = styled.div`
   align-items: center;
   margin-right: 100px;
 
-  @media (max-width: 840px){
+  @media (max-width: 840px) {
     display: block;
   }
 
@@ -110,7 +116,7 @@ const Content = styled.div`
   .text-content {
     max-width: clamp(320px, 29.4vw, 404px);
 
-    @media (max-width: 840px){
+    @media (max-width: 840px) {
       max-width: unset;
     }
   }
@@ -125,7 +131,7 @@ const Content = styled.div`
 
     .data {
       color: var(--color-text-light-gray);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 400;
       line-height: 1.3;
       &--post-data {

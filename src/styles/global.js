@@ -97,20 +97,20 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .text{
-        font-size: 12px;    
+        font-size: 14px;    
         line-height: 185%;
         font-weight: 400;
     }
 
     .button{
-        font-size: 12px;
+        font-size: 14px;
         line-height: 150%;
         font-weight: 700;
     }
 
     .read-more, .wp-block-button__link {
         display: inline-block;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
         color: var(--color-blue);
         background-color: var(--color-yellow);
@@ -151,7 +151,7 @@ const GlobalStyles = createGlobalStyle`
 
     .button--secondary {
         position: relative;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold !important;
         padding: 4px;
 

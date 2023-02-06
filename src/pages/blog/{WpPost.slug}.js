@@ -195,7 +195,7 @@ export const ContentWrapper = styled.div`
   p,
   ul,
   ol {
-    font-size: 12px;
+    font-size: 14px;
     line-height: ${22 / 12};
   }
 
@@ -315,7 +315,7 @@ export const ContentWrapper = styled.div`
     }
 
     > cite {
-      font-size: 12px;
+      font-size: 14px;
       line-height: ${30 / 12};
       font-style: normal;
     }

@@ -76,7 +76,11 @@ const Header = () => {
   return (
     <HeaderWrapper isOpen={isOpen} isHomepage={location?.pathname === '/'}>
       <HeaderContainer isOpen={isOpen}>
-        <a className="no-focus" href="#content" aria-label='przejdź do treści' />
+        <a
+          className='no-focus'
+          href='#content'
+          aria-label='przejdź do treści'
+        />
         <LogoContainer>
           <Logo
             onClick={() => setIsOpen(false)}
@@ -193,14 +197,20 @@ const NavigationContainer = styled.nav`
     align-items: stretch;
     justify-content: center;
     gap: 10px;
+    @media (max-width: 1000px) {
+      gap: 2px;
+    }
   }
 
   a {
     padding: 10px;
+    @media (max-width: 1000px) {
+      padding: 10px 8px;
+    }
     position: relative;
     transition: color 0.15s ease-out;
     color: var(--color-blue);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     &:after {
       content: attr(data-link-text);
@@ -211,7 +221,7 @@ const NavigationContainer = styled.nav`
       opacity: 0;
       transition: opacity 0.15s ease-out;
       color: var(--color-blue);
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.5;
     }
     &.active,
@@ -232,7 +242,7 @@ const NavigationContainer = styled.nav`
     transition: visibility 0.2s ease-out, transform 0.2s ease-out,
       opacity 0.2s ease-out;
     transform: ${({ isOpen }) =>
-    isOpen ? 'translateY(0)' : 'translateY(-32px)'};
+      isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
     pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
     background-color: var(--color-white);
@@ -247,7 +257,7 @@ const NavigationContainer = styled.nav`
     .mobile--nav {
       margin-top: auto;
       .text {
-        font-size: 13px;
+        font-size: 14px;
       }
       img {
         width: 26px;
@@ -303,7 +313,7 @@ const ButtonContainer = styled.div`
     transition: visibility 0.2s ease-out, transform 0.2s ease-out,
       opacity 0.2s ease-out;
     transform: ${({ isOpen }) =>
-    isOpen ? 'translateY(0)' : 'translateY(-32px)'};
+      isOpen ? 'translateY(0)' : 'translateY(-32px)'};
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
     pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
     display: flex;

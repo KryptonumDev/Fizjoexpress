@@ -79,7 +79,7 @@ const Footer = () => {
         <LogoAndSitemapRow>
           <LogoColumn>
             <Logo className='logo-footer' />
-            <div dangerouslySetInnerHTML={{ __html: akapitTekstuPodLogo}}/>
+            <div dangerouslySetInnerHTML={{ __html: akapitTekstuPodLogo }} />
           </LogoColumn>
           <ArticlesColumn>
             <p className='header'>{tytulNadListaLinkowDoArtykulow}</p>
@@ -186,7 +186,7 @@ const FooterRow = styled.div`
   span,
   a {
     color: var(--color-white);
-    font-size: 12px;
+    font-size: 14px;
     line-height: ${22 / 12};
     font-weight: 300;
   }
@@ -266,7 +266,6 @@ const CopyrightsRow = styled(SocialMediaRow)`
   }
 `
 
-
 const LogoColumn = styled.div`
   .logo-footer {
   }
@@ -281,7 +280,7 @@ const LogoColumn = styled.div`
 
   > div {
     max-width: 300px;
-    *{
+    * {
       color: #fff;
     }
   }
@@ -351,7 +350,7 @@ const LinksColumn = styled(ArticlesColumn)`
       width: max-content;
       transition: opacity 0.15s ease-out;
       color: var(--color-white);
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.5;
     }
     &.active,

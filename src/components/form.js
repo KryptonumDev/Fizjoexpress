@@ -21,7 +21,6 @@ const Form = ({ data }) => {
   } = data
   const {
     register,
-    control,
     reset,
     formState: { errors },
     handleSubmit
@@ -49,13 +48,15 @@ const Form = ({ data }) => {
   const [message, setMessage] = React.useState(formMessages.blank)
 
   const onSubmit = (data, e) => {
-    let url = 'https://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
+    let url =
+      'https://www-data.fizjoexpress.pl/wp-json/contact-form-7/v1/contact-forms/963/feedback'
     let body = new FormData()
     body.append('your-email', data.email)
     body.append('your-name', data.nameAndSurname)
     body.append('your-telephon', data.phoneNumber)
     body.append('your-message', data.message)
-    axios.post(url, body)
+    axios
+      .post(url, body)
       .then((res) => {
         if (res.status === 200) {
           setMessage(formMessages.success)
@@ -86,18 +87,21 @@ const Form = ({ data }) => {
           <div className='wrapper'>
             <label htmlFor='nameAndSurname'>{tekstNadPierwszymPolem}</label>
             <p
-              className={`error ${errors.nameAndSurname?.type === 'required' && 'error--show'
-                }`}>
+              className={`error ${
+                errors.nameAndSurname?.type === 'required' && 'error--show'
+              }`}>
               {tekstBleduPierwszePole}
             </p>
             <p
-              className={`error ${errors.nameAndSurname?.type === 'minLength' && 'error--show'
-                }`}>
+              className={`error ${
+                errors.nameAndSurname?.type === 'minLength' && 'error--show'
+              }`}>
               Minimum 3 znaki.
             </p>
             <p
-              className={`error ${errors.nameAndSurname?.type === 'maxLength' && 'error--show'
-                }`}>
+              className={`error ${
+                errors.nameAndSurname?.type === 'maxLength' && 'error--show'
+              }`}>
               Maksimum 50 znaków.
             </p>
           </div>
@@ -115,13 +119,15 @@ const Form = ({ data }) => {
           <div className='wrapper'>
             <label htmlFor='email'>{tekstNadDrugimPolem}</label>
             <p
-              className={`error ${errors.email?.type === 'required' && 'error--show'
-                }`}>
+              className={`error ${
+                errors.email?.type === 'required' && 'error--show'
+              }`}>
               {tekstBleduDrugiePole}
             </p>
             <p
-              className={`error ${errors?.email?.type === 'pattern' && 'error--show'
-                }`}>
+              className={`error ${
+                errors?.email?.type === 'pattern' && 'error--show'
+              }`}>
               {errors?.email?.message}
             </p>
           </div>
@@ -165,13 +171,15 @@ const Form = ({ data }) => {
              */}
             <label htmlFor='message'>{tekstNadPolemWiadomosci}</label>
             <p
-              className={`error ${errors.message?.type === 'required' && 'error--show'
-                }`}>
+              className={`error ${
+                errors.message?.type === 'required' && 'error--show'
+              }`}>
               {tekstBleduPoleWiadomosci}
             </p>
             <p
-              className={`error ${errors?.message?.type === 'minLength' && 'error--show'
-                }`}>
+              className={`error ${
+                errors?.message?.type === 'minLength' && 'error--show'
+              }`}>
               Minimum 5 znaków.
             </p>
           </div>
@@ -200,14 +208,14 @@ const Form = ({ data }) => {
         <Button
           ariaDisabled={errors && Object.keys(errors).length !== 0}
           disabled={errors && Object.keys(errors).length !== 0}
-          type='submit'
-        >
+          type='submit'>
           {tekstPrzycisku}
         </Button>
       </form>
       <p
-        className={`form-message ${message.type !== '' && 'form-message--show'
-          } ${message.type === 'error' ? 'form-message--show__error' : ''}`}>
+        className={`form-message ${
+          message.type !== '' && 'form-message--show'
+        } ${message.type === 'error' ? 'form-message--show__error' : ''}`}>
         {message?.text && message.text}
       </p>
     </>
@@ -286,16 +294,16 @@ const FieldWrapper = styled.div`
 
   label {
     padding: 5px 20px 6px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     color: var(--color-blue);
 
-@media (max-width: 400px){
-  padding-left: 0;
-}
+    @media (max-width: 400px) {
+      padding-left: 0;
+    }
 
-@media (max-width: 320px) {
-  font-size: 10px;
-}
+    @media (max-width: 320px) {
+      font-size: 10px;
+    }
   }
 `

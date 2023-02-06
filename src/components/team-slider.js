@@ -144,6 +144,8 @@ const Item = styled.div`
     .text {
       display: grid;
       grid-gap: 12px;
+      font-size: 13px;
+      line-height: 1.45;
 
       @media (max-width: 359px) {
         font-size: 11px;

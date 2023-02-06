@@ -15,34 +15,31 @@ export function Head({
   }
 }) {
   let ldJson = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Fizjoexpress",
-        "item": 'https://fizjoexpress.pl'
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Fizjoexpress',
+        item: 'https://fizjoexpress.pl'
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Kontakt",
-        "item": 'https://fizjoexpress.pl/kontakt/'
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Kontakt',
+        item: 'https://fizjoexpress.pl/kontakt/'
       }
     ]
-  };
+  }
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(ldJson)}
-      </script>
+      <script type='application/ld+json'>{JSON.stringify(ldJson)}</script>
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Seo authors={allWpAuthor} slug={'/' + slug + '/'} seo={seo} />
     </>
   )
 }
-
 
 const ContactPage = ({
   data: {
@@ -129,7 +126,7 @@ const TextContainer = styled.div`
 
   .text {
     margin-bottom: 20px;
-    iframe{
+    iframe {
       width: 100%;
       height: 300px;
     }
@@ -207,7 +204,7 @@ const FormContainer = styled.div`
       left: 16px;
       max-width: calc(100% - 32px);
     }
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     &--show {
       opacity: 1;
@@ -230,7 +227,7 @@ const FormContainer = styled.div`
     border-radius: 0;
     border: 0;
     padding: 11px 20px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     background-color: var(--color-white);
     outline-offset: -2px;
@@ -254,7 +251,7 @@ const FormContainer = styled.div`
     display: inline;
     position: absolute;
     right: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     &--show {
       opacity: 1;
