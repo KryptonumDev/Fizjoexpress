@@ -54,8 +54,7 @@ const TwoColumnTextSection = ({
 }
 
 const TwoColSectionWrapper = styled.section`
-  
-  .headers-wrapper{
+  .headers-wrapper {
     margin: 0 100px 30px 100px;
 
     @media (max-width: 1366px) {
@@ -66,7 +65,7 @@ const TwoColSectionWrapper = styled.section`
       margin: 0 0 30px 0;
     }
   }
-  .sub-title{
+  .sub-title {
     display: block;
     margin-top: 10px;
   }
@@ -96,7 +95,7 @@ const TwoColSectionContainer = styled(Container)`
     height: clamp(85px, 7.68vw, 105px);
 
     @media (max-width: 840px) {
-        display: none;
+      display: none;
     }
   }
 
@@ -122,9 +121,8 @@ const ColumnsWrapper = styled.div`
     flex-direction: column;
   }
 
-
   p {
-    font-size: ${12 / 16}rem;
+    font-size: ${14 / 16}rem;
     line-height: 185%;
     font-weight: 400;
   }
@@ -144,14 +142,14 @@ const ColumnsWrapper = styled.div`
 
 const FirstColumnText = styled.p`
   background-color: var(--color-light-gray);
-  padding: clamp(28px, 2.92vw, 40px) clamp(44px, 5vw, 66px)
-    clamp(48px, 5.12vw, 70px) clamp(28px, 2.92vw, 40px);
+  padding: clamp(28px, 2.92vw, 40px) clamp(20px, 5vw, 66px)
+    clamp(28px, 5.12vw, 70px) clamp(20px, 2.92vw, 40px);
 `
 
 const SecondColumnWrapper = styled.div`
   background-color: var(--color-light-gray);
-  padding: clamp(28px, 2.92vw, 40px) clamp(44px, 5vw, 66px)
-    clamp(48px, 5.12vw, 70px) clamp(28px, 2.92vw, 40px);
+  padding: clamp(28px, 2.92vw, 40px) clamp(20px, 5vw, 66px)
+    clamp(28px, 5.12vw, 70px) clamp(20px, 2.92vw, 40px);
 `
 
 export default TwoColumnTextSection
