@@ -34,6 +34,10 @@ const GlobalStyles = createGlobalStyle`
         scroll-margin-top: 100px;
     }
 
+    .tl-edges{
+        overflow-x: unset !important;
+    }
+
     .slick-track{
         display: flex !important;
     }
