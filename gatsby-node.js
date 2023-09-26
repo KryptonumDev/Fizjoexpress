@@ -48,7 +48,6 @@ exports.onPostBuild = async ({ graphql }) => {
       }
     `)
   
-    // Сформируйте конфигурацию редиректов в формате TOML
     const redirectConfig = redirects.map(redirect => (
       `[[redirects]]
         from = "${redirect.from}"
@@ -57,6 +56,5 @@ exports.onPostBuild = async ({ graphql }) => {
         force = ${redirect.force || false}`
     ));
   
-    // Запишите конфигурацию редиректов в netlify.toml
     fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
   };
