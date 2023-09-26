@@ -1,0 +1,55 @@
+[[redirects]]
+        from = "/jaw/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/flyash/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/mobile/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/pic/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/kontakt/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/themes/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/tag/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/.well-known/*"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/ads.txt"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/apple-app-site-association"
+        to = "/"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/apple-app-site-association/*"
+        to = "/"
+        status = 301
+        force = false

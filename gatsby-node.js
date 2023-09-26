@@ -31,6 +31,9 @@ exports.createPages = async ({
             },
         });
     });
+}
+
+exports.onPostBuild = async ({ graphql }) => {
     const { data: { wpPage: { redirects: { redirects } } } } = await graphql(`
     query{
         wpPage(id: {eq: "cG9zdDo1Mg=="}) {
@@ -44,12 +47,16 @@ exports.createPages = async ({
         }
       }
     `)
-
-    redirects.forEach(el => {
-        createRedirect({
-            fromPath: el.from,
-            toPath: el.to,
-            statusCode: el.statusCode,
-        })
-    })
-}
+  
+    // Сформируйте конфигурацию редиректов в формате TOML
+    const redirectConfig = redirects.map(redirect => (
+      `[[redirects]]
+        from = "${redirect.from}"
+        to = "${redirect.to}"
+        status = ${redirect.statusCode}
+        force = ${redirect.force || false}`
+    ));
+  
+    // Запишите конфигурацию редиректов в netlify.toml
+    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+  };

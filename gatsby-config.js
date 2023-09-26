@@ -43,7 +43,6 @@ module.exports = {
       }
     },
     'gatsby-plugin-robots-txt',
-    `gatsby-plugin-netlify-redirect`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
