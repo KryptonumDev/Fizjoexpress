@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        url: 'http://www-data.fizjoexpress.pl/graphql'
+        url: 'https://www-data.fizjoexpress.pl/graphql'
       }
     },
     'gatsby-plugin-react-helmet',
@@ -43,6 +43,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-robots-txt',
+    `gatsby-plugin-netlify-redirect`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
